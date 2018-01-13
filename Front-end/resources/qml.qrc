@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/Line.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/Oscill.qml</file>
+        <file>qml/qtquickcontrols2.conf</file>
+        <file>qml/ControlPanel.qml</file>
+        <file>qml/CPannelButton.qml</file>
+        <file>qml/CustomGroupBox.qml</file>
+    </qresource>
+</RCC>
