@@ -1,0 +1,305 @@
+ARM GAS  /tmp/ccIJFdil.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 2
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"stm32f1xx_hal_msp.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.HAL_MspInit,"ax",%progbits
+  16              		.align	1
+  17              		.p2align 2,,3
+  18              		.global	HAL_MspInit
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	HAL_MspInit:
+  25              	.LFB64:
+  26              		.file 1 "src/HAL/stm32f1xx_hal_msp.c"
+   1:src/HAL/stm32f1xx_hal_msp.c **** /**
+   2:src/HAL/stm32f1xx_hal_msp.c ****   ******************************************************************************
+   3:src/HAL/stm32f1xx_hal_msp.c ****   * File Name          : stm32f1xx_hal_msp.c
+   4:src/HAL/stm32f1xx_hal_msp.c ****   * Description        : This file provides code for the MSP Initialization 
+   5:src/HAL/stm32f1xx_hal_msp.c ****   *                      and de-Initialization codes.
+   6:src/HAL/stm32f1xx_hal_msp.c ****   ******************************************************************************
+   7:src/HAL/stm32f1xx_hal_msp.c ****   ** This notice applies to any and all portions of this file
+   8:src/HAL/stm32f1xx_hal_msp.c ****   * that are not between comment pairs USER CODE BEGIN and
+   9:src/HAL/stm32f1xx_hal_msp.c ****   * USER CODE END. Other portions of this file, whether 
+  10:src/HAL/stm32f1xx_hal_msp.c ****   * inserted by the user or by software development tools
+  11:src/HAL/stm32f1xx_hal_msp.c ****   * are owned by their respective copyright owners.
+  12:src/HAL/stm32f1xx_hal_msp.c ****   *
+  13:src/HAL/stm32f1xx_hal_msp.c ****   * COPYRIGHT(c) 2017 STMicroelectronics
+  14:src/HAL/stm32f1xx_hal_msp.c ****   *
+  15:src/HAL/stm32f1xx_hal_msp.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:src/HAL/stm32f1xx_hal_msp.c ****   * are permitted provided that the following conditions are met:
+  17:src/HAL/stm32f1xx_hal_msp.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:src/HAL/stm32f1xx_hal_msp.c ****   *      this list of conditions and the following disclaimer.
+  19:src/HAL/stm32f1xx_hal_msp.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:src/HAL/stm32f1xx_hal_msp.c ****   *      this list of conditions and the following disclaimer in the documentation
+  21:src/HAL/stm32f1xx_hal_msp.c ****   *      and/or other materials provided with the distribution.
+  22:src/HAL/stm32f1xx_hal_msp.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:src/HAL/stm32f1xx_hal_msp.c ****   *      may be used to endorse or promote products derived from this software
+  24:src/HAL/stm32f1xx_hal_msp.c ****   *      without specific prior written permission.
+  25:src/HAL/stm32f1xx_hal_msp.c ****   *
+  26:src/HAL/stm32f1xx_hal_msp.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:src/HAL/stm32f1xx_hal_msp.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:src/HAL/stm32f1xx_hal_msp.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:src/HAL/stm32f1xx_hal_msp.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:src/HAL/stm32f1xx_hal_msp.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  31:src/HAL/stm32f1xx_hal_msp.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  32:src/HAL/stm32f1xx_hal_msp.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ARM GAS  /tmp/ccIJFdil.s 			page 2
+
+
+  33:src/HAL/stm32f1xx_hal_msp.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:src/HAL/stm32f1xx_hal_msp.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:src/HAL/stm32f1xx_hal_msp.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:src/HAL/stm32f1xx_hal_msp.c ****   *
+  37:src/HAL/stm32f1xx_hal_msp.c ****   ******************************************************************************
+  38:src/HAL/stm32f1xx_hal_msp.c ****   */
+  39:src/HAL/stm32f1xx_hal_msp.c **** /* Includes ------------------------------------------------------------------*/
+  40:src/HAL/stm32f1xx_hal_msp.c **** #include "stm32f1xx_hal.h"
+  41:src/HAL/stm32f1xx_hal_msp.c **** 
+  42:src/HAL/stm32f1xx_hal_msp.c **** extern void _Error_Handler(char *, int);
+  43:src/HAL/stm32f1xx_hal_msp.c **** /* USER CODE BEGIN 0 */
+  44:src/HAL/stm32f1xx_hal_msp.c **** 
+  45:src/HAL/stm32f1xx_hal_msp.c **** /* USER CODE END 0 */
+  46:src/HAL/stm32f1xx_hal_msp.c **** /**
+  47:src/HAL/stm32f1xx_hal_msp.c ****   * Initializes the Global MSP.
+  48:src/HAL/stm32f1xx_hal_msp.c ****   */
+  49:src/HAL/stm32f1xx_hal_msp.c **** void HAL_MspInit(void)
+  50:src/HAL/stm32f1xx_hal_msp.c **** {
+  27              		.loc 1 50 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LBB2:
+  51:src/HAL/stm32f1xx_hal_msp.c ****   /* USER CODE BEGIN MspInit 0 */
+  52:src/HAL/stm32f1xx_hal_msp.c **** 
+  53:src/HAL/stm32f1xx_hal_msp.c ****   /* USER CODE END MspInit 0 */
+  54:src/HAL/stm32f1xx_hal_msp.c **** 
+  55:src/HAL/stm32f1xx_hal_msp.c ****   __HAL_RCC_AFIO_CLK_ENABLE();
+  32              		.loc 1 55 0
+  33 0000 224B     		ldr	r3, .L3
+  34              	.LBE2:
+  50:src/HAL/stm32f1xx_hal_msp.c ****   /* USER CODE BEGIN MspInit 0 */
+  35              		.loc 1 50 0
+  36 0002 00B5     		push	{lr}
+  37              		.cfi_def_cfa_offset 4
+  38              		.cfi_offset 14, -4
+  39              	.LBB3:
+  40              		.loc 1 55 0
+  41 0004 9A69     		ldr	r2, [r3, #24]
+  42              	.LBE3:
+  50:src/HAL/stm32f1xx_hal_msp.c ****   /* USER CODE BEGIN MspInit 0 */
+  43              		.loc 1 50 0
+  44 0006 83B0     		sub	sp, sp, #12
+  45              		.cfi_def_cfa_offset 16
+  46              	.LBB4:
+  47              		.loc 1 55 0
+  48 0008 42F00102 		orr	r2, r2, #1
+  49 000c 9A61     		str	r2, [r3, #24]
+  50 000e 9B69     		ldr	r3, [r3, #24]
+  51              	.LBE4:
+  56:src/HAL/stm32f1xx_hal_msp.c **** 
+  57:src/HAL/stm32f1xx_hal_msp.c ****   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
+  52              		.loc 1 57 0
+  53 0010 0320     		movs	r0, #3
+  54              	.LBB5:
+  55:src/HAL/stm32f1xx_hal_msp.c **** 
+  55              		.loc 1 55 0
+ARM GAS  /tmp/ccIJFdil.s 			page 3
+
+
+  56 0012 03F00103 		and	r3, r3, #1
+  57 0016 0193     		str	r3, [sp, #4]
+  58 0018 019B     		ldr	r3, [sp, #4]
+  59              	.LBE5:
+  60              		.loc 1 57 0
+  61 001a FFF7FEFF 		bl	HAL_NVIC_SetPriorityGrouping
+  62              	.LVL0:
+  58:src/HAL/stm32f1xx_hal_msp.c **** 
+  59:src/HAL/stm32f1xx_hal_msp.c ****   /* System interrupt init*/
+  60:src/HAL/stm32f1xx_hal_msp.c ****   /* MemoryManagement_IRQn interrupt configuration */
+  61:src/HAL/stm32f1xx_hal_msp.c ****   HAL_NVIC_SetPriority(MemoryManagement_IRQn, 0, 0);
+  63              		.loc 1 61 0
+  64 001e 0022     		movs	r2, #0
+  65 0020 6FF00B00 		mvn	r0, #11
+  66 0024 1146     		mov	r1, r2
+  67 0026 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+  68              	.LVL1:
+  62:src/HAL/stm32f1xx_hal_msp.c ****   /* BusFault_IRQn interrupt configuration */
+  63:src/HAL/stm32f1xx_hal_msp.c ****   HAL_NVIC_SetPriority(BusFault_IRQn, 0, 0);
+  69              		.loc 1 63 0
+  70 002a 0022     		movs	r2, #0
+  71 002c 6FF00A00 		mvn	r0, #10
+  72 0030 1146     		mov	r1, r2
+  73 0032 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+  74              	.LVL2:
+  64:src/HAL/stm32f1xx_hal_msp.c ****   /* UsageFault_IRQn interrupt configuration */
+  65:src/HAL/stm32f1xx_hal_msp.c ****   HAL_NVIC_SetPriority(UsageFault_IRQn, 0, 0);
+  75              		.loc 1 65 0
+  76 0036 0022     		movs	r2, #0
+  77 0038 6FF00900 		mvn	r0, #9
+  78 003c 1146     		mov	r1, r2
+  79 003e FFF7FEFF 		bl	HAL_NVIC_SetPriority
+  80              	.LVL3:
+  66:src/HAL/stm32f1xx_hal_msp.c ****   /* SVCall_IRQn interrupt configuration */
+  67:src/HAL/stm32f1xx_hal_msp.c ****   HAL_NVIC_SetPriority(SVCall_IRQn, 0, 0);
+  81              		.loc 1 67 0
+  82 0042 0022     		movs	r2, #0
+  83 0044 6FF00400 		mvn	r0, #4
+  84 0048 1146     		mov	r1, r2
+  85 004a FFF7FEFF 		bl	HAL_NVIC_SetPriority
+  86              	.LVL4:
+  68:src/HAL/stm32f1xx_hal_msp.c ****   /* DebugMonitor_IRQn interrupt configuration */
+  69:src/HAL/stm32f1xx_hal_msp.c ****   HAL_NVIC_SetPriority(DebugMonitor_IRQn, 0, 0);
+  87              		.loc 1 69 0
+  88 004e 0022     		movs	r2, #0
+  89 0050 6FF00300 		mvn	r0, #3
+  90 0054 1146     		mov	r1, r2
+  91 0056 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+  92              	.LVL5:
+  70:src/HAL/stm32f1xx_hal_msp.c ****   /* PendSV_IRQn interrupt configuration */
+  71:src/HAL/stm32f1xx_hal_msp.c ****   HAL_NVIC_SetPriority(PendSV_IRQn, 0, 0);
+  93              		.loc 1 71 0
+  94 005a 0022     		movs	r2, #0
+  95 005c 6FF00100 		mvn	r0, #1
+  96 0060 1146     		mov	r1, r2
+  97 0062 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+  98              	.LVL6:
+ARM GAS  /tmp/ccIJFdil.s 			page 4
+
+
+  72:src/HAL/stm32f1xx_hal_msp.c ****   /* SysTick_IRQn interrupt configuration */
+  73:src/HAL/stm32f1xx_hal_msp.c ****   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+  99              		.loc 1 73 0
+ 100 0066 0022     		movs	r2, #0
+ 101 0068 4FF0FF30 		mov	r0, #-1
+ 102 006c 1146     		mov	r1, r2
+ 103 006e FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 104              	.LVL7:
+  74:src/HAL/stm32f1xx_hal_msp.c **** 
+  75:src/HAL/stm32f1xx_hal_msp.c ****     /**NOJTAG: JTAG-DP Disabled and SW-DP Enabled 
+  76:src/HAL/stm32f1xx_hal_msp.c ****     */
+  77:src/HAL/stm32f1xx_hal_msp.c ****   __HAL_AFIO_REMAP_SWJ_NOJTAG();
+ 105              		.loc 1 77 0
+ 106 0072 074B     		ldr	r3, .L3+4
+ 107 0074 5A68     		ldr	r2, [r3, #4]
+ 108 0076 22F0E062 		bic	r2, r2, #117440512
+ 109 007a 5A60     		str	r2, [r3, #4]
+ 110 007c 5A68     		ldr	r2, [r3, #4]
+ 111 007e 42F00072 		orr	r2, r2, #33554432
+ 112 0082 5A60     		str	r2, [r3, #4]
+  78:src/HAL/stm32f1xx_hal_msp.c **** 
+  79:src/HAL/stm32f1xx_hal_msp.c ****   /* USER CODE BEGIN MspInit 1 */
+  80:src/HAL/stm32f1xx_hal_msp.c **** 
+  81:src/HAL/stm32f1xx_hal_msp.c ****   /* USER CODE END MspInit 1 */
+  82:src/HAL/stm32f1xx_hal_msp.c **** }
+ 113              		.loc 1 82 0
+ 114 0084 03B0     		add	sp, sp, #12
+ 115              		.cfi_def_cfa_offset 4
+ 116              		@ sp needed
+ 117 0086 5DF804FB 		ldr	pc, [sp], #4
+ 118              	.L4:
+ 119 008a 00BF     		.align	2
+ 120              	.L3:
+ 121 008c 00100240 		.word	1073876992
+ 122 0090 00000140 		.word	1073807360
+ 123              		.cfi_endproc
+ 124              	.LFE64:
+ 126              		.text
+ 127              	.Letext0:
+ 128              		.file 2 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3.
+ 129              		.file 3 "drivers/CMSIS/Include/core_cm3.h"
+ 130              		.file 4 "drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 131              		.file 5 "drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 132              		.file 6 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 133              		.file 7 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 134              		.file 8 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3.
+ 135              		.file 9 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 136              		.file 10 "drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
+ARM GAS  /tmp/ccIJFdil.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f1xx_hal_msp.c
+     /tmp/ccIJFdil.s:16     .text.HAL_MspInit:0000000000000000 $t
+     /tmp/ccIJFdil.s:24     .text.HAL_MspInit:0000000000000000 HAL_MspInit
+     /tmp/ccIJFdil.s:121    .text.HAL_MspInit:000000000000008c $d
+                     .debug_frame:0000000000000010 $d
+                           .group:0000000000000000 wm4.0.8ddc6fc9299f63009459649d6a7e7c51
+                           .group:0000000000000000 wm4.main.h.40.54e5213d35853f8debd8cd48178ac5c1
+                           .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.52.96cb61986c8bfeb3a4fa629a7a7441f6
+                           .group:0000000000000000 wm4.stm32f1xx.h.57.c2a10934f4c6830aeb7e4997f02806f1
+                           .group:0000000000000000 wm4.stm32f103xb.h.56.66305a77cea9d5300aac997a78930076
+                           .group:0000000000000000 wm4.stdintgcc.h.29.6d480f4ba0f60596e88234283d42444f
+                           .group:0000000000000000 wm4.core_cm3.h.74.7d5fecd6d4522d755d10a23d1542f805
+                           .group:0000000000000000 wm4.cmsis_gcc.h.36.67d2dcde6a14ff518eedc1d545d89a76
+                           .group:0000000000000000 wm4.core_cm3.h.175.a6c441adf1a05ce96eea3cf78e6687ab
+                           .group:0000000000000000 wm4.stm32f103xb.h.619.382b3c85cac6f0350ee5bfaff32e1ebc
+                           .group:0000000000000000 wm4.stm32f1xx.h.180.c0013e6ebd6ad07f67c298190b8eac92
+                           .group:0000000000000000 wm4._newlib_version.h.4.3572908597b70d672d181fc7fc501c19
+                           .group:0000000000000000 wm4.newlib.h.21.59901f4bf241ab46c63694665baa7297
+                           .group:0000000000000000 wm4.features.h.22.5cdadbb3efe495d1c9e38350b8c376c7
+                           .group:0000000000000000 wm4.config.h.219.65a553ab5bef5482f0d7880b0d33015e
+                           .group:0000000000000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:0000000000000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:0000000000000000 wm4._default_types.h.6.959254cf5f09734ea7516c89e8bb21bd
+                           .group:0000000000000000 wm4.stddef.h.187.2ff233552538c6ff9b8575ca8ea52cb3
+                           .group:0000000000000000 wm4.cdefs.h.47.e658329a094974ebad41b40c60502de7
+                           .group:0000000000000000 wm4.stddef.h.39.ec95e8feac892e292b69dc7ae75b0d64
+                           .group:0000000000000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:0000000000000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:0000000000000000 wm4._types.h.125.5cf8a495f1f7ef36777ad868a1e32068
+                           .group:0000000000000000 wm4.stddef.h.161.5349cb105733e8777bfb0cf53c4e3f34
+                           .group:0000000000000000 wm4._types.h.183.c226d164ceca1f2ecb9ae9360c54a098
+                           .group:0000000000000000 wm4.reent.h.17.23b059516345f8f5abfa01ddc379570f
+                           .group:0000000000000000 wm4.types.h.40.e8c16e7ec36ba55f133d0616070e25fc
+                           .group:0000000000000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:0000000000000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:0000000000000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:0000000000000000 wm4._timeval.h.30.0e8bfd94e85db17dda3286ee81496fe6
+                           .group:0000000000000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:0000000000000000 wm4.select.h.30.bbece7fa40993a78092dcc5805132560
+                           .group:0000000000000000 wm4.types.h.69.ed3eae3cf73030a737515151ebcab7a1
+                           .group:0000000000000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:0000000000000000 wm4.stdio.h.81.8188691c2279eac7a223caa50f6694b9
+                           .group:0000000000000000 wm4.stm32f1xx_hal_def.h.77.f54bfbbe3e3696aae97b05a3f338caf7
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.112.09261d6ad0eef5abae6b9147d0cf5cbf
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc_ex.h.40.bb785d717afc4d2d2b63a3608cb5a0c5
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.1219.902328474751456408f7d18f6caace93
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.40.f1cf5d2dd589e1675a9fcd6b008c2bb6
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio_ex.h.40.30d74584c89dcd3d86d10bdbbb06cc31
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.281.b26a95114b989e6edaf48d72c8710b9d
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.40.b1d5b41c58b583c31c61335e4c8e1bdd
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma_ex.h.40.7ac05bbf95f5a25a3f4a9b9c2a14f835
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.427.daddf65c60854feb2dc9660a62f55b8c
+                           .group:0000000000000000 wm4.stm32f1xx_hal_cortex.h.40.4f649a8bf316b7aa5d02077abd9b8999
+                           .group:0000000000000000 wm4.stm32f1xx_hal_adc.h.40.3ad40e622f0cef64228eb182e4bbe00f
+                           .group:0000000000000000 wm4.stm32f1xx_hal_adc_ex.h.40.3118796521817cc82626257e9c7ab79c
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash.h.40.12aaef98e1fbb85e3a8f79f98532d04a
+ARM GAS  /tmp/ccIJFdil.s 			page 6
+
+
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash_ex.h.40.ad66c77e153bc5a4a1d60e46727f4ae5
+                           .group:0000000000000000 wm4.stm32f1xx_hal_pwr.h.40.ecccf9071314b0ab3f6ffcfd7c596e95
+                           .group:0000000000000000 wm4.stm32f1xx_hal_spi.h.40.5dd367ee94b0bb430a3842862fe7d7da
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim.h.40.ac3feb225ff72b119eeddfe8acac07a3
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim_ex.h.40.9b926a51c24898708ad2e47fd5ff9d32
+                           .group:0000000000000000 wm4.stm32f1xx_hal_uart.h.40.9914ca79b81d8b23b4e5425c156b0acd
+                           .group:0000000000000000 wm4.stm32f1xx_hal.h.82.f2fd9c01c6f8c9e676a37d84eb9dc553
+
+UNDEFINED SYMBOLS
+HAL_NVIC_SetPriorityGrouping
+HAL_NVIC_SetPriority

@@ -1,0 +1,439 @@
+ARM GAS  /tmp/cc6tvkRG.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 2
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"gpio.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.MX_GPIO_Init,"ax",%progbits
+  16              		.align	1
+  17              		.p2align 2,,3
+  18              		.global	MX_GPIO_Init
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	MX_GPIO_Init:
+  25              	.LFB64:
+  26              		.file 1 "src/HAL/gpio.c"
+   1:src/HAL/gpio.c **** /**
+   2:src/HAL/gpio.c ****   ******************************************************************************
+   3:src/HAL/gpio.c ****   * File Name          : gpio.c
+   4:src/HAL/gpio.c ****   * Description        : This file provides code for the configuration
+   5:src/HAL/gpio.c ****   *                      of all used GPIO pins.
+   6:src/HAL/gpio.c ****   ******************************************************************************
+   7:src/HAL/gpio.c ****   ** This notice applies to any and all portions of this file
+   8:src/HAL/gpio.c ****   * that are not between comment pairs USER CODE BEGIN and
+   9:src/HAL/gpio.c ****   * USER CODE END. Other portions of this file, whether 
+  10:src/HAL/gpio.c ****   * inserted by the user or by software development tools
+  11:src/HAL/gpio.c ****   * are owned by their respective copyright owners.
+  12:src/HAL/gpio.c ****   *
+  13:src/HAL/gpio.c ****   * COPYRIGHT(c) 2017 STMicroelectronics
+  14:src/HAL/gpio.c ****   *
+  15:src/HAL/gpio.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:src/HAL/gpio.c ****   * are permitted provided that the following conditions are met:
+  17:src/HAL/gpio.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:src/HAL/gpio.c ****   *      this list of conditions and the following disclaimer.
+  19:src/HAL/gpio.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:src/HAL/gpio.c ****   *      this list of conditions and the following disclaimer in the documentation
+  21:src/HAL/gpio.c ****   *      and/or other materials provided with the distribution.
+  22:src/HAL/gpio.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:src/HAL/gpio.c ****   *      may be used to endorse or promote products derived from this software
+  24:src/HAL/gpio.c ****   *      without specific prior written permission.
+  25:src/HAL/gpio.c ****   *
+  26:src/HAL/gpio.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:src/HAL/gpio.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:src/HAL/gpio.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:src/HAL/gpio.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  30:src/HAL/gpio.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  31:src/HAL/gpio.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  32:src/HAL/gpio.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ARM GAS  /tmp/cc6tvkRG.s 			page 2
+
+
+  33:src/HAL/gpio.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:src/HAL/gpio.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:src/HAL/gpio.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:src/HAL/gpio.c ****   *
+  37:src/HAL/gpio.c ****   ******************************************************************************
+  38:src/HAL/gpio.c ****   */
+  39:src/HAL/gpio.c **** 
+  40:src/HAL/gpio.c **** /* Includes ------------------------------------------------------------------*/
+  41:src/HAL/gpio.c **** #include "gpio.h"
+  42:src/HAL/gpio.c **** /* USER CODE BEGIN 0 */
+  43:src/HAL/gpio.c **** 
+  44:src/HAL/gpio.c **** /* USER CODE END 0 */
+  45:src/HAL/gpio.c **** 
+  46:src/HAL/gpio.c **** /*----------------------------------------------------------------------------*/
+  47:src/HAL/gpio.c **** /* Configure GPIO                                                             */
+  48:src/HAL/gpio.c **** /*----------------------------------------------------------------------------*/
+  49:src/HAL/gpio.c **** /* USER CODE BEGIN 1 */
+  50:src/HAL/gpio.c **** 
+  51:src/HAL/gpio.c **** /* USER CODE END 1 */
+  52:src/HAL/gpio.c **** 
+  53:src/HAL/gpio.c **** /** Configure pins as 
+  54:src/HAL/gpio.c ****         * Analog 
+  55:src/HAL/gpio.c ****         * Input 
+  56:src/HAL/gpio.c ****         * Output
+  57:src/HAL/gpio.c ****         * EVENT_OUT
+  58:src/HAL/gpio.c ****         * EXTI
+  59:src/HAL/gpio.c **** */
+  60:src/HAL/gpio.c **** void MX_GPIO_Init(void)
+  61:src/HAL/gpio.c **** {
+  27              		.loc 1 61 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 32
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LBB2:
+  62:src/HAL/gpio.c **** 
+  63:src/HAL/gpio.c ****   GPIO_InitTypeDef GPIO_InitStruct;
+  64:src/HAL/gpio.c **** 
+  65:src/HAL/gpio.c ****   /* GPIO Ports Clock Enable */
+  66:src/HAL/gpio.c ****   __HAL_RCC_GPIOC_CLK_ENABLE();
+  32              		.loc 1 66 0
+  33 0000 2F4B     		ldr	r3, .L3
+  34              	.LBE2:
+  61:src/HAL/gpio.c **** 
+  35              		.loc 1 61 0
+  36 0002 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  37              		.cfi_def_cfa_offset 24
+  38              		.cfi_offset 4, -24
+  39              		.cfi_offset 5, -20
+  40              		.cfi_offset 6, -16
+  41              		.cfi_offset 7, -12
+  42              		.cfi_offset 8, -8
+  43              		.cfi_offset 14, -4
+  67:src/HAL/gpio.c ****   __HAL_RCC_GPIOD_CLK_ENABLE();
+  68:src/HAL/gpio.c ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+  69:src/HAL/gpio.c ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+  70:src/HAL/gpio.c **** 
+  71:src/HAL/gpio.c ****   /*Configure GPIO pin Output Level */
+ARM GAS  /tmp/cc6tvkRG.s 			page 3
+
+
+  72:src/HAL/gpio.c ****   HAL_GPIO_WritePin(InternalLed_GPIO_Port, InternalLed_Pin, GPIO_PIN_RESET);
+  73:src/HAL/gpio.c **** 
+  74:src/HAL/gpio.c ****   /*Configure GPIO pin Output Level */
+  75:src/HAL/gpio.c ****   HAL_GPIO_WritePin(GPIOB, Dsp_RST_Pin|Dsp_DC_Pin|Dsp_CS_Pin|BT_EN_Pin, GPIO_PIN_RESET);
+  76:src/HAL/gpio.c **** 
+  77:src/HAL/gpio.c ****   /*Configure GPIO pin : PtPin */
+  78:src/HAL/gpio.c ****   GPIO_InitStruct.Pin = InternalLed_Pin;
+  44              		.loc 1 78 0
+  45 0006 4FF40057 		mov	r7, #8192
+  46              	.LBB3:
+  66:src/HAL/gpio.c ****   __HAL_RCC_GPIOD_CLK_ENABLE();
+  47              		.loc 1 66 0
+  48 000a 9A69     		ldr	r2, [r3, #24]
+  49              	.LBE3:
+  79:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  50              		.loc 1 79 0
+  51 000c 0126     		movs	r6, #1
+  80:src/HAL/gpio.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  52              		.loc 1 80 0
+  53 000e 0225     		movs	r5, #2
+  54              	.LBB4:
+  66:src/HAL/gpio.c ****   __HAL_RCC_GPIOD_CLK_ENABLE();
+  55              		.loc 1 66 0
+  56 0010 42F01002 		orr	r2, r2, #16
+  57 0014 9A61     		str	r2, [r3, #24]
+  58 0016 9A69     		ldr	r2, [r3, #24]
+  59              	.LBE4:
+  61:src/HAL/gpio.c **** 
+  60              		.loc 1 61 0
+  61 0018 88B0     		sub	sp, sp, #32
+  62              		.cfi_def_cfa_offset 56
+  63              	.LBB5:
+  66:src/HAL/gpio.c ****   __HAL_RCC_GPIOD_CLK_ENABLE();
+  64              		.loc 1 66 0
+  65 001a 02F01002 		and	r2, r2, #16
+  66 001e 0092     		str	r2, [sp]
+  67 0020 009A     		ldr	r2, [sp]
+  68              	.LBE5:
+  69              	.LBB6:
+  67:src/HAL/gpio.c ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+  70              		.loc 1 67 0
+  71 0022 9A69     		ldr	r2, [r3, #24]
+  72              	.LBE6:
+  72:src/HAL/gpio.c **** 
+  73              		.loc 1 72 0
+  74 0024 DFF8A080 		ldr	r8, .L3+8
+  75              	.LBB7:
+  67:src/HAL/gpio.c ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+  76              		.loc 1 67 0
+  77 0028 42F02002 		orr	r2, r2, #32
+  78 002c 9A61     		str	r2, [r3, #24]
+  79 002e 9A69     		ldr	r2, [r3, #24]
+  80              	.LBE7:
+  75:src/HAL/gpio.c **** 
+  81              		.loc 1 75 0
+  82 0030 244C     		ldr	r4, .L3+4
+  83              	.LBB8:
+ARM GAS  /tmp/cc6tvkRG.s 			page 4
+
+
+  67:src/HAL/gpio.c ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+  84              		.loc 1 67 0
+  85 0032 02F02002 		and	r2, r2, #32
+  86 0036 0192     		str	r2, [sp, #4]
+  87 0038 019A     		ldr	r2, [sp, #4]
+  88              	.LBE8:
+  89              	.LBB9:
+  68:src/HAL/gpio.c ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+  90              		.loc 1 68 0
+  91 003a 9969     		ldr	r1, [r3, #24]
+  92              	.LBE9:
+  72:src/HAL/gpio.c **** 
+  93              		.loc 1 72 0
+  94 003c 4046     		mov	r0, r8
+  95              	.LBB10:
+  68:src/HAL/gpio.c ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+  96              		.loc 1 68 0
+  97 003e 41F00401 		orr	r1, r1, #4
+  98 0042 9961     		str	r1, [r3, #24]
+  99 0044 9969     		ldr	r1, [r3, #24]
+ 100              	.LBE10:
+  72:src/HAL/gpio.c **** 
+ 101              		.loc 1 72 0
+ 102 0046 0022     		movs	r2, #0
+ 103              	.LBB11:
+  68:src/HAL/gpio.c ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+ 104              		.loc 1 68 0
+ 105 0048 01F00401 		and	r1, r1, #4
+ 106 004c 0291     		str	r1, [sp, #8]
+ 107 004e 0299     		ldr	r1, [sp, #8]
+ 108              	.LBE11:
+ 109              	.LBB12:
+  69:src/HAL/gpio.c **** 
+ 110              		.loc 1 69 0
+ 111 0050 9969     		ldr	r1, [r3, #24]
+ 112 0052 41F00801 		orr	r1, r1, #8
+ 113 0056 9961     		str	r1, [r3, #24]
+ 114 0058 9B69     		ldr	r3, [r3, #24]
+ 115              	.LBE12:
+  72:src/HAL/gpio.c **** 
+ 116              		.loc 1 72 0
+ 117 005a 3946     		mov	r1, r7
+ 118              	.LBB13:
+  69:src/HAL/gpio.c **** 
+ 119              		.loc 1 69 0
+ 120 005c 03F00803 		and	r3, r3, #8
+ 121 0060 0393     		str	r3, [sp, #12]
+ 122 0062 039B     		ldr	r3, [sp, #12]
+ 123              	.LBE13:
+  72:src/HAL/gpio.c **** 
+ 124              		.loc 1 72 0
+ 125 0064 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 126              	.LVL0:
+  75:src/HAL/gpio.c **** 
+ 127              		.loc 1 75 0
+ 128 0068 2046     		mov	r0, r4
+ 129 006a 0022     		movs	r2, #0
+ARM GAS  /tmp/cc6tvkRG.s 			page 5
+
+
+ 130 006c 42F60441 		movw	r1, #11268
+ 131 0070 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 132              	.LVL1:
+  81:src/HAL/gpio.c ****   HAL_GPIO_Init(InternalLed_GPIO_Port, &GPIO_InitStruct);
+ 133              		.loc 1 81 0
+ 134 0074 4046     		mov	r0, r8
+ 135 0076 04A9     		add	r1, sp, #16
+  78:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 136              		.loc 1 78 0
+ 137 0078 0497     		str	r7, [sp, #16]
+  79:src/HAL/gpio.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ 138              		.loc 1 79 0
+ 139 007a 0596     		str	r6, [sp, #20]
+  80:src/HAL/gpio.c ****   HAL_GPIO_Init(InternalLed_GPIO_Port, &GPIO_InitStruct);
+ 140              		.loc 1 80 0
+ 141 007c 0795     		str	r5, [sp, #28]
+ 142              		.loc 1 81 0
+ 143 007e FFF7FEFF 		bl	HAL_GPIO_Init
+ 144              	.LVL2:
+  82:src/HAL/gpio.c **** 
+  83:src/HAL/gpio.c ****   /*Configure GPIO pins : PBPin PBPin PBPin */
+  84:src/HAL/gpio.c ****   GPIO_InitStruct.Pin = Dsp_RST_Pin|Dsp_DC_Pin|Dsp_CS_Pin;
+ 145              		.loc 1 84 0
+ 146 0082 40F60442 		movw	r2, #3076
+  85:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  86:src/HAL/gpio.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 147              		.loc 1 86 0
+ 148 0086 0323     		movs	r3, #3
+  87:src/HAL/gpio.c ****   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 149              		.loc 1 87 0
+ 150 0088 04A9     		add	r1, sp, #16
+ 151 008a 2046     		mov	r0, r4
+  84:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 152              		.loc 1 84 0
+ 153 008c 0492     		str	r2, [sp, #16]
+  86:src/HAL/gpio.c ****   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 154              		.loc 1 86 0
+ 155 008e 0793     		str	r3, [sp, #28]
+  85:src/HAL/gpio.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+ 156              		.loc 1 85 0
+ 157 0090 0596     		str	r6, [sp, #20]
+ 158              		.loc 1 87 0
+ 159 0092 FFF7FEFF 		bl	HAL_GPIO_Init
+ 160              	.LVL3:
+  88:src/HAL/gpio.c **** 
+  89:src/HAL/gpio.c ****   /*Configure GPIO pin : PtPin */
+  90:src/HAL/gpio.c ****   GPIO_InitStruct.Pin = BT_EN_Pin;
+  91:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  92:src/HAL/gpio.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  93:src/HAL/gpio.c ****   HAL_GPIO_Init(BT_EN_GPIO_Port, &GPIO_InitStruct);
+ 161              		.loc 1 93 0
+ 162 0096 04A9     		add	r1, sp, #16
+ 163 0098 2046     		mov	r0, r4
+  90:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 164              		.loc 1 90 0
+ 165 009a 0497     		str	r7, [sp, #16]
+  91:src/HAL/gpio.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+ARM GAS  /tmp/cc6tvkRG.s 			page 6
+
+
+ 166              		.loc 1 91 0
+ 167 009c 0596     		str	r6, [sp, #20]
+  92:src/HAL/gpio.c ****   HAL_GPIO_Init(BT_EN_GPIO_Port, &GPIO_InitStruct);
+ 168              		.loc 1 92 0
+ 169 009e 0795     		str	r5, [sp, #28]
+ 170              		.loc 1 93 0
+ 171 00a0 FFF7FEFF 		bl	HAL_GPIO_Init
+ 172              	.LVL4:
+  94:src/HAL/gpio.c **** 
+  95:src/HAL/gpio.c ****   /*Configure GPIO pins : PBPin PBPin */
+  96:src/HAL/gpio.c ****   GPIO_InitStruct.Pin = LO_P_Pin|LO_N_Pin;
+ 173              		.loc 1 96 0
+ 174 00a4 4FF44042 		mov	r2, #49152
+  97:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 175              		.loc 1 97 0
+ 176 00a8 0023     		movs	r3, #0
+  98:src/HAL/gpio.c ****   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  99:src/HAL/gpio.c ****   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 177              		.loc 1 99 0
+ 178 00aa 04A9     		add	r1, sp, #16
+ 179 00ac 2046     		mov	r0, r4
+  98:src/HAL/gpio.c ****   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+ 180              		.loc 1 98 0
+ 181 00ae 0695     		str	r5, [sp, #24]
+  96:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 182              		.loc 1 96 0
+ 183 00b0 0492     		str	r2, [sp, #16]
+  97:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 184              		.loc 1 97 0
+ 185 00b2 0593     		str	r3, [sp, #20]
+ 186              		.loc 1 99 0
+ 187 00b4 FFF7FEFF 		bl	HAL_GPIO_Init
+ 188              	.LVL5:
+ 100:src/HAL/gpio.c **** 
+ 101:src/HAL/gpio.c **** }
+ 189              		.loc 1 101 0
+ 190 00b8 08B0     		add	sp, sp, #32
+ 191              		.cfi_def_cfa_offset 24
+ 192              		@ sp needed
+ 193 00ba BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 194              	.L4:
+ 195 00be 00BF     		.align	2
+ 196              	.L3:
+ 197 00c0 00100240 		.word	1073876992
+ 198 00c4 000C0140 		.word	1073810432
+ 199 00c8 00100140 		.word	1073811456
+ 200              		.cfi_endproc
+ 201              	.LFE64:
+ 203              		.text
+ 204              	.Letext0:
+ 205              		.file 2 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3.
+ 206              		.file 3 "drivers/CMSIS/Include/core_cm3.h"
+ 207              		.file 4 "drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 208              		.file 5 "drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 209              		.file 6 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 210              		.file 7 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 211              		.file 8 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3.
+ARM GAS  /tmp/cc6tvkRG.s 			page 7
+
+
+ 212              		.file 9 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 213              		.file 10 "drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ARM GAS  /tmp/cc6tvkRG.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gpio.c
+     /tmp/cc6tvkRG.s:16     .text.MX_GPIO_Init:0000000000000000 $t
+     /tmp/cc6tvkRG.s:24     .text.MX_GPIO_Init:0000000000000000 MX_GPIO_Init
+     /tmp/cc6tvkRG.s:197    .text.MX_GPIO_Init:00000000000000c0 $d
+                     .debug_frame:0000000000000010 $d
+                           .group:0000000000000000 wm4.0.8ddc6fc9299f63009459649d6a7e7c51
+                           .group:0000000000000000 wm4.main.h.40.54e5213d35853f8debd8cd48178ac5c1
+                           .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.52.96cb61986c8bfeb3a4fa629a7a7441f6
+                           .group:0000000000000000 wm4.stm32f1xx.h.57.c2a10934f4c6830aeb7e4997f02806f1
+                           .group:0000000000000000 wm4.stm32f103xb.h.56.66305a77cea9d5300aac997a78930076
+                           .group:0000000000000000 wm4.stdintgcc.h.29.6d480f4ba0f60596e88234283d42444f
+                           .group:0000000000000000 wm4.core_cm3.h.74.7d5fecd6d4522d755d10a23d1542f805
+                           .group:0000000000000000 wm4.cmsis_gcc.h.36.67d2dcde6a14ff518eedc1d545d89a76
+                           .group:0000000000000000 wm4.core_cm3.h.175.a6c441adf1a05ce96eea3cf78e6687ab
+                           .group:0000000000000000 wm4.stm32f103xb.h.619.382b3c85cac6f0350ee5bfaff32e1ebc
+                           .group:0000000000000000 wm4.stm32f1xx.h.180.c0013e6ebd6ad07f67c298190b8eac92
+                           .group:0000000000000000 wm4._newlib_version.h.4.3572908597b70d672d181fc7fc501c19
+                           .group:0000000000000000 wm4.newlib.h.21.59901f4bf241ab46c63694665baa7297
+                           .group:0000000000000000 wm4.features.h.22.5cdadbb3efe495d1c9e38350b8c376c7
+                           .group:0000000000000000 wm4.config.h.219.65a553ab5bef5482f0d7880b0d33015e
+                           .group:0000000000000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:0000000000000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:0000000000000000 wm4._default_types.h.6.959254cf5f09734ea7516c89e8bb21bd
+                           .group:0000000000000000 wm4.stddef.h.187.2ff233552538c6ff9b8575ca8ea52cb3
+                           .group:0000000000000000 wm4.cdefs.h.47.e658329a094974ebad41b40c60502de7
+                           .group:0000000000000000 wm4.stddef.h.39.ec95e8feac892e292b69dc7ae75b0d64
+                           .group:0000000000000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:0000000000000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:0000000000000000 wm4._types.h.125.5cf8a495f1f7ef36777ad868a1e32068
+                           .group:0000000000000000 wm4.stddef.h.161.5349cb105733e8777bfb0cf53c4e3f34
+                           .group:0000000000000000 wm4._types.h.183.c226d164ceca1f2ecb9ae9360c54a098
+                           .group:0000000000000000 wm4.reent.h.17.23b059516345f8f5abfa01ddc379570f
+                           .group:0000000000000000 wm4.types.h.40.e8c16e7ec36ba55f133d0616070e25fc
+                           .group:0000000000000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:0000000000000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:0000000000000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:0000000000000000 wm4._timeval.h.30.0e8bfd94e85db17dda3286ee81496fe6
+                           .group:0000000000000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:0000000000000000 wm4.select.h.30.bbece7fa40993a78092dcc5805132560
+                           .group:0000000000000000 wm4.types.h.69.ed3eae3cf73030a737515151ebcab7a1
+                           .group:0000000000000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:0000000000000000 wm4.stdio.h.81.8188691c2279eac7a223caa50f6694b9
+                           .group:0000000000000000 wm4.stm32f1xx_hal_def.h.77.f54bfbbe3e3696aae97b05a3f338caf7
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.112.09261d6ad0eef5abae6b9147d0cf5cbf
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc_ex.h.40.bb785d717afc4d2d2b63a3608cb5a0c5
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.1219.902328474751456408f7d18f6caace93
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.40.f1cf5d2dd589e1675a9fcd6b008c2bb6
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio_ex.h.40.30d74584c89dcd3d86d10bdbbb06cc31
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.281.b26a95114b989e6edaf48d72c8710b9d
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.40.b1d5b41c58b583c31c61335e4c8e1bdd
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma_ex.h.40.7ac05bbf95f5a25a3f4a9b9c2a14f835
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.427.daddf65c60854feb2dc9660a62f55b8c
+                           .group:0000000000000000 wm4.stm32f1xx_hal_cortex.h.40.4f649a8bf316b7aa5d02077abd9b8999
+                           .group:0000000000000000 wm4.stm32f1xx_hal_adc.h.40.3ad40e622f0cef64228eb182e4bbe00f
+                           .group:0000000000000000 wm4.stm32f1xx_hal_adc_ex.h.40.3118796521817cc82626257e9c7ab79c
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash.h.40.12aaef98e1fbb85e3a8f79f98532d04a
+ARM GAS  /tmp/cc6tvkRG.s 			page 9
+
+
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash_ex.h.40.ad66c77e153bc5a4a1d60e46727f4ae5
+                           .group:0000000000000000 wm4.stm32f1xx_hal_pwr.h.40.ecccf9071314b0ab3f6ffcfd7c596e95
+                           .group:0000000000000000 wm4.stm32f1xx_hal_spi.h.40.5dd367ee94b0bb430a3842862fe7d7da
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim.h.40.ac3feb225ff72b119eeddfe8acac07a3
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim_ex.h.40.9b926a51c24898708ad2e47fd5ff9d32
+                           .group:0000000000000000 wm4.stm32f1xx_hal_uart.h.40.9914ca79b81d8b23b4e5425c156b0acd
+                           .group:0000000000000000 wm4.stm32f1xx_hal.h.82.f2fd9c01c6f8c9e676a37d84eb9dc553
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_GPIO_Init

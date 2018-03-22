@@ -1,0 +1,720 @@
+ARM GAS  /tmp/ccYLQdmL.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 2
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"system_stm32f1xx.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.SystemInit,"ax",%progbits
+  16              		.align	1
+  17              		.p2align 2,,3
+  18              		.global	SystemInit
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	SystemInit:
+  25              	.LFB64:
+  26              		.file 1 "src/HAL/system_stm32f1xx.c"
+   1:src/HAL/system_stm32f1xx.c **** /**
+   2:src/HAL/system_stm32f1xx.c ****   ******************************************************************************
+   3:src/HAL/system_stm32f1xx.c ****   * @file    system_stm32f1xx.c
+   4:src/HAL/system_stm32f1xx.c ****   * @author  MCD Application Team
+   5:src/HAL/system_stm32f1xx.c ****   * @version V4.2.0
+   6:src/HAL/system_stm32f1xx.c ****   * @date    31-March-2017
+   7:src/HAL/system_stm32f1xx.c ****   * @brief   CMSIS Cortex-M3 Device Peripheral Access Layer System Source File.
+   8:src/HAL/system_stm32f1xx.c ****   * 
+   9:src/HAL/system_stm32f1xx.c ****   * 1.  This file provides two functions and one global variable to be called from 
+  10:src/HAL/system_stm32f1xx.c ****   *     user application:
+  11:src/HAL/system_stm32f1xx.c ****   *      - SystemInit(): Setups the system clock (System clock source, PLL Multiplier
+  12:src/HAL/system_stm32f1xx.c ****   *                      factors, AHB/APBx prescalers and Flash settings). 
+  13:src/HAL/system_stm32f1xx.c ****   *                      This function is called at startup just after reset and 
+  14:src/HAL/system_stm32f1xx.c ****   *                      before branch to main program. This call is made inside
+  15:src/HAL/system_stm32f1xx.c ****   *                      the "startup_stm32f1xx_xx.s" file.
+  16:src/HAL/system_stm32f1xx.c ****   *
+  17:src/HAL/system_stm32f1xx.c ****   *      - SystemCoreClock variable: Contains the core clock (HCLK), it can be used
+  18:src/HAL/system_stm32f1xx.c ****   *                                  by the user application to setup the SysTick 
+  19:src/HAL/system_stm32f1xx.c ****   *                                  timer or configure other parameters.
+  20:src/HAL/system_stm32f1xx.c ****   *                                     
+  21:src/HAL/system_stm32f1xx.c ****   *      - SystemCoreClockUpdate(): Updates the variable SystemCoreClock and must
+  22:src/HAL/system_stm32f1xx.c ****   *                                 be called whenever the core clock is changed
+  23:src/HAL/system_stm32f1xx.c ****   *                                 during program execution.
+  24:src/HAL/system_stm32f1xx.c ****   *
+  25:src/HAL/system_stm32f1xx.c ****   * 2. After each device reset the HSI (8 MHz) is used as system clock source.
+  26:src/HAL/system_stm32f1xx.c ****   *    Then SystemInit() function is called, in "startup_stm32f1xx_xx.s" file, to
+  27:src/HAL/system_stm32f1xx.c ****   *    configure the system clock before to branch to main program.
+  28:src/HAL/system_stm32f1xx.c ****   *
+  29:src/HAL/system_stm32f1xx.c ****   * 4. The default value of HSE crystal is set to 8 MHz (or 25 MHz, depending on
+  30:src/HAL/system_stm32f1xx.c ****   *    the product used), refer to "HSE_VALUE". 
+  31:src/HAL/system_stm32f1xx.c ****   *    When HSE is used as system clock source, directly or through PLL, and you
+  32:src/HAL/system_stm32f1xx.c ****   *    are using different crystal you have to adapt the HSE value to your own
+ARM GAS  /tmp/ccYLQdmL.s 			page 2
+
+
+  33:src/HAL/system_stm32f1xx.c ****   *    configuration.
+  34:src/HAL/system_stm32f1xx.c ****   *        
+  35:src/HAL/system_stm32f1xx.c ****   ******************************************************************************
+  36:src/HAL/system_stm32f1xx.c ****   * @attention
+  37:src/HAL/system_stm32f1xx.c ****   *
+  38:src/HAL/system_stm32f1xx.c ****   * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
+  39:src/HAL/system_stm32f1xx.c ****   *
+  40:src/HAL/system_stm32f1xx.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  41:src/HAL/system_stm32f1xx.c ****   * are permitted provided that the following conditions are met:
+  42:src/HAL/system_stm32f1xx.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  43:src/HAL/system_stm32f1xx.c ****   *      this list of conditions and the following disclaimer.
+  44:src/HAL/system_stm32f1xx.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  45:src/HAL/system_stm32f1xx.c ****   *      this list of conditions and the following disclaimer in the documentation
+  46:src/HAL/system_stm32f1xx.c ****   *      and/or other materials provided with the distribution.
+  47:src/HAL/system_stm32f1xx.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  48:src/HAL/system_stm32f1xx.c ****   *      may be used to endorse or promote products derived from this software
+  49:src/HAL/system_stm32f1xx.c ****   *      without specific prior written permission.
+  50:src/HAL/system_stm32f1xx.c ****   *
+  51:src/HAL/system_stm32f1xx.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  52:src/HAL/system_stm32f1xx.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  53:src/HAL/system_stm32f1xx.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  54:src/HAL/system_stm32f1xx.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  55:src/HAL/system_stm32f1xx.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  56:src/HAL/system_stm32f1xx.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  57:src/HAL/system_stm32f1xx.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  58:src/HAL/system_stm32f1xx.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  59:src/HAL/system_stm32f1xx.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  60:src/HAL/system_stm32f1xx.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  61:src/HAL/system_stm32f1xx.c ****   *
+  62:src/HAL/system_stm32f1xx.c ****   ******************************************************************************
+  63:src/HAL/system_stm32f1xx.c ****   */
+  64:src/HAL/system_stm32f1xx.c **** 
+  65:src/HAL/system_stm32f1xx.c **** /** @addtogroup CMSIS
+  66:src/HAL/system_stm32f1xx.c ****   * @{
+  67:src/HAL/system_stm32f1xx.c ****   */
+  68:src/HAL/system_stm32f1xx.c **** 
+  69:src/HAL/system_stm32f1xx.c **** /** @addtogroup stm32f1xx_system
+  70:src/HAL/system_stm32f1xx.c ****   * @{
+  71:src/HAL/system_stm32f1xx.c ****   */  
+  72:src/HAL/system_stm32f1xx.c ****   
+  73:src/HAL/system_stm32f1xx.c **** /** @addtogroup STM32F1xx_System_Private_Includes
+  74:src/HAL/system_stm32f1xx.c ****   * @{
+  75:src/HAL/system_stm32f1xx.c ****   */
+  76:src/HAL/system_stm32f1xx.c **** 
+  77:src/HAL/system_stm32f1xx.c **** #include "stm32f1xx.h"
+  78:src/HAL/system_stm32f1xx.c **** 
+  79:src/HAL/system_stm32f1xx.c **** /**
+  80:src/HAL/system_stm32f1xx.c ****   * @}
+  81:src/HAL/system_stm32f1xx.c ****   */
+  82:src/HAL/system_stm32f1xx.c **** 
+  83:src/HAL/system_stm32f1xx.c **** /** @addtogroup STM32F1xx_System_Private_TypesDefinitions
+  84:src/HAL/system_stm32f1xx.c ****   * @{
+  85:src/HAL/system_stm32f1xx.c ****   */
+  86:src/HAL/system_stm32f1xx.c **** 
+  87:src/HAL/system_stm32f1xx.c **** /**
+  88:src/HAL/system_stm32f1xx.c ****   * @}
+  89:src/HAL/system_stm32f1xx.c ****   */
+ARM GAS  /tmp/ccYLQdmL.s 			page 3
+
+
+  90:src/HAL/system_stm32f1xx.c **** 
+  91:src/HAL/system_stm32f1xx.c **** /** @addtogroup STM32F1xx_System_Private_Defines
+  92:src/HAL/system_stm32f1xx.c ****   * @{
+  93:src/HAL/system_stm32f1xx.c ****   */
+  94:src/HAL/system_stm32f1xx.c **** 
+  95:src/HAL/system_stm32f1xx.c **** #if !defined  (HSE_VALUE) 
+  96:src/HAL/system_stm32f1xx.c ****   #define HSE_VALUE               8000000U /*!< Default value of the External oscillator in Hz.
+  97:src/HAL/system_stm32f1xx.c ****                                                 This value can be provided and adapted by the user 
+  98:src/HAL/system_stm32f1xx.c **** #endif /* HSE_VALUE */
+  99:src/HAL/system_stm32f1xx.c **** 
+ 100:src/HAL/system_stm32f1xx.c **** #if !defined  (HSI_VALUE)
+ 101:src/HAL/system_stm32f1xx.c ****   #define HSI_VALUE               8000000U /*!< Default value of the Internal oscillator in Hz.
+ 102:src/HAL/system_stm32f1xx.c ****                                                 This value can be provided and adapted by the user 
+ 103:src/HAL/system_stm32f1xx.c **** #endif /* HSI_VALUE */
+ 104:src/HAL/system_stm32f1xx.c **** 
+ 105:src/HAL/system_stm32f1xx.c **** /*!< Uncomment the following line if you need to use external SRAM  */ 
+ 106:src/HAL/system_stm32f1xx.c **** #if defined(STM32F100xE) || defined(STM32F101xE) || defined(STM32F101xG) || defined(STM32F103xE) ||
+ 107:src/HAL/system_stm32f1xx.c **** /* #define DATA_IN_ExtSRAM */
+ 108:src/HAL/system_stm32f1xx.c **** #endif /* STM32F100xE || STM32F101xE || STM32F101xG || STM32F103xE || STM32F103xG */
+ 109:src/HAL/system_stm32f1xx.c **** 
+ 110:src/HAL/system_stm32f1xx.c **** /*!< Uncomment the following line if you need to relocate your vector Table in
+ 111:src/HAL/system_stm32f1xx.c ****      Internal SRAM. */ 
+ 112:src/HAL/system_stm32f1xx.c **** /* #define VECT_TAB_SRAM */
+ 113:src/HAL/system_stm32f1xx.c **** #define VECT_TAB_OFFSET  0x00000000U /*!< Vector Table base offset field. 
+ 114:src/HAL/system_stm32f1xx.c ****                                   This value must be a multiple of 0x200. */
+ 115:src/HAL/system_stm32f1xx.c **** 
+ 116:src/HAL/system_stm32f1xx.c **** 
+ 117:src/HAL/system_stm32f1xx.c **** /**
+ 118:src/HAL/system_stm32f1xx.c ****   * @}
+ 119:src/HAL/system_stm32f1xx.c ****   */
+ 120:src/HAL/system_stm32f1xx.c **** 
+ 121:src/HAL/system_stm32f1xx.c **** /** @addtogroup STM32F1xx_System_Private_Macros
+ 122:src/HAL/system_stm32f1xx.c ****   * @{
+ 123:src/HAL/system_stm32f1xx.c ****   */
+ 124:src/HAL/system_stm32f1xx.c **** 
+ 125:src/HAL/system_stm32f1xx.c **** /**
+ 126:src/HAL/system_stm32f1xx.c ****   * @}
+ 127:src/HAL/system_stm32f1xx.c ****   */
+ 128:src/HAL/system_stm32f1xx.c **** 
+ 129:src/HAL/system_stm32f1xx.c **** /** @addtogroup STM32F1xx_System_Private_Variables
+ 130:src/HAL/system_stm32f1xx.c ****   * @{
+ 131:src/HAL/system_stm32f1xx.c ****   */
+ 132:src/HAL/system_stm32f1xx.c **** 
+ 133:src/HAL/system_stm32f1xx.c **** /*******************************************************************************
+ 134:src/HAL/system_stm32f1xx.c **** *  Clock Definitions
+ 135:src/HAL/system_stm32f1xx.c **** *******************************************************************************/
+ 136:src/HAL/system_stm32f1xx.c **** #if defined(STM32F100xB) ||defined(STM32F100xE)
+ 137:src/HAL/system_stm32f1xx.c ****   uint32_t SystemCoreClock         = 24000000U;        /*!< System Clock Frequency (Core Clock) */
+ 138:src/HAL/system_stm32f1xx.c **** #else /*!< HSI Selected as System Clock source */
+ 139:src/HAL/system_stm32f1xx.c ****   uint32_t SystemCoreClock         = 72000000U;        /*!< System Clock Frequency (Core Clock) */
+ 140:src/HAL/system_stm32f1xx.c **** #endif
+ 141:src/HAL/system_stm32f1xx.c **** 
+ 142:src/HAL/system_stm32f1xx.c **** const uint8_t AHBPrescTable[16U] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+ 143:src/HAL/system_stm32f1xx.c **** const uint8_t APBPrescTable[8U] =  {0, 0, 0, 0, 1, 2, 3, 4};
+ 144:src/HAL/system_stm32f1xx.c **** 
+ 145:src/HAL/system_stm32f1xx.c **** /**
+ 146:src/HAL/system_stm32f1xx.c ****   * @}
+ARM GAS  /tmp/ccYLQdmL.s 			page 4
+
+
+ 147:src/HAL/system_stm32f1xx.c ****   */
+ 148:src/HAL/system_stm32f1xx.c **** 
+ 149:src/HAL/system_stm32f1xx.c **** /** @addtogroup STM32F1xx_System_Private_FunctionPrototypes
+ 150:src/HAL/system_stm32f1xx.c ****   * @{
+ 151:src/HAL/system_stm32f1xx.c ****   */
+ 152:src/HAL/system_stm32f1xx.c **** 
+ 153:src/HAL/system_stm32f1xx.c **** #if defined(STM32F100xE) || defined(STM32F101xE) || defined(STM32F101xG) || defined(STM32F103xE) ||
+ 154:src/HAL/system_stm32f1xx.c **** #ifdef DATA_IN_ExtSRAM
+ 155:src/HAL/system_stm32f1xx.c ****   static void SystemInit_ExtMemCtl(void); 
+ 156:src/HAL/system_stm32f1xx.c **** #endif /* DATA_IN_ExtSRAM */
+ 157:src/HAL/system_stm32f1xx.c **** #endif /* STM32F100xE || STM32F101xE || STM32F101xG || STM32F103xE || STM32F103xG */
+ 158:src/HAL/system_stm32f1xx.c **** 
+ 159:src/HAL/system_stm32f1xx.c **** /**
+ 160:src/HAL/system_stm32f1xx.c ****   * @}
+ 161:src/HAL/system_stm32f1xx.c ****   */
+ 162:src/HAL/system_stm32f1xx.c **** 
+ 163:src/HAL/system_stm32f1xx.c **** /** @addtogroup STM32F1xx_System_Private_Functions
+ 164:src/HAL/system_stm32f1xx.c ****   * @{
+ 165:src/HAL/system_stm32f1xx.c ****   */
+ 166:src/HAL/system_stm32f1xx.c **** 
+ 167:src/HAL/system_stm32f1xx.c **** /**
+ 168:src/HAL/system_stm32f1xx.c ****   * @brief  Setup the microcontroller system
+ 169:src/HAL/system_stm32f1xx.c ****   *         Initialize the Embedded Flash Interface, the PLL and update the 
+ 170:src/HAL/system_stm32f1xx.c ****   *         SystemCoreClock variable.
+ 171:src/HAL/system_stm32f1xx.c ****   * @note   This function should be used only after reset.
+ 172:src/HAL/system_stm32f1xx.c ****   * @param  None
+ 173:src/HAL/system_stm32f1xx.c ****   * @retval None
+ 174:src/HAL/system_stm32f1xx.c ****   */
+ 175:src/HAL/system_stm32f1xx.c **** void SystemInit (void)
+ 176:src/HAL/system_stm32f1xx.c **** {
+  27              		.loc 1 176 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 30B4     		push	{r4, r5}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 5, -4
+ 177:src/HAL/system_stm32f1xx.c ****   /* Reset the RCC clock configuration to the default reset state(for debug purpose) */
+ 178:src/HAL/system_stm32f1xx.c ****   /* Set HSION bit */
+ 179:src/HAL/system_stm32f1xx.c ****   RCC->CR |= 0x00000001U;
+ 180:src/HAL/system_stm32f1xx.c **** 
+ 181:src/HAL/system_stm32f1xx.c ****   /* Reset SW, HPRE, PPRE1, PPRE2, ADCPRE and MCO bits */
+ 182:src/HAL/system_stm32f1xx.c **** #if !defined(STM32F105xC) && !defined(STM32F107xC)
+ 183:src/HAL/system_stm32f1xx.c ****   RCC->CFGR &= 0xF8FF0000U;
+ 184:src/HAL/system_stm32f1xx.c **** #else
+ 185:src/HAL/system_stm32f1xx.c ****   RCC->CFGR &= 0xF0FF0000U;
+ 186:src/HAL/system_stm32f1xx.c **** #endif /* STM32F105xC */   
+ 187:src/HAL/system_stm32f1xx.c ****   
+ 188:src/HAL/system_stm32f1xx.c ****   /* Reset HSEON, CSSON and PLLON bits */
+ 189:src/HAL/system_stm32f1xx.c ****   RCC->CR &= 0xFEF6FFFFU;
+ 190:src/HAL/system_stm32f1xx.c **** 
+ 191:src/HAL/system_stm32f1xx.c ****   /* Reset HSEBYP bit */
+ 192:src/HAL/system_stm32f1xx.c ****   RCC->CR &= 0xFFFBFFFFU;
+ 193:src/HAL/system_stm32f1xx.c **** 
+ 194:src/HAL/system_stm32f1xx.c ****   /* Reset PLLSRC, PLLXTPRE, PLLMUL and USBPRE/OTGFSPRE bits */
+ARM GAS  /tmp/ccYLQdmL.s 			page 5
+
+
+ 195:src/HAL/system_stm32f1xx.c ****   RCC->CFGR &= 0xFF80FFFFU;
+ 196:src/HAL/system_stm32f1xx.c **** 
+ 197:src/HAL/system_stm32f1xx.c **** #if defined(STM32F105xC) || defined(STM32F107xC)
+ 198:src/HAL/system_stm32f1xx.c ****   /* Reset PLL2ON and PLL3ON bits */
+ 199:src/HAL/system_stm32f1xx.c ****   RCC->CR &= 0xEBFFFFFFU;
+ 200:src/HAL/system_stm32f1xx.c **** 
+ 201:src/HAL/system_stm32f1xx.c ****   /* Disable all interrupts and clear pending bits  */
+ 202:src/HAL/system_stm32f1xx.c ****   RCC->CIR = 0x00FF0000U;
+ 203:src/HAL/system_stm32f1xx.c **** 
+ 204:src/HAL/system_stm32f1xx.c ****   /* Reset CFGR2 register */
+ 205:src/HAL/system_stm32f1xx.c ****   RCC->CFGR2 = 0x00000000U;
+ 206:src/HAL/system_stm32f1xx.c **** #elif defined(STM32F100xB) || defined(STM32F100xE)
+ 207:src/HAL/system_stm32f1xx.c ****   /* Disable all interrupts and clear pending bits  */
+ 208:src/HAL/system_stm32f1xx.c ****   RCC->CIR = 0x009F0000U;
+ 209:src/HAL/system_stm32f1xx.c **** 
+ 210:src/HAL/system_stm32f1xx.c ****   /* Reset CFGR2 register */
+ 211:src/HAL/system_stm32f1xx.c ****   RCC->CFGR2 = 0x00000000U;      
+ 212:src/HAL/system_stm32f1xx.c **** #else
+ 213:src/HAL/system_stm32f1xx.c ****   /* Disable all interrupts and clear pending bits  */
+ 214:src/HAL/system_stm32f1xx.c ****   RCC->CIR = 0x009F0000U;
+  36              		.loc 1 214 0
+  37 0002 4FF41F05 		mov	r5, #10420224
+ 215:src/HAL/system_stm32f1xx.c **** #endif /* STM32F105xC */
+ 216:src/HAL/system_stm32f1xx.c ****     
+ 217:src/HAL/system_stm32f1xx.c **** #if defined(STM32F100xE) || defined(STM32F101xE) || defined(STM32F101xG) || defined(STM32F103xE) ||
+ 218:src/HAL/system_stm32f1xx.c ****   #ifdef DATA_IN_ExtSRAM
+ 219:src/HAL/system_stm32f1xx.c ****     SystemInit_ExtMemCtl(); 
+ 220:src/HAL/system_stm32f1xx.c ****   #endif /* DATA_IN_ExtSRAM */
+ 221:src/HAL/system_stm32f1xx.c **** #endif 
+ 222:src/HAL/system_stm32f1xx.c **** 
+ 223:src/HAL/system_stm32f1xx.c **** #ifdef VECT_TAB_SRAM
+ 224:src/HAL/system_stm32f1xx.c ****   SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM. */
+ 225:src/HAL/system_stm32f1xx.c **** #else
+ 226:src/HAL/system_stm32f1xx.c ****   SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH. */
+  38              		.loc 1 226 0
+  39 0006 4FF00064 		mov	r4, #134217728
+ 179:src/HAL/system_stm32f1xx.c **** 
+  40              		.loc 1 179 0
+  41 000a 0E4B     		ldr	r3, .L3
+ 183:src/HAL/system_stm32f1xx.c **** #else
+  42              		.loc 1 183 0
+  43 000c 0E4A     		ldr	r2, .L3+4
+ 179:src/HAL/system_stm32f1xx.c **** 
+  44              		.loc 1 179 0
+  45 000e 1968     		ldr	r1, [r3]
+  46              		.loc 1 226 0
+  47 0010 0E48     		ldr	r0, .L3+8
+ 179:src/HAL/system_stm32f1xx.c **** 
+  48              		.loc 1 179 0
+  49 0012 41F00101 		orr	r1, r1, #1
+  50 0016 1960     		str	r1, [r3]
+ 183:src/HAL/system_stm32f1xx.c **** #else
+  51              		.loc 1 183 0
+  52 0018 5968     		ldr	r1, [r3, #4]
+  53 001a 0A40     		ands	r2, r2, r1
+  54 001c 5A60     		str	r2, [r3, #4]
+ 189:src/HAL/system_stm32f1xx.c **** 
+ARM GAS  /tmp/ccYLQdmL.s 			page 6
+
+
+  55              		.loc 1 189 0
+  56 001e 1A68     		ldr	r2, [r3]
+  57 0020 22F08472 		bic	r2, r2, #17301504
+  58 0024 22F48032 		bic	r2, r2, #65536
+  59 0028 1A60     		str	r2, [r3]
+ 192:src/HAL/system_stm32f1xx.c **** 
+  60              		.loc 1 192 0
+  61 002a 1A68     		ldr	r2, [r3]
+  62 002c 22F48022 		bic	r2, r2, #262144
+  63 0030 1A60     		str	r2, [r3]
+ 195:src/HAL/system_stm32f1xx.c **** 
+  64              		.loc 1 195 0
+  65 0032 5A68     		ldr	r2, [r3, #4]
+  66 0034 22F4FE02 		bic	r2, r2, #8323072
+  67 0038 5A60     		str	r2, [r3, #4]
+ 214:src/HAL/system_stm32f1xx.c **** #endif /* STM32F105xC */
+  68              		.loc 1 214 0
+  69 003a 9D60     		str	r5, [r3, #8]
+  70              		.loc 1 226 0
+  71 003c 8460     		str	r4, [r0, #8]
+ 227:src/HAL/system_stm32f1xx.c **** #endif 
+ 228:src/HAL/system_stm32f1xx.c **** }
+  72              		.loc 1 228 0
+  73 003e 30BC     		pop	{r4, r5}
+  74              		.cfi_restore 5
+  75              		.cfi_restore 4
+  76              		.cfi_def_cfa_offset 0
+  77 0040 7047     		bx	lr
+  78              	.L4:
+  79 0042 00BF     		.align	2
+  80              	.L3:
+  81 0044 00100240 		.word	1073876992
+  82 0048 0000FFF8 		.word	-117506048
+  83 004c 00ED00E0 		.word	-536810240
+  84              		.cfi_endproc
+  85              	.LFE64:
+  87              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+  88              		.align	1
+  89              		.p2align 2,,3
+  90              		.global	SystemCoreClockUpdate
+  91              		.syntax unified
+  92              		.thumb
+  93              		.thumb_func
+  94              		.fpu softvfp
+  96              	SystemCoreClockUpdate:
+  97              	.LFB65:
+ 229:src/HAL/system_stm32f1xx.c **** 
+ 230:src/HAL/system_stm32f1xx.c **** /**
+ 231:src/HAL/system_stm32f1xx.c ****   * @brief  Update SystemCoreClock variable according to Clock Register Values.
+ 232:src/HAL/system_stm32f1xx.c ****   *         The SystemCoreClock variable contains the core clock (HCLK), it can
+ 233:src/HAL/system_stm32f1xx.c ****   *         be used by the user application to setup the SysTick timer or configure
+ 234:src/HAL/system_stm32f1xx.c ****   *         other parameters.
+ 235:src/HAL/system_stm32f1xx.c ****   *           
+ 236:src/HAL/system_stm32f1xx.c ****   * @note   Each time the core clock (HCLK) changes, this function must be called
+ 237:src/HAL/system_stm32f1xx.c ****   *         to update SystemCoreClock variable value. Otherwise, any configuration
+ 238:src/HAL/system_stm32f1xx.c ****   *         based on this variable will be incorrect.         
+ 239:src/HAL/system_stm32f1xx.c ****   *     
+ARM GAS  /tmp/ccYLQdmL.s 			page 7
+
+
+ 240:src/HAL/system_stm32f1xx.c ****   * @note   - The system frequency computed by this function is not the real 
+ 241:src/HAL/system_stm32f1xx.c ****   *           frequency in the chip. It is calculated based on the predefined 
+ 242:src/HAL/system_stm32f1xx.c ****   *           constant and the selected clock source:
+ 243:src/HAL/system_stm32f1xx.c ****   *             
+ 244:src/HAL/system_stm32f1xx.c ****   *           - If SYSCLK source is HSI, SystemCoreClock will contain the HSI_VALUE(*)
+ 245:src/HAL/system_stm32f1xx.c ****   *                                              
+ 246:src/HAL/system_stm32f1xx.c ****   *           - If SYSCLK source is HSE, SystemCoreClock will contain the HSE_VALUE(**)
+ 247:src/HAL/system_stm32f1xx.c ****   *                          
+ 248:src/HAL/system_stm32f1xx.c ****   *           - If SYSCLK source is PLL, SystemCoreClock will contain the HSE_VALUE(**) 
+ 249:src/HAL/system_stm32f1xx.c ****   *             or HSI_VALUE(*) multiplied by the PLL factors.
+ 250:src/HAL/system_stm32f1xx.c ****   *         
+ 251:src/HAL/system_stm32f1xx.c ****   *         (*) HSI_VALUE is a constant defined in stm32f1xx.h file (default value
+ 252:src/HAL/system_stm32f1xx.c ****   *             8 MHz) but the real value may vary depending on the variations
+ 253:src/HAL/system_stm32f1xx.c ****   *             in voltage and temperature.   
+ 254:src/HAL/system_stm32f1xx.c ****   *    
+ 255:src/HAL/system_stm32f1xx.c ****   *         (**) HSE_VALUE is a constant defined in stm32f1xx.h file (default value
+ 256:src/HAL/system_stm32f1xx.c ****   *              8 MHz or 25 MHz, depending on the product used), user has to ensure
+ 257:src/HAL/system_stm32f1xx.c ****   *              that HSE_VALUE is same as the real frequency of the crystal used.
+ 258:src/HAL/system_stm32f1xx.c ****   *              Otherwise, this function may have wrong result.
+ 259:src/HAL/system_stm32f1xx.c ****   *                
+ 260:src/HAL/system_stm32f1xx.c ****   *         - The result of this function could be not correct when using fractional
+ 261:src/HAL/system_stm32f1xx.c ****   *           value for HSE crystal.
+ 262:src/HAL/system_stm32f1xx.c ****   * @param  None
+ 263:src/HAL/system_stm32f1xx.c ****   * @retval None
+ 264:src/HAL/system_stm32f1xx.c ****   */
+ 265:src/HAL/system_stm32f1xx.c **** void SystemCoreClockUpdate (void)
+ 266:src/HAL/system_stm32f1xx.c **** {
+  98              		.loc 1 266 0
+  99              		.cfi_startproc
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		@ link register save eliminated.
+ 103              	.LVL0:
+ 267:src/HAL/system_stm32f1xx.c ****   uint32_t tmp = 0U, pllmull = 0U, pllsource = 0U;
+ 268:src/HAL/system_stm32f1xx.c **** 
+ 269:src/HAL/system_stm32f1xx.c **** #if defined(STM32F105xC) || defined(STM32F107xC)
+ 270:src/HAL/system_stm32f1xx.c ****   uint32_t prediv1source = 0U, prediv1factor = 0U, prediv2factor = 0U, pll2mull = 0U;
+ 271:src/HAL/system_stm32f1xx.c **** #endif /* STM32F105xC */
+ 272:src/HAL/system_stm32f1xx.c **** 
+ 273:src/HAL/system_stm32f1xx.c **** #if defined(STM32F100xB) || defined(STM32F100xE)
+ 274:src/HAL/system_stm32f1xx.c ****   uint32_t prediv1factor = 0U;
+ 275:src/HAL/system_stm32f1xx.c **** #endif /* STM32F100xB or STM32F100xE */
+ 276:src/HAL/system_stm32f1xx.c ****     
+ 277:src/HAL/system_stm32f1xx.c ****   /* Get SYSCLK source -------------------------------------------------------*/
+ 278:src/HAL/system_stm32f1xx.c ****   tmp = RCC->CFGR & RCC_CFGR_SWS;
+ 104              		.loc 1 278 0
+ 105 0000 114A     		ldr	r2, .L14
+ 106 0002 5368     		ldr	r3, [r2, #4]
+ 107              	.LVL1:
+ 108 0004 03F00C03 		and	r3, r3, #12
+ 109              	.LVL2:
+ 279:src/HAL/system_stm32f1xx.c ****   
+ 280:src/HAL/system_stm32f1xx.c ****   switch (tmp)
+ 110              		.loc 1 280 0
+ 111 0008 082B     		cmp	r3, #8
+ 112 000a 0ED1     		bne	.L11
+ 281:src/HAL/system_stm32f1xx.c ****   {
+ARM GAS  /tmp/ccYLQdmL.s 			page 8
+
+
+ 282:src/HAL/system_stm32f1xx.c ****     case 0x00U:  /* HSI used as system clock */
+ 283:src/HAL/system_stm32f1xx.c ****       SystemCoreClock = HSI_VALUE;
+ 284:src/HAL/system_stm32f1xx.c ****       break;
+ 285:src/HAL/system_stm32f1xx.c ****     case 0x04U:  /* HSE used as system clock */
+ 286:src/HAL/system_stm32f1xx.c ****       SystemCoreClock = HSE_VALUE;
+ 287:src/HAL/system_stm32f1xx.c ****       break;
+ 288:src/HAL/system_stm32f1xx.c ****     case 0x08U:  /* PLL used as system clock */
+ 289:src/HAL/system_stm32f1xx.c **** 
+ 290:src/HAL/system_stm32f1xx.c ****       /* Get PLL clock source and multiplication factor ----------------------*/
+ 291:src/HAL/system_stm32f1xx.c ****       pllmull = RCC->CFGR & RCC_CFGR_PLLMULL;
+ 113              		.loc 1 291 0
+ 114 000c 5368     		ldr	r3, [r2, #4]
+ 115              	.LVL3:
+ 292:src/HAL/system_stm32f1xx.c ****       pllsource = RCC->CFGR & RCC_CFGR_PLLSRC;
+ 116              		.loc 1 292 0
+ 117 000e 5168     		ldr	r1, [r2, #4]
+ 118              	.LVL4:
+ 293:src/HAL/system_stm32f1xx.c ****       
+ 294:src/HAL/system_stm32f1xx.c **** #if !defined(STM32F105xC) && !defined(STM32F107xC)      
+ 295:src/HAL/system_stm32f1xx.c ****       pllmull = ( pllmull >> 18U) + 2U;
+ 119              		.loc 1 295 0
+ 120 0010 C3F38343 		ubfx	r3, r3, #18, #4
+ 121              	.LVL5:
+ 296:src/HAL/system_stm32f1xx.c ****       
+ 297:src/HAL/system_stm32f1xx.c ****       if (pllsource == 0x00U)
+ 122              		.loc 1 297 0
+ 123 0014 C903     		lsls	r1, r1, #15
+ 124              	.LVL6:
+ 295:src/HAL/system_stm32f1xx.c ****       
+ 125              		.loc 1 295 0
+ 126 0016 03F10203 		add	r3, r3, #2
+ 127              	.LVL7:
+ 128              		.loc 1 297 0
+ 129 001a 11D5     		bpl	.L12
+ 298:src/HAL/system_stm32f1xx.c ****       {
+ 299:src/HAL/system_stm32f1xx.c ****         /* HSI oscillator clock divided by 2 selected as PLL clock entry */
+ 300:src/HAL/system_stm32f1xx.c ****         SystemCoreClock = (HSI_VALUE >> 1U) * pllmull;
+ 301:src/HAL/system_stm32f1xx.c ****       }
+ 302:src/HAL/system_stm32f1xx.c ****       else
+ 303:src/HAL/system_stm32f1xx.c ****       {
+ 304:src/HAL/system_stm32f1xx.c ****  #if defined(STM32F100xB) || defined(STM32F100xE)
+ 305:src/HAL/system_stm32f1xx.c ****        prediv1factor = (RCC->CFGR2 & RCC_CFGR2_PREDIV1) + 1U;
+ 306:src/HAL/system_stm32f1xx.c ****        /* HSE oscillator clock selected as PREDIV1 clock entry */
+ 307:src/HAL/system_stm32f1xx.c ****        SystemCoreClock = (HSE_VALUE / prediv1factor) * pllmull; 
+ 308:src/HAL/system_stm32f1xx.c ****  #else
+ 309:src/HAL/system_stm32f1xx.c ****         /* HSE selected as PLL clock entry */
+ 310:src/HAL/system_stm32f1xx.c ****         if ((RCC->CFGR & RCC_CFGR_PLLXTPRE) != (uint32_t)RESET)
+ 130              		.loc 1 310 0
+ 131 001c 5268     		ldr	r2, [r2, #4]
+ 132 001e 9203     		lsls	r2, r2, #14
+ 133 0020 0ED4     		bmi	.L12
+ 311:src/HAL/system_stm32f1xx.c ****         {/* HSE oscillator clock divided by 2 */
+ 312:src/HAL/system_stm32f1xx.c ****           SystemCoreClock = (HSE_VALUE >> 1U) * pllmull;
+ 313:src/HAL/system_stm32f1xx.c ****         }
+ 314:src/HAL/system_stm32f1xx.c ****         else
+ 315:src/HAL/system_stm32f1xx.c ****         {
+ 316:src/HAL/system_stm32f1xx.c ****           SystemCoreClock = HSE_VALUE * pllmull;
+ARM GAS  /tmp/ccYLQdmL.s 			page 9
+
+
+ 134              		.loc 1 316 0
+ 135 0022 0A4A     		ldr	r2, .L14+4
+ 136 0024 02FB03F3 		mul	r3, r2, r3
+ 137              	.LVL8:
+ 138 0028 00E0     		b	.L6
+ 139              	.LVL9:
+ 140              	.L11:
+ 280:src/HAL/system_stm32f1xx.c ****   {
+ 141              		.loc 1 280 0
+ 142 002a 084B     		ldr	r3, .L14+4
+ 143              	.LVL10:
+ 144              	.L6:
+ 317:src/HAL/system_stm32f1xx.c ****         }
+ 318:src/HAL/system_stm32f1xx.c ****  #endif
+ 319:src/HAL/system_stm32f1xx.c ****       }
+ 320:src/HAL/system_stm32f1xx.c **** #else
+ 321:src/HAL/system_stm32f1xx.c ****       pllmull = pllmull >> 18U;
+ 322:src/HAL/system_stm32f1xx.c ****       
+ 323:src/HAL/system_stm32f1xx.c ****       if (pllmull != 0x0DU)
+ 324:src/HAL/system_stm32f1xx.c ****       {
+ 325:src/HAL/system_stm32f1xx.c ****          pllmull += 2U;
+ 326:src/HAL/system_stm32f1xx.c ****       }
+ 327:src/HAL/system_stm32f1xx.c ****       else
+ 328:src/HAL/system_stm32f1xx.c ****       { /* PLL multiplication factor = PLL input clock * 6.5 */
+ 329:src/HAL/system_stm32f1xx.c ****         pllmull = 13U / 2U; 
+ 330:src/HAL/system_stm32f1xx.c ****       }
+ 331:src/HAL/system_stm32f1xx.c ****             
+ 332:src/HAL/system_stm32f1xx.c ****       if (pllsource == 0x00U)
+ 333:src/HAL/system_stm32f1xx.c ****       {
+ 334:src/HAL/system_stm32f1xx.c ****         /* HSI oscillator clock divided by 2 selected as PLL clock entry */
+ 335:src/HAL/system_stm32f1xx.c ****         SystemCoreClock = (HSI_VALUE >> 1U) * pllmull;
+ 336:src/HAL/system_stm32f1xx.c ****       }
+ 337:src/HAL/system_stm32f1xx.c ****       else
+ 338:src/HAL/system_stm32f1xx.c ****       {/* PREDIV1 selected as PLL clock entry */
+ 339:src/HAL/system_stm32f1xx.c ****         
+ 340:src/HAL/system_stm32f1xx.c ****         /* Get PREDIV1 clock source and division factor */
+ 341:src/HAL/system_stm32f1xx.c ****         prediv1source = RCC->CFGR2 & RCC_CFGR2_PREDIV1SRC;
+ 342:src/HAL/system_stm32f1xx.c ****         prediv1factor = (RCC->CFGR2 & RCC_CFGR2_PREDIV1) + 1U;
+ 343:src/HAL/system_stm32f1xx.c ****         
+ 344:src/HAL/system_stm32f1xx.c ****         if (prediv1source == 0U)
+ 345:src/HAL/system_stm32f1xx.c ****         { 
+ 346:src/HAL/system_stm32f1xx.c ****           /* HSE oscillator clock selected as PREDIV1 clock entry */
+ 347:src/HAL/system_stm32f1xx.c ****           SystemCoreClock = (HSE_VALUE / prediv1factor) * pllmull;          
+ 348:src/HAL/system_stm32f1xx.c ****         }
+ 349:src/HAL/system_stm32f1xx.c ****         else
+ 350:src/HAL/system_stm32f1xx.c ****         {/* PLL2 clock selected as PREDIV1 clock entry */
+ 351:src/HAL/system_stm32f1xx.c ****           
+ 352:src/HAL/system_stm32f1xx.c ****           /* Get PREDIV2 division factor and PLL2 multiplication factor */
+ 353:src/HAL/system_stm32f1xx.c ****           prediv2factor = ((RCC->CFGR2 & RCC_CFGR2_PREDIV2) >> 4U) + 1U;
+ 354:src/HAL/system_stm32f1xx.c ****           pll2mull = ((RCC->CFGR2 & RCC_CFGR2_PLL2MUL) >> 8U) + 2U; 
+ 355:src/HAL/system_stm32f1xx.c ****           SystemCoreClock = (((HSE_VALUE / prediv2factor) * pll2mull) / prediv1factor) * pllmull;  
+ 356:src/HAL/system_stm32f1xx.c ****         }
+ 357:src/HAL/system_stm32f1xx.c ****       }
+ 358:src/HAL/system_stm32f1xx.c **** #endif /* STM32F105xC */ 
+ 359:src/HAL/system_stm32f1xx.c ****       break;
+ 360:src/HAL/system_stm32f1xx.c **** 
+ 361:src/HAL/system_stm32f1xx.c ****     default:
+ARM GAS  /tmp/ccYLQdmL.s 			page 10
+
+
+ 362:src/HAL/system_stm32f1xx.c ****       SystemCoreClock = HSI_VALUE;
+ 363:src/HAL/system_stm32f1xx.c ****       break;
+ 364:src/HAL/system_stm32f1xx.c ****   }
+ 365:src/HAL/system_stm32f1xx.c ****   
+ 366:src/HAL/system_stm32f1xx.c ****   /* Compute HCLK clock frequency ----------------*/
+ 367:src/HAL/system_stm32f1xx.c ****   /* Get HCLK prescaler */
+ 368:src/HAL/system_stm32f1xx.c ****   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4U)];
+ 145              		.loc 1 368 0
+ 146 002c 064A     		ldr	r2, .L14
+ 147 002e 0848     		ldr	r0, .L14+8
+ 148 0030 5268     		ldr	r2, [r2, #4]
+ 149              	.LVL11:
+ 369:src/HAL/system_stm32f1xx.c ****   /* HCLK clock frequency */
+ 370:src/HAL/system_stm32f1xx.c ****   SystemCoreClock >>= tmp;  
+ 150              		.loc 1 370 0
+ 151 0032 0849     		ldr	r1, .L14+12
+ 368:src/HAL/system_stm32f1xx.c ****   /* HCLK clock frequency */
+ 152              		.loc 1 368 0
+ 153 0034 C2F30312 		ubfx	r2, r2, #4, #4
+ 154              	.LVL12:
+ 155 0038 825C     		ldrb	r2, [r0, r2]	@ zero_extendqisi2
+ 156              		.loc 1 370 0
+ 157 003a D340     		lsrs	r3, r3, r2
+ 158 003c 0B60     		str	r3, [r1]
+ 159 003e 7047     		bx	lr
+ 160              	.LVL13:
+ 161              	.L12:
+ 312:src/HAL/system_stm32f1xx.c ****         }
+ 162              		.loc 1 312 0
+ 163 0040 054A     		ldr	r2, .L14+16
+ 164 0042 02FB03F3 		mul	r3, r2, r3
+ 165              	.LVL14:
+ 166 0046 F1E7     		b	.L6
+ 167              	.L15:
+ 168              		.align	2
+ 169              	.L14:
+ 170 0048 00100240 		.word	1073876992
+ 171 004c 00127A00 		.word	8000000
+ 172 0050 00000000 		.word	.LANCHOR1
+ 173 0054 00000000 		.word	.LANCHOR0
+ 174 0058 00093D00 		.word	4000000
+ 175              		.cfi_endproc
+ 176              	.LFE65:
+ 178              		.global	APBPrescTable
+ 179              		.global	AHBPrescTable
+ 180              		.global	SystemCoreClock
+ 181              		.section	.data.SystemCoreClock,"aw",%progbits
+ 182              		.align	2
+ 183              		.set	.LANCHOR0,. + 0
+ 186              	SystemCoreClock:
+ 187 0000 00A24A04 		.word	72000000
+ 188              		.section	.rodata.AHBPrescTable,"a",%progbits
+ 189              		.align	2
+ 190              		.set	.LANCHOR1,. + 0
+ 193              	AHBPrescTable:
+ 194 0000 00       		.byte	0
+ 195 0001 00       		.byte	0
+ARM GAS  /tmp/ccYLQdmL.s 			page 11
+
+
+ 196 0002 00       		.byte	0
+ 197 0003 00       		.byte	0
+ 198 0004 00       		.byte	0
+ 199 0005 00       		.byte	0
+ 200 0006 00       		.byte	0
+ 201 0007 00       		.byte	0
+ 202 0008 01       		.byte	1
+ 203 0009 02       		.byte	2
+ 204 000a 03       		.byte	3
+ 205 000b 04       		.byte	4
+ 206 000c 06       		.byte	6
+ 207 000d 07       		.byte	7
+ 208 000e 08       		.byte	8
+ 209 000f 09       		.byte	9
+ 210              		.section	.rodata.APBPrescTable,"a",%progbits
+ 211              		.align	2
+ 214              	APBPrescTable:
+ 215 0000 00       		.byte	0
+ 216 0001 00       		.byte	0
+ 217 0002 00       		.byte	0
+ 218 0003 00       		.byte	0
+ 219 0004 01       		.byte	1
+ 220 0005 02       		.byte	2
+ 221 0006 03       		.byte	3
+ 222 0007 04       		.byte	4
+ 223              		.text
+ 224              	.Letext0:
+ 225              		.file 2 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3.
+ 226              		.file 3 "drivers/CMSIS/Include/core_cm3.h"
+ 227              		.file 4 "drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+ 228              		.file 5 "drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 229              		.file 6 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 230              		.file 7 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 231              		.file 8 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3.
+ 232              		.file 9 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 233              		.file 10 "drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"
+ARM GAS  /tmp/ccYLQdmL.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 system_stm32f1xx.c
+     /tmp/ccYLQdmL.s:16     .text.SystemInit:0000000000000000 $t
+     /tmp/ccYLQdmL.s:24     .text.SystemInit:0000000000000000 SystemInit
+     /tmp/ccYLQdmL.s:81     .text.SystemInit:0000000000000044 $d
+     /tmp/ccYLQdmL.s:88     .text.SystemCoreClockUpdate:0000000000000000 $t
+     /tmp/ccYLQdmL.s:96     .text.SystemCoreClockUpdate:0000000000000000 SystemCoreClockUpdate
+     /tmp/ccYLQdmL.s:170    .text.SystemCoreClockUpdate:0000000000000048 $d
+     /tmp/ccYLQdmL.s:214    .rodata.APBPrescTable:0000000000000000 APBPrescTable
+     /tmp/ccYLQdmL.s:193    .rodata.AHBPrescTable:0000000000000000 AHBPrescTable
+     /tmp/ccYLQdmL.s:186    .data.SystemCoreClock:0000000000000000 SystemCoreClock
+     /tmp/ccYLQdmL.s:182    .data.SystemCoreClock:0000000000000000 $d
+     /tmp/ccYLQdmL.s:189    .rodata.AHBPrescTable:0000000000000000 $d
+     /tmp/ccYLQdmL.s:211    .rodata.APBPrescTable:0000000000000000 $d
+                     .debug_frame:0000000000000010 $d
+                           .group:0000000000000000 wm4.0.8ddc6fc9299f63009459649d6a7e7c51
+                           .group:0000000000000000 wm4.stm32f1xx.h.57.c2a10934f4c6830aeb7e4997f02806f1
+                           .group:0000000000000000 wm4.stm32f103xb.h.56.66305a77cea9d5300aac997a78930076
+                           .group:0000000000000000 wm4.stdintgcc.h.29.6d480f4ba0f60596e88234283d42444f
+                           .group:0000000000000000 wm4.core_cm3.h.74.7d5fecd6d4522d755d10a23d1542f805
+                           .group:0000000000000000 wm4.cmsis_gcc.h.36.67d2dcde6a14ff518eedc1d545d89a76
+                           .group:0000000000000000 wm4.core_cm3.h.175.a6c441adf1a05ce96eea3cf78e6687ab
+                           .group:0000000000000000 wm4.stm32f103xb.h.619.382b3c85cac6f0350ee5bfaff32e1ebc
+                           .group:0000000000000000 wm4.stm32f1xx.h.180.c0013e6ebd6ad07f67c298190b8eac92
+                           .group:0000000000000000 wm4.main.h.40.54e5213d35853f8debd8cd48178ac5c1
+                           .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.52.96cb61986c8bfeb3a4fa629a7a7441f6
+                           .group:0000000000000000 wm4._newlib_version.h.4.3572908597b70d672d181fc7fc501c19
+                           .group:0000000000000000 wm4.newlib.h.21.59901f4bf241ab46c63694665baa7297
+                           .group:0000000000000000 wm4.features.h.22.5cdadbb3efe495d1c9e38350b8c376c7
+                           .group:0000000000000000 wm4.config.h.219.65a553ab5bef5482f0d7880b0d33015e
+                           .group:0000000000000000 wm4._ansi.h.23.9f8fcfa20193763fcf364fb91705c94b
+                           .group:0000000000000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:0000000000000000 wm4._default_types.h.6.959254cf5f09734ea7516c89e8bb21bd
+                           .group:0000000000000000 wm4.stddef.h.187.2ff233552538c6ff9b8575ca8ea52cb3
+                           .group:0000000000000000 wm4.cdefs.h.47.e658329a094974ebad41b40c60502de7
+                           .group:0000000000000000 wm4.stddef.h.39.ec95e8feac892e292b69dc7ae75b0d64
+                           .group:0000000000000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:0000000000000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:0000000000000000 wm4._types.h.125.5cf8a495f1f7ef36777ad868a1e32068
+                           .group:0000000000000000 wm4.stddef.h.161.5349cb105733e8777bfb0cf53c4e3f34
+                           .group:0000000000000000 wm4._types.h.183.c226d164ceca1f2ecb9ae9360c54a098
+                           .group:0000000000000000 wm4.reent.h.17.23b059516345f8f5abfa01ddc379570f
+                           .group:0000000000000000 wm4.types.h.40.e8c16e7ec36ba55f133d0616070e25fc
+                           .group:0000000000000000 wm4._stdint.h.10.c24fa3af3bc1706662bb5593a907e841
+                           .group:0000000000000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:0000000000000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:0000000000000000 wm4._timeval.h.30.0e8bfd94e85db17dda3286ee81496fe6
+                           .group:0000000000000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:0000000000000000 wm4.select.h.30.bbece7fa40993a78092dcc5805132560
+                           .group:0000000000000000 wm4.types.h.69.ed3eae3cf73030a737515151ebcab7a1
+                           .group:0000000000000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:0000000000000000 wm4.stdio.h.81.8188691c2279eac7a223caa50f6694b9
+                           .group:0000000000000000 wm4.stm32f1xx_hal_def.h.77.f54bfbbe3e3696aae97b05a3f338caf7
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.112.09261d6ad0eef5abae6b9147d0cf5cbf
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc_ex.h.40.bb785d717afc4d2d2b63a3608cb5a0c5
+                           .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.1219.902328474751456408f7d18f6caace93
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.40.f1cf5d2dd589e1675a9fcd6b008c2bb6
+ARM GAS  /tmp/ccYLQdmL.s 			page 13
+
+
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio_ex.h.40.30d74584c89dcd3d86d10bdbbb06cc31
+                           .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.281.b26a95114b989e6edaf48d72c8710b9d
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.40.b1d5b41c58b583c31c61335e4c8e1bdd
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma_ex.h.40.7ac05bbf95f5a25a3f4a9b9c2a14f835
+                           .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.427.daddf65c60854feb2dc9660a62f55b8c
+                           .group:0000000000000000 wm4.stm32f1xx_hal_cortex.h.40.4f649a8bf316b7aa5d02077abd9b8999
+                           .group:0000000000000000 wm4.stm32f1xx_hal_adc.h.40.3ad40e622f0cef64228eb182e4bbe00f
+                           .group:0000000000000000 wm4.stm32f1xx_hal_adc_ex.h.40.3118796521817cc82626257e9c7ab79c
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash.h.40.12aaef98e1fbb85e3a8f79f98532d04a
+                           .group:0000000000000000 wm4.stm32f1xx_hal_flash_ex.h.40.ad66c77e153bc5a4a1d60e46727f4ae5
+                           .group:0000000000000000 wm4.stm32f1xx_hal_pwr.h.40.ecccf9071314b0ab3f6ffcfd7c596e95
+                           .group:0000000000000000 wm4.stm32f1xx_hal_spi.h.40.5dd367ee94b0bb430a3842862fe7d7da
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim.h.40.ac3feb225ff72b119eeddfe8acac07a3
+                           .group:0000000000000000 wm4.stm32f1xx_hal_tim_ex.h.40.9b926a51c24898708ad2e47fd5ff9d32
+                           .group:0000000000000000 wm4.stm32f1xx_hal_uart.h.40.9914ca79b81d8b23b4e5425c156b0acd
+                           .group:0000000000000000 wm4.stm32f1xx_hal.h.82.f2fd9c01c6f8c9e676a37d84eb9dc553
+
+NO UNDEFINED SYMBOLS
