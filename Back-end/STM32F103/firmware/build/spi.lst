@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc1vtIgl.s 			page 1
+ARM GAS  /tmp/ccKabHXK.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc1vtIgl.s 			page 1
   30:src/HAL/spi.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
   31:src/HAL/spi.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
   32:src/HAL/spi.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-ARM GAS  /tmp/cc1vtIgl.s 			page 2
+ARM GAS  /tmp/ccKabHXK.s 			page 2
 
 
   33:src/HAL/spi.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
@@ -114,11 +114,11 @@ ARM GAS  /tmp/cc1vtIgl.s 			page 1
   63:src/HAL/spi.c ****   hspi1.Init.NSS = SPI_NSS_SOFT;
   47              		.loc 1 63 0
   48 000c 4FF40075 		mov	r5, #512
-  64:src/HAL/spi.c ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
+  64:src/HAL/spi.c ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
   49              		.loc 1 64 0
-  50 0010 1824     		movs	r4, #24
+  50 0010 0824     		movs	r4, #8
   65:src/HAL/spi.c ****   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
-ARM GAS  /tmp/cc1vtIgl.s 			page 3
+ARM GAS  /tmp/ccKabHXK.s 			page 3
 
 
   66:src/HAL/spi.c ****   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
@@ -142,7 +142,7 @@ ARM GAS  /tmp/cc1vtIgl.s 			page 1
   62:src/HAL/spi.c ****   hspi1.Init.NSS = SPI_NSS_SOFT;
   62              		.loc 1 62 0
   63 0020 5E61     		str	r6, [r3, #20]
-  63:src/HAL/spi.c ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
+  63:src/HAL/spi.c ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
   64              		.loc 1 63 0
   65 0022 9D61     		str	r5, [r3, #24]
   64:src/HAL/spi.c ****   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc1vtIgl.s 			page 1
   87 003a 4721     		movs	r1, #71
   72:src/HAL/spi.c ****   }
   73:src/HAL/spi.c **** 
-ARM GAS  /tmp/cc1vtIgl.s 			page 4
+ARM GAS  /tmp/ccKabHXK.s 			page 4
 
 
   74:src/HAL/spi.c **** }
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc1vtIgl.s 			page 1
  135              		.cfi_def_cfa_offset 20
  136              		.cfi_offset 4, -20
  137              		.cfi_offset 5, -16
-ARM GAS  /tmp/cc1vtIgl.s 			page 5
+ARM GAS  /tmp/ccKabHXK.s 			page 5
 
 
  138              		.cfi_offset 6, -12
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc1vtIgl.s 			page 1
  172              	.LBB5:
   86:src/HAL/spi.c ****   
  173              		.loc 1 86 0
-ARM GAS  /tmp/cc1vtIgl.s 			page 6
+ARM GAS  /tmp/ccKabHXK.s 			page 6
 
 
  174 002e 019B     		ldr	r3, [sp, #4]
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc1vtIgl.s 			page 1
  105:src/HAL/spi.c ****     hdma_spi1_tx.Init.Priority = DMA_PRIORITY_LOW;
  206              		.loc 1 105 0
  207 0052 AB61     		str	r3, [r5, #24]
-ARM GAS  /tmp/cc1vtIgl.s 			page 7
+ARM GAS  /tmp/ccKabHXK.s 			page 7
 
 
  106:src/HAL/spi.c ****     if (HAL_DMA_Init(&hdma_spi1_tx) != HAL_OK)
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc1vtIgl.s 			page 1
  250              		.thumb_func
  251              		.fpu softvfp
  253              	HAL_SPI_MspDeInit:
-ARM GAS  /tmp/cc1vtIgl.s 			page 8
+ARM GAS  /tmp/ccKabHXK.s 			page 8
 
 
  254              	.LFB66:
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cc1vtIgl.s 			page 1
  136:src/HAL/spi.c **** 
  137:src/HAL/spi.c ****     /* SPI1 DMA DeInit */
  138:src/HAL/spi.c ****     HAL_DMA_DeInit(spiHandle->hdmatx);
-ARM GAS  /tmp/cc1vtIgl.s 			page 9
+ARM GAS  /tmp/ccKabHXK.s 			page 9
 
 
  288              		.loc 1 138 0
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cc1vtIgl.s 			page 1
  330              		.file 2 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3.
  331              		.file 3 "drivers/CMSIS/Include/core_cm3.h"
  332              		.file 4 "drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
-ARM GAS  /tmp/cc1vtIgl.s 			page 10
+ARM GAS  /tmp/ccKabHXK.s 			page 10
 
 
  333              		.file 5 "drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
@@ -552,28 +552,28 @@ ARM GAS  /tmp/cc1vtIgl.s 			page 1
  341              		.file 13 "drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
  342              		.file 14 "src/HAL/spi.h"
  343              		.file 15 "src/HAL/dma.h"
-ARM GAS  /tmp/cc1vtIgl.s 			page 11
+ARM GAS  /tmp/ccKabHXK.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 spi.c
-     /tmp/cc1vtIgl.s:16     .text.MX_SPI1_Init:0000000000000000 $t
-     /tmp/cc1vtIgl.s:24     .text.MX_SPI1_Init:0000000000000000 MX_SPI1_Init
-     /tmp/cc1vtIgl.s:104    .text.MX_SPI1_Init:0000000000000048 $d
-     /tmp/cc1vtIgl.s:111    .text.HAL_SPI_MspInit:0000000000000000 $t
-     /tmp/cc1vtIgl.s:119    .text.HAL_SPI_MspInit:0000000000000000 HAL_SPI_MspInit
-     /tmp/cc1vtIgl.s:236    .text.HAL_SPI_MspInit:0000000000000070 $d
-     /tmp/cc1vtIgl.s:245    .text.HAL_SPI_MspDeInit:0000000000000000 $t
-     /tmp/cc1vtIgl.s:253    .text.HAL_SPI_MspDeInit:0000000000000000 HAL_SPI_MspDeInit
-     /tmp/cc1vtIgl.s:302    .text.HAL_SPI_MspDeInit:000000000000002c $d
-     /tmp/cc1vtIgl.s:315    .bss.hdma_spi1_tx:0000000000000000 hdma_spi1_tx
-     /tmp/cc1vtIgl.s:322    .bss.hspi1:0000000000000000 hspi1
-     /tmp/cc1vtIgl.s:311    .bss.hdma_spi1_tx:0000000000000000 $d
-     /tmp/cc1vtIgl.s:318    .bss.hspi1:0000000000000000 $d
-     /tmp/cc1vtIgl.s:325    .rodata.MX_SPI1_Init.str1.4:0000000000000000 $d
+     /tmp/ccKabHXK.s:16     .text.MX_SPI1_Init:0000000000000000 $t
+     /tmp/ccKabHXK.s:24     .text.MX_SPI1_Init:0000000000000000 MX_SPI1_Init
+     /tmp/ccKabHXK.s:104    .text.MX_SPI1_Init:0000000000000048 $d
+     /tmp/ccKabHXK.s:111    .text.HAL_SPI_MspInit:0000000000000000 $t
+     /tmp/ccKabHXK.s:119    .text.HAL_SPI_MspInit:0000000000000000 HAL_SPI_MspInit
+     /tmp/ccKabHXK.s:236    .text.HAL_SPI_MspInit:0000000000000070 $d
+     /tmp/ccKabHXK.s:245    .text.HAL_SPI_MspDeInit:0000000000000000 $t
+     /tmp/ccKabHXK.s:253    .text.HAL_SPI_MspDeInit:0000000000000000 HAL_SPI_MspDeInit
+     /tmp/ccKabHXK.s:302    .text.HAL_SPI_MspDeInit:000000000000002c $d
+     /tmp/ccKabHXK.s:315    .bss.hdma_spi1_tx:0000000000000000 hdma_spi1_tx
+     /tmp/ccKabHXK.s:322    .bss.hspi1:0000000000000000 hspi1
+     /tmp/ccKabHXK.s:311    .bss.hdma_spi1_tx:0000000000000000 $d
+     /tmp/ccKabHXK.s:318    .bss.hspi1:0000000000000000 $d
+     /tmp/ccKabHXK.s:325    .rodata.MX_SPI1_Init.str1.4:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
-                           .group:0000000000000000 wm4.0.8ddc6fc9299f63009459649d6a7e7c51
-                           .group:0000000000000000 wm4.main.h.40.54e5213d35853f8debd8cd48178ac5c1
+                           .group:0000000000000000 wm4.0.04924adcfdc7a6cf00118bdef9d1ce8d
+                           .group:0000000000000000 wm4.main.h.40.6fe808b6568aa38f66585b648d7167ef
                            .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.52.96cb61986c8bfeb3a4fa629a7a7441f6
                            .group:0000000000000000 wm4.stm32f1xx.h.57.c2a10934f4c6830aeb7e4997f02806f1
                            .group:0000000000000000 wm4.stm32f103xb.h.56.66305a77cea9d5300aac997a78930076
@@ -612,7 +612,7 @@ DEFINED SYMBOLS
                            .group:0000000000000000 wm4.stm32f1xx_hal_def.h.77.f54bfbbe3e3696aae97b05a3f338caf7
                            .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.112.09261d6ad0eef5abae6b9147d0cf5cbf
                            .group:0000000000000000 wm4.stm32f1xx_hal_rcc_ex.h.40.bb785d717afc4d2d2b63a3608cb5a0c5
-ARM GAS  /tmp/cc1vtIgl.s 			page 12
+ARM GAS  /tmp/ccKabHXK.s 			page 12
 
 
                            .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.1219.902328474751456408f7d18f6caace93

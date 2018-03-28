@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccfWXaaL.s 			page 1
+ARM GAS  /tmp/cc4zmzIg.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
   30:src/HAL/usart.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
   31:src/HAL/usart.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
   32:src/HAL/usart.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-ARM GAS  /tmp/ccfWXaaL.s 			page 2
+ARM GAS  /tmp/cc4zmzIg.s 			page 2
 
 
   33:src/HAL/usart.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
   66:src/HAL/usart.c ****   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
   67:src/HAL/usart.c ****   if (HAL_UART_Init(&huart1) != HAL_OK)
   46              		.loc 1 67 0
-ARM GAS  /tmp/ccfWXaaL.s 			page 3
+ARM GAS  /tmp/cc4zmzIg.s 			page 3
 
 
   47 000e 1846     		mov	r0, r3
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
   88              	.LFE64:
   90              		.section	.text.HAL_UART_MspInit,"ax",%progbits
   91              		.align	1
-ARM GAS  /tmp/ccfWXaaL.s 			page 4
+ARM GAS  /tmp/cc4zmzIg.s 			page 4
 
 
   92              		.p2align 2,,3
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
   92:src/HAL/usart.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
  127              		.loc 1 92 0
  128 0014 0325     		movs	r5, #3
-ARM GAS  /tmp/ccfWXaaL.s 			page 5
+ARM GAS  /tmp/cc4zmzIg.s 			page 5
 
 
  129              	.LBB2:
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
  169 0040 FFF7FEFF 		bl	HAL_GPIO_Init
  170              	.LVL4:
   95:src/HAL/usart.c ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-ARM GAS  /tmp/ccfWXaaL.s 			page 6
+ARM GAS  /tmp/cc4zmzIg.s 			page 6
 
 
  171              		.loc 1 95 0
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
  109:src/HAL/usart.c ****     if (HAL_DMA_Init(&hdma_usart1_rx) != HAL_OK)
  202              		.loc 1 109 0
  203 0068 F561     		str	r5, [r6, #28]
-ARM GAS  /tmp/ccfWXaaL.s 			page 7
+ARM GAS  /tmp/cc4zmzIg.s 			page 7
 
 
  102:src/HAL/usart.c ****     hdma_usart1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
  233 0088 AB60     		str	r3, [r5, #8]
  122:src/HAL/usart.c ****     hdma_usart1_tx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
  234              		.loc 1 122 0
-ARM GAS  /tmp/ccfWXaaL.s 			page 8
+ARM GAS  /tmp/cc4zmzIg.s 			page 8
 
 
  235 008a 2B61     		str	r3, [r5, #16]
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
  269              		@ sp needed
  270 00b0 F0BD     		pop	{r4, r5, r6, r7, pc}
  271              	.LVL10:
-ARM GAS  /tmp/ccfWXaaL.s 			page 9
+ARM GAS  /tmp/cc4zmzIg.s 			page 9
 
 
  272              	.L23:
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
  321 0008 7047     		bx	lr
  322              	.L32:
  143:src/HAL/usart.c **** 
-ARM GAS  /tmp/ccfWXaaL.s 			page 10
+ARM GAS  /tmp/cc4zmzIg.s 			page 10
 
 
  323              		.loc 1 143 0
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
  169:src/HAL/usart.c **** } 
  352              		.loc 1 169 0
  353 002e BDE81040 		pop	{r4, lr}
-ARM GAS  /tmp/ccfWXaaL.s 			page 11
+ARM GAS  /tmp/cc4zmzIg.s 			page 11
 
 
  354              		.cfi_restore 14
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
  399              		.text
  400              	.Letext0:
  401              		.file 2 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3.
-ARM GAS  /tmp/ccfWXaaL.s 			page 12
+ARM GAS  /tmp/cc4zmzIg.s 			page 12
 
 
  402              		.file 3 "drivers/CMSIS/Include/core_cm3.h"
@@ -675,30 +675,30 @@ ARM GAS  /tmp/ccfWXaaL.s 			page 1
  413              		.file 14 "src/HAL/usart.h"
  414              		.file 15 "drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
  415              		.file 16 "src/HAL/dma.h"
-ARM GAS  /tmp/ccfWXaaL.s 			page 13
+ARM GAS  /tmp/cc4zmzIg.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 usart.c
-     /tmp/ccfWXaaL.s:16     .text.MX_USART1_UART_Init:0000000000000000 $t
-     /tmp/ccfWXaaL.s:24     .text.MX_USART1_UART_Init:0000000000000000 MX_USART1_UART_Init
-     /tmp/ccfWXaaL.s:84     .text.MX_USART1_UART_Init:0000000000000034 $d
-     /tmp/ccfWXaaL.s:91     .text.HAL_UART_MspInit:0000000000000000 $t
-     /tmp/ccfWXaaL.s:99     .text.HAL_UART_MspInit:0000000000000000 HAL_UART_MspInit
-     /tmp/ccfWXaaL.s:290    .text.HAL_UART_MspInit:00000000000000c8 $d
-     /tmp/ccfWXaaL.s:301    .text.HAL_UART_MspDeInit:0000000000000000 $t
-     /tmp/ccfWXaaL.s:309    .text.HAL_UART_MspDeInit:0000000000000000 HAL_UART_MspDeInit
-     /tmp/ccfWXaaL.s:365    .text.HAL_UART_MspDeInit:0000000000000038 $d
-     /tmp/ccfWXaaL.s:386    .bss.hdma_usart1_tx:0000000000000000 hdma_usart1_tx
-     /tmp/ccfWXaaL.s:379    .bss.hdma_usart1_rx:0000000000000000 hdma_usart1_rx
-     /tmp/ccfWXaaL.s:393    .bss.huart1:0000000000000000 huart1
-     /tmp/ccfWXaaL.s:375    .bss.hdma_usart1_rx:0000000000000000 $d
-     /tmp/ccfWXaaL.s:382    .bss.hdma_usart1_tx:0000000000000000 $d
-     /tmp/ccfWXaaL.s:389    .bss.huart1:0000000000000000 $d
-     /tmp/ccfWXaaL.s:396    .rodata.MX_USART1_UART_Init.str1.4:0000000000000000 $d
+     /tmp/cc4zmzIg.s:16     .text.MX_USART1_UART_Init:0000000000000000 $t
+     /tmp/cc4zmzIg.s:24     .text.MX_USART1_UART_Init:0000000000000000 MX_USART1_UART_Init
+     /tmp/cc4zmzIg.s:84     .text.MX_USART1_UART_Init:0000000000000034 $d
+     /tmp/cc4zmzIg.s:91     .text.HAL_UART_MspInit:0000000000000000 $t
+     /tmp/cc4zmzIg.s:99     .text.HAL_UART_MspInit:0000000000000000 HAL_UART_MspInit
+     /tmp/cc4zmzIg.s:290    .text.HAL_UART_MspInit:00000000000000c8 $d
+     /tmp/cc4zmzIg.s:301    .text.HAL_UART_MspDeInit:0000000000000000 $t
+     /tmp/cc4zmzIg.s:309    .text.HAL_UART_MspDeInit:0000000000000000 HAL_UART_MspDeInit
+     /tmp/cc4zmzIg.s:365    .text.HAL_UART_MspDeInit:0000000000000038 $d
+     /tmp/cc4zmzIg.s:386    .bss.hdma_usart1_tx:0000000000000000 hdma_usart1_tx
+     /tmp/cc4zmzIg.s:379    .bss.hdma_usart1_rx:0000000000000000 hdma_usart1_rx
+     /tmp/cc4zmzIg.s:393    .bss.huart1:0000000000000000 huart1
+     /tmp/cc4zmzIg.s:375    .bss.hdma_usart1_rx:0000000000000000 $d
+     /tmp/cc4zmzIg.s:382    .bss.hdma_usart1_tx:0000000000000000 $d
+     /tmp/cc4zmzIg.s:389    .bss.huart1:0000000000000000 $d
+     /tmp/cc4zmzIg.s:396    .rodata.MX_USART1_UART_Init.str1.4:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
-                           .group:0000000000000000 wm4.0.8ddc6fc9299f63009459649d6a7e7c51
-                           .group:0000000000000000 wm4.main.h.40.54e5213d35853f8debd8cd48178ac5c1
+                           .group:0000000000000000 wm4.0.04924adcfdc7a6cf00118bdef9d1ce8d
+                           .group:0000000000000000 wm4.main.h.40.6fe808b6568aa38f66585b648d7167ef
                            .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.52.96cb61986c8bfeb3a4fa629a7a7441f6
                            .group:0000000000000000 wm4.stm32f1xx.h.57.c2a10934f4c6830aeb7e4997f02806f1
                            .group:0000000000000000 wm4.stm32f103xb.h.56.66305a77cea9d5300aac997a78930076
@@ -735,7 +735,7 @@ DEFINED SYMBOLS
                            .group:0000000000000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
                            .group:0000000000000000 wm4.stdio.h.81.8188691c2279eac7a223caa50f6694b9
                            .group:0000000000000000 wm4.stm32f1xx_hal_def.h.77.f54bfbbe3e3696aae97b05a3f338caf7
-ARM GAS  /tmp/ccfWXaaL.s 			page 14
+ARM GAS  /tmp/cc4zmzIg.s 			page 14
 
 
                            .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.112.09261d6ad0eef5abae6b9147d0cf5cbf

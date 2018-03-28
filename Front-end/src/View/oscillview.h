@@ -17,25 +17,35 @@ public:
     void init();
 
 signals:
-    void update();
+    void update(QVariant);
+    void peripheryConnectedSignal(QVariant);
 
 private slots:
-    void loop();
-    void onAvailableDevicesInfoReceived(const QVariant& info);
+    void onAvailableDevicesInfoUpdated();
     void onPeripheralDeviceConnected();
     void onPeripheralDeviceDisconnected();
-    void onDataReceived(const uint8_t cmd, const QByteArray* data);
+    void onDataReceived(const uint8_t cmdId, const uint8_t cmdResult, const QByteArray* data);
+
+    void onConversionStatusChanged(QVariant status);
+    void onRequestPeriperyConnection(QVariant status);
+    void onTimeChangedQml(QVariant newTime);
+    void onSamplesCountChangedQml(QVariant newSamplesCount);
+    void onRequestAvaliableDevices();
+    void onCanvasUpdated();
+
 
 private:
-    QQuickItem* context;
-    QTimer* loopTimer;
+    void connectSignals();
+    void disconnectSignals();
 
+private:
+    bool isAdcStarted;
+
+    QQuickItem* context;
     QVariantList* buffer;
 
-    int blocksCount;
-    int blockSize;
-    int currentBlock;
-    int amplitude;
+    uint32_t adcTime;
+    uint16_t samplesCount;
 
     PeripheralConnection* peripheralConnection;
 };

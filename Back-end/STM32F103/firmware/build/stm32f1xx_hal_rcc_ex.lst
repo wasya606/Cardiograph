@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccUmeqvn.s 			page 1
+ARM GAS  /tmp/ccjMVg99.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
   30:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
   31:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
   32:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-ARM GAS  /tmp/ccUmeqvn.s 			page 2
+ARM GAS  /tmp/ccjMVg99.s 			page 2
 
 
   33:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
   87:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****  ===============================================================================  
   88:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     [..]
   89:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     This subsection provides a set of functions allowing to control the RCC Clocks 
-ARM GAS  /tmp/ccUmeqvn.s 			page 3
+ARM GAS  /tmp/ccjMVg99.s 			page 3
 
 
   90:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     frequencies.
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
   41              		.loc 1 129 0
   42 0006 0068     		ldr	r0, [r0]
   43              	.LVL1:
-ARM GAS  /tmp/ccUmeqvn.s 			page 4
+ARM GAS  /tmp/ccjMVg99.s 			page 4
 
 
  119:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   uint32_t tickstart = 0U, temp_reg = 0U;
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  158:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****         }
  159:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       }
  160:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     }
-ARM GAS  /tmp/ccUmeqvn.s 			page 5
+ARM GAS  /tmp/ccjMVg99.s 			page 5
 
 
  161:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  102 0048 46D4     		bmi	.L33
  103              	.LVL9:
  104              	.L29:
-ARM GAS  /tmp/ccUmeqvn.s 			page 6
+ARM GAS  /tmp/ccjMVg99.s 			page 6
 
 
  105 004a 6168     		ldr	r1, [r4, #4]
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  210:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   /*------------------------------ I2S2 Configuration ------------------------*/ 
  211:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   if(((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_I2S2) == RCC_PERIPHCLK_I2S2)
  212:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   {
-ARM GAS  /tmp/ccUmeqvn.s 			page 7
+ARM GAS  /tmp/ccjMVg99.s 			page 7
 
 
  213:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     /* Check the parameters */
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  267:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       
  268:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       /* Wait till PLLI2S is ready */
  269:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       while(__HAL_RCC_GET_FLAG(RCC_FLAG_PLLI2SRDY)  == RESET)
-ARM GAS  /tmp/ccUmeqvn.s 			page 8
+ARM GAS  /tmp/ccjMVg99.s 			page 8
 
 
  270:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       {
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  144              	.LVL11:
  145              	.L35:
  146              		.cfi_restore_state
-ARM GAS  /tmp/ccUmeqvn.s 			page 9
+ARM GAS  /tmp/ccjMVg99.s 			page 9
 
 
  206:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   }
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  192              	.L7:
  153:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       {
  193              		.loc 1 153 0
-ARM GAS  /tmp/ccUmeqvn.s 			page 10
+ARM GAS  /tmp/ccjMVg99.s 			page 10
 
 
  194 00ba 3368     		ldr	r3, [r6]
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  238 00f2 336A     		ldr	r3, [r6, #32]
  239 00f4 9A07     		lsls	r2, r3, #30
  240 00f6 F6D5     		bpl	.L15
-ARM GAS  /tmp/ccUmeqvn.s 			page 11
+ARM GAS  /tmp/ccjMVg99.s 			page 11
 
 
  241 00f8 A7E7     		b	.L29
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  332:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** 
  333:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   /* Get the I2S3 clock configuration -----------------------------------------*/
  334:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   PeriphClkInit->PeriphClockSelection |= RCC_PERIPHCLK_I2S3;
-ARM GAS  /tmp/ccUmeqvn.s 			page 12
+ARM GAS  /tmp/ccjMVg99.s 			page 12
 
 
  335:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   PeriphClkInit->I2s3ClockSelection = __HAL_RCC_GET_I2S3_SOURCE();
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  299              		.section	.text.HAL_RCCEx_GetPeriphCLKFreq,"ax",%progbits
  300              		.align	1
  301              		.p2align 2,,3
-ARM GAS  /tmp/ccUmeqvn.s 			page 13
+ARM GAS  /tmp/ccjMVg99.s 			page 13
 
 
  302              		.global	HAL_RCCEx_GetPeriphCLKFreq
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  403:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * @retval Frequency in Hz (0: means that no available frequency for the peripheral)
  404:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   */
  405:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
-ARM GAS  /tmp/ccUmeqvn.s 			page 14
+ARM GAS  /tmp/ccjMVg99.s 			page 14
 
 
  406:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** {
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  338              		.loc 1 416 0
  339 0018 0FCB     		ldm	r3, {r0, r1, r2, r3}
  340              	.LVL29:
-ARM GAS  /tmp/ccUmeqvn.s 			page 15
+ARM GAS  /tmp/ccjMVg99.s 			page 15
 
 
  341 001a 05E90F00 		stmdb	r5, {r0, r1, r2, r3}
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  472:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****           {
  473:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****             /* HSE used as PLL clock source : PLLCLK = HSE/PREDIV1 * PLLMUL */
  474:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****             pllclk = (uint32_t)((HSE_VALUE / prediv1) * pllmul);
-ARM GAS  /tmp/ccUmeqvn.s 			page 16
+ARM GAS  /tmp/ccjMVg99.s 			page 16
 
 
  475:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****           }
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  529:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****         if (HAL_IS_BIT_SET(RCC->CR, RCC_CR_PLL3ON))
  530:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****         {
  531:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****           /* PLLI2SVCO = 2 * PLLI2SCLK = 2 * (HSE/PREDIV2 * PLL3MUL) */
-ARM GAS  /tmp/ccUmeqvn.s 			page 17
+ARM GAS  /tmp/ccjMVg99.s 			page 17
 
 
  532:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****           prediv2 = ((RCC->CFGR2 & RCC_CFGR2_PREDIV2) >> RCC_CFGR2_PREDIV2_Pos) + 1;
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  586:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       else
  587:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       {
  588:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****         frequency = 0U;
-ARM GAS  /tmp/ccUmeqvn.s 			page 18
+ARM GAS  /tmp/ccjMVg99.s 			page 18
 
 
  350              		.loc 1 588 0
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  583:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       }
  383              		.loc 1 583 0 is_stmt 1 discriminator 1
  384 0050 4FF22440 		movw	r0, #62500
-ARM GAS  /tmp/ccUmeqvn.s 			page 19
+ARM GAS  /tmp/ccjMVg99.s 			page 19
 
 
  581:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       {
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  428 0092 144B     		ldr	r3, .L60+4
  429 0094 5B68     		ldr	r3, [r3, #4]
  430 0096 5B02     		lsls	r3, r3, #9
-ARM GAS  /tmp/ccUmeqvn.s 			page 20
+ARM GAS  /tmp/ccjMVg99.s 			page 20
 
 
  431 0098 C7D4     		bmi	.L41
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  480 00ce 4B6A     		ldr	r3, [r1, #36]
  579:drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       }
  481              		.loc 1 579 0 discriminator 1
-ARM GAS  /tmp/ccUmeqvn.s 			page 21
+ARM GAS  /tmp/ccjMVg99.s 			page 21
 
 
  482 00d0 49F64040 		movw	r0, #40000
@@ -1255,24 +1255,24 @@ ARM GAS  /tmp/ccUmeqvn.s 			page 1
  532              		.file 12 "drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
  533              		.file 13 "drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
  534              		.file 14 "drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
-ARM GAS  /tmp/ccUmeqvn.s 			page 22
+ARM GAS  /tmp/ccjMVg99.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f1xx_hal_rcc_ex.c
-     /tmp/ccUmeqvn.s:16     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 $t
-     /tmp/ccUmeqvn.s:24     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 HAL_RCCEx_PeriphCLKConfig
-     /tmp/ccUmeqvn.s:245    .text.HAL_RCCEx_PeriphCLKConfig:00000000000000fc $d
-     /tmp/ccUmeqvn.s:253    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 $t
-     /tmp/ccUmeqvn.s:261    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 HAL_RCCEx_GetPeriphCLKConfig
-     /tmp/ccUmeqvn.s:295    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000020 $d
-     /tmp/ccUmeqvn.s:300    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 $t
-     /tmp/ccUmeqvn.s:308    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 HAL_RCCEx_GetPeriphCLKFreq
-     /tmp/ccUmeqvn.s:492    .text.HAL_RCCEx_GetPeriphCLKFreq:00000000000000e0 $d
-     /tmp/ccUmeqvn.s:501    .rodata:0000000000000000 $d
+     /tmp/ccjMVg99.s:16     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 $t
+     /tmp/ccjMVg99.s:24     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 HAL_RCCEx_PeriphCLKConfig
+     /tmp/ccjMVg99.s:245    .text.HAL_RCCEx_PeriphCLKConfig:00000000000000fc $d
+     /tmp/ccjMVg99.s:253    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 $t
+     /tmp/ccjMVg99.s:261    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 HAL_RCCEx_GetPeriphCLKConfig
+     /tmp/ccjMVg99.s:295    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000020 $d
+     /tmp/ccjMVg99.s:300    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 $t
+     /tmp/ccjMVg99.s:308    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 HAL_RCCEx_GetPeriphCLKFreq
+     /tmp/ccjMVg99.s:492    .text.HAL_RCCEx_GetPeriphCLKFreq:00000000000000e0 $d
+     /tmp/ccjMVg99.s:501    .rodata:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
-                           .group:0000000000000000 wm4.0.8ddc6fc9299f63009459649d6a7e7c51
-                           .group:0000000000000000 wm4.main.h.40.54e5213d35853f8debd8cd48178ac5c1
+                           .group:0000000000000000 wm4.0.04924adcfdc7a6cf00118bdef9d1ce8d
+                           .group:0000000000000000 wm4.main.h.40.6fe808b6568aa38f66585b648d7167ef
                            .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.52.96cb61986c8bfeb3a4fa629a7a7441f6
                            .group:0000000000000000 wm4.stm32f1xx.h.57.c2a10934f4c6830aeb7e4997f02806f1
                            .group:0000000000000000 wm4.stm32f103xb.h.56.66305a77cea9d5300aac997a78930076
@@ -1315,7 +1315,7 @@ DEFINED SYMBOLS
                            .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.40.f1cf5d2dd589e1675a9fcd6b008c2bb6
                            .group:0000000000000000 wm4.stm32f1xx_hal_gpio_ex.h.40.30d74584c89dcd3d86d10bdbbb06cc31
                            .group:0000000000000000 wm4.stm32f1xx_hal_gpio.h.281.b26a95114b989e6edaf48d72c8710b9d
-ARM GAS  /tmp/ccUmeqvn.s 			page 23
+ARM GAS  /tmp/ccjMVg99.s 			page 23
 
 
                            .group:0000000000000000 wm4.stm32f1xx_hal_dma.h.40.b1d5b41c58b583c31c61335e4c8e1bdd

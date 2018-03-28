@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.3.1, 2018-03-23T00:52:07. -->
+<!-- Written by QtCreator 4.3.1, 2018-03-23T19:29:38. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -208,13 +208,13 @@
      <value type="int">13</value>
      <value type="int">14</value>
     </valuelist>
-    <value type="QString" key="BareMetal.CustomRunConfig.Executable"></value>
-    <value type="QString" key="BareMetal.RunConfig.WorkingDirectory"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Run on GDB server or hardware debugger</value>
+    <value type="QString" key="BareMetal.CustomRunConfig.Executable">/home/vdykyy/Projects/Portfolio/Cardiograph/Back-end/STM32F103/firmware/build/CardiographSTM32F103.elf</value>
+    <value type="QString" key="BareMetal.RunConfig.WorkingDirectory">/home/vdykyy/Projects/Portfolio/Cardiograph/Back-end/STM32F103/firmware/build</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">firmware (via GDB server or hardware debugger)</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">BareMetal.CustomRunConfig</value>
     <value type="QString" key="Qt4ProjectManager.MaemoRunConfiguration.Arguments"></value>
-    <value type="QString" key="Qt4ProjectManager.MaemoRunConfiguration.ProFile"></value>
+    <value type="QString" key="Qt4ProjectManager.MaemoRunConfiguration.ProFile">.</value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>

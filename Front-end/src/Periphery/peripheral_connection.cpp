@@ -2,8 +2,8 @@
 #include <QDebug>
 
 PeripheralConnection::PeripheralConnection(QObject *parent) :
-    QObject(parent), isCmdConfirmed(false), readedDataBlocks(0), peripheryDevice(nullptr),
-    buffer(new QByteArray()), cmdQueue(new QList<PendingCmd*>()), pendingCmd(nullptr)
+    QObject(parent), activeCmdID(NONE_CMD & 0xFF), conversionTime(0), samplesCount(0), peripheryDevice(nullptr),
+    buffer(new QByteArray()), cmdQueue(new QByteArrayList()), availableDevicesInfo(new QList<PeripheralDeviceInfo>())
 {
 
 }
@@ -13,19 +13,31 @@ PeripheralConnection::~PeripheralConnection()
     disconnectDevice();
     disconnectSignals();
     if (peripheryDevice != nullptr)
+    {
         delete peripheryDevice;
+        peripheryDevice = nullptr;
+    }
 
     if (buffer != nullptr)
+    {
         delete buffer;
+        buffer = nullptr;
+    }
 
     if (cmdQueue != nullptr)
+    {
         delete cmdQueue;
+        cmdQueue = nullptr;
+    }
 
-    if (pendingCmd != nullptr)
-        delete pendingCmd;
+    if (availableDevicesInfo != nullptr)
+    {
+        delete availableDevicesInfo;
+        availableDevicesInfo = nullptr;
+    }
 }
 
-void PeripheralConnection::connectDevice()
+void PeripheralConnection::connectDevice(const QVariant&)
 {
     if (peripheryDevice != nullptr)
     {
@@ -55,6 +67,8 @@ void PeripheralConnection::connectDevice()
 
 void PeripheralConnection::disconnectDevice()
 {
+    activeCmdID = NONE_CMD >> 8;
+    cmdQueue->clear();
     if (peripheryDevice != nullptr)
     {
         if (peripheryDevice->isOpen())
@@ -71,72 +85,107 @@ void PeripheralConnection::disconnectDevice()
     }
 }
 
-void PeripheralConnection::setTime(const uint16_t time)
+void PeripheralConnection::setTime(const uint32_t time)
 {
-    sendCmd(new PendingCmd(SET_TIME, time, 0));
-}
-
-void PeripheralConnection::getTime()
-{
-    sendCmd(new PendingCmd(GET_TIME, 0xFFFF, 2));
+    conversionTime = time;
+    QByteArray cmd;
+    cmd.push_back((SET_TIME_CMD >> 8) & 0xFF);
+    cmd.push_back((time >> 24) & 0xFF);
+    cmd.push_back((time >> 16) & 0xFF);
+    cmd.push_back((time >> 8) & 0xFF);
+    cmd.push_back(time & 0xFF);
+    sendCmd(cmd);
 }
 
 void PeripheralConnection::setSamplesCount(const uint16_t count)
 {
-    sendCmd(new PendingCmd(SET_SAMPLES, count, 0));
+    samplesCount = count;
+    QByteArray cmd;
+    cmd.push_back((SET_SAMPLES_CMD >> 8) & 0xFF);
+    cmd.push_back((count >> 8) & 0xFF);
+    cmd.push_back(count & 0xFF);
+    sendCmd(cmd);
 }
 
-void PeripheralConnection::getSamplesCount()
+void PeripheralConnection::startConversion()
 {
-    sendCmd(new PendingCmd(GET_SAMPLES, 0xFFFF, 2));
+    QByteArray cmd;
+    cmd.push_back((SET_ADC_CONV_STATE_CMD >> 8) & 0xFF);
+    cmd.push_back(0x01);
+    sendCmd(cmd);
 }
 
-void PeripheralConnection::requestData(const uint8_t blocks, const uint16_t samples)
+void PeripheralConnection::stopConversion()
 {
-    sendCmd(new PendingCmd(REQUEST_DATA, blocks, samples * 2, blocks));
+    QByteArray cmd;
+    cmd.push_back((SET_ADC_CONV_STATE_CMD >> 8) & 0xFF);
+    cmd.push_back('\0');
+    sendCmd(cmd);
+}
+
+void PeripheralConnection::getTime()
+{
+    QByteArray cmd;
+    cmd.push_back((GET_TIME_CMD >> 8) & 0xFF);
+    sendCmd(cmd);
+}
+
+void PeripheralConnection::getSamples()
+{
+    QByteArray cmd;
+    cmd.push_back((GET_SAMPLES_CMD >> 8) & 0xFF);
+    sendCmd(cmd);
+}
+
+void PeripheralConnection::requestAdcData()
+{
+    QByteArray cmd;
+    cmd.push_back((REQUEST_DATA_CMD >> 8) & 0xFF);
+    sendCmd(cmd);
+}
+
+QList<PeripheralDeviceInfo> *PeripheralConnection::getAvailableDevicesInfo() const
+{
+    return availableDevicesInfo;
 }
 
 void PeripheralConnection::onReadyRead()
 {
     QByteArray buff = peripheryDevice->readAll();
 
-    if (pendingCmd == nullptr)
+    if (activeCmdID == ((NONE_CMD >> 8) & 0xFF))
         return;
 
     buffer->append(buff);
-
-    if (!isCmdConfirmed && buffer->length() > 1)
+    const size_t bufferLen = buffer->length();
+    if (bufferLen >= 3)
     {
-        uint16_t response = ((buffer->at(0) << 8) & 0xFF00) | (buffer->at(1) & 0x00FF);
-        if (response == CMD_OK)
-        {
-            buffer->remove(0, 2);
-            isCmdConfirmed = true;
-        }
-    }
+        QByteArray cmdResult;
+        cmdResult.push_back(activeCmdID);
+        cmdResult.push_back(CMD_OK);
+        cmdResult.push_back(activeCmdID);
 
-    //qDebug() << "DATA RECEIVED!!! buffer len: " << buff.length();
-    if (isCmdConfirmed && buffer->length() >= pendingCmd->receivedDataLength)
-    {
-        while(buffer->length() >= pendingCmd->receivedDataLength && readedDataBlocks < pendingCmd->receivedDataBlocks)
+        int resultIndex = buffer->indexOf(cmdResult);
+        if (resultIndex == -1)
         {
-            readedDataBlocks++;
-            emit dataReceived(pendingCmd->command.at(0), buffer);
-            buffer->remove(0, pendingCmd->receivedDataLength);
+            cmdResult[1] = CMD_ERROR;
+            resultIndex = buffer->indexOf(cmdResult);
         }
-        //qDebug() << "DATA RECEIVED!!! Readed blocks: " << readedDataBlocks << " of " << pendingCmd->receivedDataBlocks;
-        if (readedDataBlocks >= pendingCmd->receivedDataBlocks)
+        if (resultIndex != -1)
         {
-            isCmdConfirmed = false;
-            readedDataBlocks = 0;
-            delete pendingCmd;
-            pendingCmd = nullptr;
+            const uint8_t cmdResult = buffer->at(resultIndex + 1);
+            buffer->remove(resultIndex, bufferLen - resultIndex + 1);
+            emit dataReceived(activeCmdID, cmdResult, buffer);
+            \
             if (!cmdQueue->isEmpty())
             {
-                pendingCmd = cmdQueue->first();
+                const QByteArray cmd = cmdQueue->front();
                 cmdQueue->pop_front();
-                peripheryDevice->write(pendingCmd->command);
-                //qDebug() << "SENT CMD: " << QString::number(pendingCmd->command.at(0) & 0xFF, 16);
+                writeCmd(cmd);
+            }
+            else
+            {
+                activeCmdID = (NONE_CMD >> 8) & 0xFF;
             }
         }
     }
@@ -170,13 +219,11 @@ void PeripheralConnection::disconnectSignals()
     }
 }
 
-void PeripheralConnection::sendCmd(PendingCmd *cmd)
+void PeripheralConnection::sendCmd(const QByteArray& cmd)
 {
-    if (pendingCmd == nullptr && cmdQueue->isEmpty())
+    if (activeCmdID == NONE_CMD >> 8 && cmdQueue->isEmpty())
     {
-        pendingCmd = cmd;
-        peripheryDevice->write(pendingCmd->command);
-        //qDebug() << "SENT CMD: " << QString::number(pendingCmd->command.at(0) & 0xFF, 16);
+        writeCmd(cmd);
     }
     else
     {
@@ -184,7 +231,13 @@ void PeripheralConnection::sendCmd(PendingCmd *cmd)
     }
 }
 
-void PeripheralConnection::sendQueuedCmd()
+void PeripheralConnection::writeCmd(const QByteArray &cmd)
 {
-
+    if (!cmd.isEmpty())
+    {
+        buffer->clear();
+        activeCmdID = cmd.at(0);
+        peripheryDevice->write(cmd);
+    }
 }
+

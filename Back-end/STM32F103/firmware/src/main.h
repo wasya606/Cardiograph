@@ -9,7 +9,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2017 STMicroelectronics
+  * COPYRIGHT(c) 2018 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -60,8 +60,10 @@
 #define BT_EN_GPIO_Port GPIOB
 #define LO_P_Pin GPIO_PIN_14
 #define LO_P_GPIO_Port GPIOB
+#define LO_P_EXTI_IRQn EXTI15_10_IRQn
 #define LO_N_Pin GPIO_PIN_15
 #define LO_N_GPIO_Port GPIOB
+#define LO_N_EXTI_IRQn EXTI15_10_IRQn
 
 /* USER CODE BEGIN Private defines */
 

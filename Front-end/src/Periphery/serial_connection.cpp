@@ -10,27 +10,35 @@ SerialConnection::SerialConnection() : PeripheralConnection()
 
 }
 
-void SerialConnection::init(const QVariant& deviceParameters)
+void SerialConnection::init()
 {
-    QString serialPortName = deviceParameters.toMap()["serialPortName"].toString();
-    qint32 serialPortBaudRate = deviceParameters.toMap()["serialPortBaudRate"].toInt();
-
     peripheryDevice = new QSerialPort();
-    ((QSerialPort*)peripheryDevice)->setPortName(serialPortName);
-    ((QSerialPort*)peripheryDevice)->setBaudRate(serialPortBaudRate);
-
     connectSignals();
 }
 
 void SerialConnection::requestAvailableDevicesInfo()
 {
-    QVariantList ports;
-    qDebug() << "-------------- List of avaliable serial ports -----------------";
+    availableDevicesInfo->clear();
     for (QSerialPortInfo port : QSerialPortInfo::availablePorts())
     {
-        qDebug() << "Serial port name: " << port.portName() << ", is busy: " << port.isBusy();
-        ports.append(port.portName());
+        PeripheralDeviceInfo serialPort;
+        serialPort.name = port.portName();
+        serialPort.systemLocation = port.systemLocation();
+        serialPort.isBusy = port.isBusy();
+        availableDevicesInfo->push_back(serialPort);
     }
-    qDebug() << "--------------------------------------------------------------";
-    emit availableDevicesInfoReceived(QVariant(ports));
+    emit availableDevicesInfoUpdated();
+}
+
+void SerialConnection::connectDevice(const QVariant &deviceParameters)
+{
+    if (peripheryDevice != nullptr)
+    {
+        QString serialPortName = deviceParameters.toMap()["serialPortName"].toString();
+        qint32 serialPortBaudRate = deviceParameters.toMap()["serialPortBaudRate"].toInt();
+
+        ((QSerialPort*)peripheryDevice)->setPortName(serialPortName);
+        ((QSerialPort*)peripheryDevice)->setBaudRate(serialPortBaudRate);
+    }
+    PeripheralConnection::connectDevice(deviceParameters);
 }

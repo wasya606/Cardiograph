@@ -5,13 +5,14 @@
 class Timer
 {
 public:
-    Timer(const uint16_t delay, const Callback&& callback = [](){}, const bool isOneShot = true);
+    Timer(const uint32_t delay = 1000, const Callback&& callback = [](){}, const bool isOneShot = false);
 
-    void setDelay(const uint16_t delay);
+    void setDelay(const uint32_t delay);
     void setCallback(const Callback&& callback);
     void setOneShot(const bool isOneshot);
-    uint16_t getDelay() const;
+    uint32_t getDelay() const;
     bool getOneShot() const;
+    bool isStarted() const;
 
     void start(const bool isPerformreset = true);
     void stop();
@@ -20,11 +21,11 @@ public:
     void process();
 
 private:
-    uint16_t delay;
+    uint32_t delay;
     Callback callback;
     bool isOneShot;
     bool isActive;
-    uint16_t counter;
+    uint32_t counter;
 };
 
 #endif // TIMER_H

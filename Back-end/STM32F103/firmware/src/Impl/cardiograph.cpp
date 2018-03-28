@@ -2,56 +2,103 @@
 #include "usart.h"
 #include "tim.h"
 #include "adc.h"
+#include "string.h"
 
-Cardiograph::Cardiograph() : isUartTxBusy(false),
-                             pendingBlocks(0),
-                             uartBuffer(new uint8_t[UART_BUFFER_MAX_SIZE]{0}),
+uint32_t Cardiograph::Settings::timeUs = 1000;
+uint16_t Cardiograph::Settings::samplesCount = 128;
+
+Cardiograph::Cardiograph() : isAdcConvertionStopping(false),
+                             LO_N_PinState(GPIO_PIN_SET),
+                             LO_P_PinState(GPIO_PIN_SET),
+                             adcConversionState(ADC_IDLE_STATE),
+                             uartRxState(WAIT_CMD_ID),
+                             uartTxState(TX_IDLE),
+                             activeUartCmd(NONE_CMD),
+                             uartRxBuffer(nullptr),
                              uartTxBuffer(nullptr),
-                             adcConversionBuffer(new uint32_t[ADC_CONVERSIONS_MAX_COUNT]{0}),
-                             adcBuffer(nullptr),
-                             settings(new Settings()),
-                             uartTxQueue(new std::list<UartTxData*>())
+                             adcLastConvertedData(nullptr),
+                             adcConversionBuffer(nullptr),
+                             uartTxQueue(new std::list<UartTxData*>()),
+                             oledDisplay(new OledDriver()),
+                             updateDisplayTimer(new Timer()),
+                             adcConversionTimer(new Timer())
 {
 
 }
 
 Cardiograph::~Cardiograph()
 {
-    if (uartBuffer != nullptr)
-        delete[] uartBuffer;
+    if (uartRxBuffer != nullptr)
+        delete[] uartRxBuffer;
+
+    if (uartTxBuffer != nullptr)
+        delete[] uartTxBuffer;
+
+    if (adcLastConvertedData != nullptr)
+        delete[] adcLastConvertedData;
 
     if (adcConversionBuffer != nullptr)
         delete[] adcConversionBuffer;
 
-    if (settings != nullptr)
-        delete settings;
+    if (uartTxQueue != nullptr)
+        delete uartTxQueue;
+
+    if (oledDisplay != nullptr)
+        delete oledDisplay;
+
+    if (updateDisplayTimer != nullptr)
+        delete updateDisplayTimer;
+
+    if (adcConversionTimer != nullptr)
+        delete adcConversionTimer;
 
 }
 
 void Cardiograph::init()
-{   
-    adcBuffer = new AdcBuffer(settings->samples);
+{
+    initAdcBuffers();
     initTimerPeriod();
-    listenCommand();
+    initSoftTimers();
+    listenUart();
+    initOledDisplay();
+    HAL_TIM_Base_Start_IT(&htim1);
 }
 
 void Cardiograph::uartRxHandler()
 {
-    printf("UART RX: %X %X %X %X\n", uartBuffer[0], uartBuffer[1], uartBuffer[2], uartBuffer[3]);
-    if (uartBuffer[0] == uartBuffer[3])
+    switch (uartRxState)
     {
-        uint16_t data = (uartBuffer[1] << 8) | uartBuffer[2];
-        decodeCommand(uartBuffer[0], data);
-    }
-    else
-    {
-        sendCommandResponse(CMD_ERROR);
+        case WAIT_CMD_ID:
+        {
+            decodeCommand();
+            break;
+        }
+        case WAIT_IN_DATA:
+        {
+            if (activeUartCmd != NONE_CMD)
+            {
+                applyCommand();
+            }
+            else
+            {
+                uartRxState = WAIT_CMD_ID;
+                listenUart();
+            }
+            break;
+        }
+        default:
+        {
+            activeUartCmd = NONE_CMD;
+            uartRxState = WAIT_CMD_ID;
+            listenUart();
+            break;
+        }
     }
 }
 
 void Cardiograph::uartTxHandler()
 {
-    if (uartTxBuffer != nullptr)
+    if (uartTxBuffer != nullptr && uartTxBuffer != adcConversionBuffer)
     {
         delete[] uartTxBuffer;
         uartTxBuffer = nullptr;
@@ -61,133 +108,284 @@ void Cardiograph::uartTxHandler()
     {
         UartTxData* txData = uartTxQueue->front();
         uartTxBuffer = txData->buffer;
-        //printf("Queue size: %u, txSize: %u\n", uartTxQueue->size(), txData->size);
         HAL_UART_Transmit_DMA(&huart1, uartTxBuffer, txData->size);
         uartTxQueue->pop_front();
         delete txData;
     }
     else
     {
-        isUartTxBusy = false;
+        uartTxState = TX_IDLE;
     }
 }
 
 void Cardiograph::adcConversionHandler()
 {
-    /*uint16_t sum = 0;
-    for (uint8_t i = 0; i < settings->adcConversionCount / 2; i++)
+    if (isAdcConvertionStopping == true)
     {
-        sum += ((adcConversionBuffer[i] >> 16) & 0xFFFF);
-        sum += (adcConversionBuffer[i] & 0xFFFF);
+        adcConversionTimer->stop();
+        isAdcConvertionStopping = false;
     }
-    adcBuffer->push(sum / settings->adcConversionCount);*/
-    adcBuffer->push(adcConversionBuffer[0] & 0x0FFF);
-    HAL_ADC_Stop_DMA(&hadc1);
-
-    if (adcBuffer->isFull())
-    {
-        uint8_t* txBuffer = new uint8_t[adcBuffer->getSize() * 2] {0x00};
-        adcBuffer->getBytes(txBuffer);
-        transmitData(txBuffer, adcBuffer->getSize() * 2);
-        adcBuffer->reset();
-        //printf("Pending blocks: %u\n", pendingBlocks);
-        if (--pendingBlocks == 0)
-        {
-            listenCommand();
-            HAL_TIM_Base_Stop_IT(&htim1);
-        }
-    }
+    //memcpy(adcLastConvertedData, adcConversionBuffer, Settings::getSamplesCount() * 2);
 }
 
 void Cardiograph::timerPeriodElapsedHandler()
 {
-    HAL_ADC_Start_DMA(&hadc1, adcConversionBuffer, settings->adcConversionCount);
+    updateDisplayTimer->process();
+    adcConversionTimer->process();
+}
+
+void Cardiograph::initAdcBuffers()
+{
+    const size_t bufferLen = Settings::getSamplesCount() * 2;
+    if (adcConversionBuffer != nullptr)
+        delete[] adcConversionBuffer;
+
+    //if (adcLastConvertedData != nullptr)
+    //   delete[] adcLastConvertedData;
+
+    adcConversionBuffer = new uint8_t[bufferLen]{0};
+    //adcLastConvertedData = new uint8_t[bufferLen]{0};
 }
 
 void Cardiograph::initTimerPeriod()
 {
-    MX_TIM1_Init_Custom(settings->prescaler, settings->period);
+    //printf("initTimerPeriod, prescaler: %d, period: %d, time: %d\n",
+    //       Settings::getTimerPrescaler(), Settings::getTimerPeriod(), Settings::getTimeUs());
+    MX_TIM1_Init_Custom(Settings::getTimerPrescaler(), Settings::getTimerPeriod());
 }
 
-void Cardiograph::decodeCommand(const uint8_t cmd, const uint16_t data)
+void Cardiograph::initSoftTimers()
 {
-    uint8_t* txBuffer = nullptr;
-    switch (cmd)
+    adcConversionTimer->setCallback([this]()
     {
-    case SET_TIME:
-        settings->time = data;
-        settings->updatePeriod();
-        initTimerPeriod();
-        sendCommandResponse(CMD_OK);
-        listenCommand();
-        break;
-    case GET_TIME:
-        sendCommandResponse(CMD_OK);
-        txBuffer = new uint8_t[2];
-        txBuffer[0] = (settings->time >> 8) & 0xFF;
-        txBuffer[1] = settings->time & 0xFF;
-        transmitData(txBuffer, 2);
-        listenCommand();
-        break;
-    case SET_SAMPLES:
-        settings->samples = data;
-        settings->updatePeriod();
-        adcBuffer->setSize(settings->samples);
-        initTimerPeriod();
-        sendCommandResponse(CMD_OK);
-        listenCommand();
-        break;
-    case GET_SAMPLES:
-        sendCommandResponse(CMD_OK);
-        txBuffer = new uint8_t[2];
-        txBuffer[0] = (settings->samples >> 8) & 0xFF;
-        txBuffer[1] = settings->samples & 0xFF;
-        transmitData(txBuffer, 2);
-        listenCommand();
-        break;
-    case REQUEST_DATA:
-        if (pendingBlocks == 0)
-        {
-            sendCommandResponse(CMD_OK);
-            pendingBlocks = data & 0xFF;
-            HAL_TIM_Base_Start_IT(&htim1);
-        }
-        else
-        {
-            sendCommandResponse(CMD_BUSY);
-        }
-        break;
-    default:
-        sendCommandResponse(CMD_ERROR);
-        break;
+        HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adcConversionBuffer, Settings::getSamplesCount());
+    });
+    adcConversionTimer->setDelay(Settings::getTimeMs());
+
+    updateDisplayTimer->setCallback([this](){updateDisplay();});
+    updateDisplayTimer->setDelay(100);
+    updateDisplayTimer->start();
+}
+
+void Cardiograph::initOledDisplay()
+{
+    oledDisplay->init(OledDriver::DARKBLUE);
+    oledDisplay->printText("Status:", 1, 0, OledDriver::WHITE);
+    oledDisplay->printText("LO+: ", 1, 9, OledDriver::YELLOW);
+    oledDisplay->printText("LO-: ", 1, 18, OledDriver::YELLOW);
+    LO_N_PinState = HAL_GPIO_ReadPin(LO_N_GPIO_Port, LO_N_Pin);
+    LO_P_PinState = HAL_GPIO_ReadPin(LO_P_GPIO_Port, LO_P_Pin);
+    updateLO_N_status();
+    updateLO_P_status();
+}
+
+void Cardiograph::updateDisplay()
+{
+    const GPIO_PinState LO_N_NewPinState = HAL_GPIO_ReadPin(LO_N_GPIO_Port, LO_N_Pin);
+    const GPIO_PinState LO_P_NewPinState = HAL_GPIO_ReadPin(LO_P_GPIO_Port, LO_P_Pin);
+
+    if (LO_N_NewPinState != LO_N_PinState)
+    {
+        LO_N_PinState = LO_N_NewPinState;
+        updateLO_N_status();
+    }
+    if (LO_P_NewPinState != LO_P_PinState)
+    {
+        LO_P_PinState = LO_P_NewPinState;
+        updateLO_P_status();
     }
 }
 
-void Cardiograph::sendCommandResponse(const UartCommandResponse response)
+void Cardiograph::updateLO_P_status()
 {
-    uint8_t* txBuffer = new uint8_t[2];
-    txBuffer[0] = (response >> 8) & 0xFF;
-    txBuffer[1] = response & 0xFF;
-    transmitData(txBuffer, 2);
-    //printf("SENT COMMAND RESPONSE: %X\n", response);
+    const uint16_t backgroundColor = oledDisplay->getBackgroundColor();
+    if (LO_P_PinState == GPIO_PIN_RESET)
+        oledDisplay->printText("OK  ", 32, 18, OledDriver::GREEN, backgroundColor);
+    else
+        oledDisplay->printText("FAIL", 32, 18, OledDriver::RED, backgroundColor);
 }
 
-void Cardiograph::listenCommand()
+void Cardiograph::updateLO_N_status()
 {
-    HAL_UART_Receive_DMA(&huart1, uartBuffer, UART_RX_CMD_LEN);
-    //printf("START LISTEN COMMAND\n");
+    const uint16_t backgroundColor = oledDisplay->getBackgroundColor();
+    if (LO_N_PinState == GPIO_PIN_RESET)
+        oledDisplay->printText("OK  ", 32, 9, OledDriver::GREEN, backgroundColor);
+    else
+        oledDisplay->printText("FAIL", 32, 9, OledDriver::RED, backgroundColor);
+}
+
+void Cardiograph::decodeCommand()
+{
+
+    uartRxState = WAIT_IN_DATA;
+    switch (uartRxBuffer[0])
+    {
+    case SET_TIME_CMD >> 8:
+        activeUartCmd = SET_TIME_CMD;
+        break;
+    case SET_SAMPLES_CMD >> 8:
+        activeUartCmd = SET_SAMPLES_CMD;
+        break;
+    case SET_ADC_CONV_STATE_CMD >> 8:
+        activeUartCmd = SET_ADC_CONV_STATE_CMD;
+        break;
+    case GET_TIME_CMD >> 8:
+        activeUartCmd = GET_TIME_CMD;
+        break;
+    case GET_SAMPLES_CMD >> 8:
+        activeUartCmd = GET_SAMPLES_CMD;
+        break;
+    case REQUEST_DATA_CMD >> 8:
+        activeUartCmd = REQUEST_DATA_CMD;
+        break;
+    default:
+        activeUartCmd = NONE_CMD;
+        uartRxState = WAIT_CMD_ID;
+        break;
+    }
+    listenUart();
+}
+
+void Cardiograph::applyCommand()
+{
+    switch (activeUartCmd)
+    {
+    case SET_TIME_CMD:
+    {
+        Settings::setTimeUs((uartRxBuffer[0] << 24) | (uartRxBuffer[1] << 16) | (uartRxBuffer[2] << 8) | uartRxBuffer[3]);
+        printf("SET_TIME_CMD: %d, %d\n", Settings::getTimeMs(), Settings::getTimeUs());
+        adcConversionTimer->setDelay(Settings::getTimeMs());
+        sendCommandResult();
+        break;
+    }
+    case SET_SAMPLES_CMD:
+    {
+        Settings::setSamplesCount((uartRxBuffer[0] << 8) | uartRxBuffer[1]);
+        initAdcBuffers();
+        sendCommandResult();
+        break;
+    }
+    case SET_ADC_CONV_STATE_CMD:
+    {
+        AdcConversionState newAdcState = uartRxBuffer[0] == 0x00 ? ADC_IDLE_STATE : ADC_ACTIVE_STATE;
+        if (newAdcState != adcConversionState)
+        {
+            adcConversionState = newAdcState;
+            if (adcConversionState == ADC_ACTIVE_STATE)
+            {
+                if (isAdcConvertionStopping == true)
+                    isAdcConvertionStopping = false;
+                else if (!adcConversionTimer->isStarted())
+                    adcConversionTimer->start();
+            }
+            else
+            {
+                isAdcConvertionStopping = true;
+            }
+        }
+        uint8_t* adcStateDataBuffer = new uint8_t;
+        *adcStateDataBuffer = adcConversionState;
+        transmitData(adcStateDataBuffer, 1);
+        sendCommandResult();
+        break;
+    }
+    case GET_TIME_CMD:
+    {
+        const uint16_t time = Settings::getTimeUs();
+        uint8_t* timeDataBuffer = new uint8_t[4];
+        timeDataBuffer[0] = (time >> 24) & 0xFF;
+        timeDataBuffer[1] = (time >> 16) & 0xFF;
+        timeDataBuffer[2] = (time >> 8) & 0xFF;
+        timeDataBuffer[3] = time & 0xFF;
+        transmitData(timeDataBuffer, 4);
+        sendCommandResult();
+        break;
+    }
+    case GET_SAMPLES_CMD:
+    {
+        const uint16_t samples = Settings::getSamplesCount();
+        uint8_t* samplesDataBuffer = new uint8_t[2];
+        samplesDataBuffer[0] = (samples >> 8) & 0xFF;
+        samplesDataBuffer[1] = samples & 0xFF;
+        transmitData(samplesDataBuffer, 2);
+        sendCommandResult();
+        break;
+    }
+    case REQUEST_DATA_CMD:
+    {
+        transmitData(adcConversionBuffer, Settings::getSamplesCount() * 2);
+        sendCommandResult();
+        break;
+    }
+    default:
+        sendCommandResult(CMD_ERROR);
+        break;
+    }
+    uartRxState = WAIT_CMD_ID;
+    activeUartCmd = NONE_CMD;
+    listenUart();
+}
+
+void Cardiograph::listenUart()
+{
+    if (uartRxBuffer != nullptr)
+    {
+        delete[] uartRxBuffer;
+        uartRxBuffer = nullptr;
+    }
+
+    const uint8_t uartRxBufferLen = uartRxState == WAIT_CMD_ID ? UART_CMD_ID_LEN : activeUartCmd & 0xFF;\
+
+    if (uartRxBufferLen > 0)
+    {
+        uartRxBuffer = new uint8_t[uartRxBufferLen]{0x00};
+        HAL_UART_Receive_DMA(&huart1, uartRxBuffer, uartRxBufferLen);
+    }
+    else
+    {
+        if (activeUartCmd == NONE_CMD)
+        {
+            sendCommandResult(CMD_ERROR);
+            uartRxState = WAIT_CMD_ID;
+            activeUartCmd = NONE_CMD;
+            listenUart();
+        }
+        else
+        {
+            applyCommand();
+        }
+    }
 }
 
 void Cardiograph::transmitData(uint8_t *buffer, const int16_t size)
 {
-    if (!isUartTxBusy)
+    switch (uartTxState)
+    {
+    case TX_IDLE:
     {
         uartTxBuffer = buffer;
         HAL_UART_Transmit_DMA(&huart1, uartTxBuffer, size);
-        isUartTxBusy = true;
+        uartTxState = TX_BUSY;
+        break;
     }
-    else
+    case TX_BUSY:
     {
         uartTxQueue->push_back(new UartTxData(buffer, size));
+        break;
     }
+    default:
+        break;
+    }
+}
+
+void Cardiograph::sendCommandResult(const UARTCommandResult cmdResult)
+{
+    uint8_t* txBuffer = new uint8_t[UART_CMD_CONFIRM_LEN];
+
+    txBuffer[0] = (activeUartCmd >> 8) & 0xFF;
+    txBuffer[1] = cmdResult;
+    txBuffer[2] = (activeUartCmd >> 8) & 0xFF;
+
+    transmitData(txBuffer, UART_CMD_CONFIRM_LEN);
+
 }

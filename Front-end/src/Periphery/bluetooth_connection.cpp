@@ -14,7 +14,7 @@ BluetoothConnection::BluetoothConnection() : PeripheralConnection(),
 
 }
 
-void BluetoothConnection::init(const QVariant&)
+void BluetoothConnection::init()
 {
     peripheryDevice = new QBluetoothSocket(QBluetoothServiceInfo::RfcommProtocol);
     connectSignals();
@@ -37,7 +37,7 @@ void BluetoothConnection::requestAvailableDevicesInfo()
     qDebug() << "-------------- BT devices scanner started! -----------------";
 }
 
-void BluetoothConnection::connectDevice()
+void BluetoothConnection::connectDevice(const QVariant&)
 {
     //QBluetoothDeviceInfo devInfo = availableBTDevices->at(0);
     //qDebug() << "DEVICE: " << devInfo.name();
@@ -77,14 +77,17 @@ void BluetoothConnection::onServiceDiscovered(const QBluetoothDeviceInfo &servic
 
 void BluetoothConnection::onDiscoveryFinished()
 {
+    availableDevicesInfo->clear();
     qDebug() << "-------------- List of avaliable BT devices -----------------";
     for (int i = 0; i < availableBTDevices->length(); i++)
     {
-        QString deviceAddr = availableBTDevices->at(i).address().toString();
-        QString deviceName = availableBTDevices->at(i).name();
-        QString deviceUiid = availableBTDevices->at(i).deviceUuid().toString();
-        qDebug() << "BT Device name: " << deviceName << ", address: " << deviceAddr << ", UUID" << deviceUiid;
+        PeripheralDeviceInfo btAdapter;
+        btAdapter.name = availableBTDevices->at(i).name();
+        btAdapter.address = availableBTDevices->at(i).address().toString();
+        btAdapter.id = availableBTDevices->at(i).deviceUuid().toString();
+        qDebug() << "BT Device name: " << btAdapter.name << ", address: " << btAdapter.address << ", UUID" << btAdapter.id;
+        availableDevicesInfo->push_back(btAdapter);
     }
     qDebug() << "-------------- List of avaliable BT devices -----------------";
-    emit availableDevicesInfoReceived(QVariant());
+    emit availableDevicesInfoUpdated();
 }

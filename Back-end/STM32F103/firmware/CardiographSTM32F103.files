@@ -73,13 +73,13 @@ src/HAL/tim.c
 src/HAL/tim.h
 src/HAL/usart.c
 src/HAL/usart.h
-src/Impl/adc_buffer.cpp
-src/Impl/adc_buffer.h
 src/Impl/cardiograph.cpp
 src/Impl/cardiograph.h
 src/Impl/internal_types.h
 src/Impl/oled_driver.cpp
 src/Impl/oled_driver.h
+src/Impl/oledfont.cpp
+src/Impl/oledfont.h
 src/Impl/timer.cpp
 src/Impl/timer.h
 src/asm/startup_stm32f103xb.s

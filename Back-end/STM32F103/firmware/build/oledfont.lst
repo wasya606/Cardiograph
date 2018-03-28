@@ -1,0 +1,437 @@
+ARM GAS  /tmp/ccFao0Kz.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 2
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"oledfont.cpp"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text._ZN8OledFont7getDataEc,"ax",%progbits
+  16              		.align	1
+  17              		.p2align 2,,3
+  18              		.global	_ZN8OledFont7getDataEc
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	_ZN8OledFont7getDataEc:
+  25              	.LFB1:
+  26              		.file 1 "src/Impl/oledfont.cpp"
+   1:src/Impl/oledfont.cpp **** #include "oledfont.h"
+   2:src/Impl/oledfont.cpp **** #include <stdio.h>
+   3:src/Impl/oledfont.cpp **** 
+   4:src/Impl/oledfont.cpp **** const uint64_t OledFont::data[] =
+   5:src/Impl/oledfont.cpp **** {
+   6:src/Impl/oledfont.cpp ****     0x0000000000000000, // ' '(space)
+   7:src/Impl/oledfont.cpp ****     0x00180018183c3c18, // '!'
+   8:src/Impl/oledfont.cpp ****     0x0000000014363600, // '"'
+   9:src/Impl/oledfont.cpp ****     0x0036367f367f3636, // '#'
+  10:src/Impl/oledfont.cpp ****     0x000c1f301e033e0c, // '$'
+  11:src/Impl/oledfont.cpp ****     0x006e333b6e1c361c, // '%'
+  12:src/Impl/oledfont.cpp ****     0x0063660c18336300, // '&'
+  13:src/Impl/oledfont.cpp ****     0x0000000000030606, // '''
+  14:src/Impl/oledfont.cpp ****     0x00180c0606060c18, // '('
+  15:src/Impl/oledfont.cpp ****     0x00060c1818180c06, // ')'
+  16:src/Impl/oledfont.cpp ****     0x0000663cff3c6600, // '*'
+  17:src/Impl/oledfont.cpp ****     0x00000c0c3f0c0c00, // '+'
+  18:src/Impl/oledfont.cpp ****     0x060c0c0000000000, // ','
+  19:src/Impl/oledfont.cpp ****     0x000000003f000000, // '-'
+  20:src/Impl/oledfont.cpp ****     0x000c0c0000000000, // '.'
+  21:src/Impl/oledfont.cpp ****     0x000103060c183060, // '/'
+  22:src/Impl/oledfont.cpp ****     0x003e676f7b73633e, // '0'
+  23:src/Impl/oledfont.cpp ****     0x003f0c0c0c0c0e0c, // '1'
+  24:src/Impl/oledfont.cpp ****     0x003f33061c30331e, // '2'
+  25:src/Impl/oledfont.cpp ****     0x001e33301c30331e, // '3'
+  26:src/Impl/oledfont.cpp ****     0x0078307f33363c38, // '4'
+  27:src/Impl/oledfont.cpp ****     0x001e3330301f033f, // '5'
+  28:src/Impl/oledfont.cpp ****     0x001e33331f03061c, // '6'
+  29:src/Impl/oledfont.cpp ****     0x000c0c0c1830333f, // '7'
+  30:src/Impl/oledfont.cpp ****     0x001e33331e33331e, // '8'
+  31:src/Impl/oledfont.cpp ****     0x000e18303e33331e, // '9'
+  32:src/Impl/oledfont.cpp ****     0x000c0c00000c0c00, // ':'
+ARM GAS  /tmp/ccFao0Kz.s 			page 2
+
+
+  33:src/Impl/oledfont.cpp ****     0x060c0c00000c0c00, // ';'
+  34:src/Impl/oledfont.cpp ****     0x00180c0603060c18, // '<'
+  35:src/Impl/oledfont.cpp ****     0x00003f00003f0000, // '='
+  36:src/Impl/oledfont.cpp ****     0x00060c1830180c06, // '>'
+  37:src/Impl/oledfont.cpp ****     0x000c000c1830331e, // '?'
+  38:src/Impl/oledfont.cpp ****     0x001e037b7b7b633e, // '@'
+  39:src/Impl/oledfont.cpp ****     0x0033333f33331e0c, // 'A'
+  40:src/Impl/oledfont.cpp ****     0x003f66663e66663f, // 'B'
+  41:src/Impl/oledfont.cpp ****     0x003c66030303663c, // 'C'
+  42:src/Impl/oledfont.cpp ****     0x001f36666666361f, // 'D'
+  43:src/Impl/oledfont.cpp ****     0x007f46161e16467f, // 'E'
+  44:src/Impl/oledfont.cpp ****     0x000f06161e16467f, // 'F'
+  45:src/Impl/oledfont.cpp ****     0x007c66730303663c, // 'G'
+  46:src/Impl/oledfont.cpp ****     0x003333333f333333, // 'H'
+  47:src/Impl/oledfont.cpp ****     0x001e0c0c0c0c0c1e, // 'I'
+  48:src/Impl/oledfont.cpp ****     0x001e333330303078, // 'J'
+  49:src/Impl/oledfont.cpp ****     0x006766361e366667, // 'K'
+  50:src/Impl/oledfont.cpp ****     0x007f66460606060f, // 'L'
+  51:src/Impl/oledfont.cpp ****     0x0063636b7f7f7763, // 'M'
+  52:src/Impl/oledfont.cpp ****     0x006363737b6f6763, // 'N'
+  53:src/Impl/oledfont.cpp ****     0x001c36636363361c, // 'O'
+  54:src/Impl/oledfont.cpp ****     0x000f06063e66663f, // 'P'
+  55:src/Impl/oledfont.cpp ****     0x00381e3b3333331e, // 'Q'
+  56:src/Impl/oledfont.cpp ****     0x006766363e66663f, // 'R'
+  57:src/Impl/oledfont.cpp ****     0x001e33380e07331e, // 'S'
+  58:src/Impl/oledfont.cpp ****     0x001e0c0c0c0c2d3f, // 'T'
+  59:src/Impl/oledfont.cpp ****     0x003f333333333333, // 'U'
+  60:src/Impl/oledfont.cpp ****     0x000c1e3333333333, // 'V'
+  61:src/Impl/oledfont.cpp ****     0x0063777f6b636363, // 'W'
+  62:src/Impl/oledfont.cpp ****     0x0063361c1c366363, // 'X'
+  63:src/Impl/oledfont.cpp ****     0x001e0c0c1e333333, // 'Y'
+  64:src/Impl/oledfont.cpp ****     0x007f664c1831637f, // 'Z'
+  65:src/Impl/oledfont.cpp ****     0x001e06060606061e, // '['
+  66:src/Impl/oledfont.cpp ****     0x00406030180c0603, // '\'
+  67:src/Impl/oledfont.cpp ****     0x001e18181818181e, // ']'
+  68:src/Impl/oledfont.cpp ****     0x0000000063361c08, // '^'
+  69:src/Impl/oledfont.cpp ****     0x3f00000000000000, // '_'
+  70:src/Impl/oledfont.cpp ****     0x0000000000180c0c, // '`'
+  71:src/Impl/oledfont.cpp ****     0x006e333e301e0000, // 'a'
+  72:src/Impl/oledfont.cpp ****     0x003b66663e060607, // 'b'
+  73:src/Impl/oledfont.cpp ****     0x001e3303331e0000, // 'c'
+  74:src/Impl/oledfont.cpp ****     0x006e33333e303038, // 'd'
+  75:src/Impl/oledfont.cpp ****     0x001e033f331e0000, // 'e'
+  76:src/Impl/oledfont.cpp ****     0x000f06060f06361c, // 'f'
+  77:src/Impl/oledfont.cpp ****     0x1f303e33336e0000, // 'g'
+  78:src/Impl/oledfont.cpp ****     0x006766666e360607, // 'h'
+  79:src/Impl/oledfont.cpp ****     0x001e0c0c0c0e000c, // 'i'
+  80:src/Impl/oledfont.cpp ****     0x1e33333030300030, // 'j'
+  81:src/Impl/oledfont.cpp ****     0x0067361e36660607, // 'k'
+  82:src/Impl/oledfont.cpp ****     0x001e0c0c0c0c0c0e, // 'l'
+  83:src/Impl/oledfont.cpp ****     0x00636b7f7f330000, // 'm'
+  84:src/Impl/oledfont.cpp ****     0x00333333331f0000, // 'n'
+  85:src/Impl/oledfont.cpp ****     0x001e3333331e0000, // 'o'
+  86:src/Impl/oledfont.cpp ****     0x0f063e66663b0000, // 'p'
+  87:src/Impl/oledfont.cpp ****     0x78303e33336e0000, // 'q'
+  88:src/Impl/oledfont.cpp ****     0x000f06666e3b0000, // 'r'
+  89:src/Impl/oledfont.cpp ****     0x001f301e033e0000, // 's'
+ARM GAS  /tmp/ccFao0Kz.s 			page 3
+
+
+  90:src/Impl/oledfont.cpp ****     0x00182c0c0c3e0c08, // 't'
+  91:src/Impl/oledfont.cpp ****     0x006e333333330000, // 'u'
+  92:src/Impl/oledfont.cpp ****     0x000c1e3333330000, // 'v'
+  93:src/Impl/oledfont.cpp ****     0x00367f7f6b630000, // 'w'
+  94:src/Impl/oledfont.cpp ****     0x0063361c36630000, // 'x'
+  95:src/Impl/oledfont.cpp ****     0x1f303e3333330000, // 'y'
+  96:src/Impl/oledfont.cpp ****     0x003f260c193f0000, // 'z'
+  97:src/Impl/oledfont.cpp ****     0x00380c0c070c0c38, // '{'
+  98:src/Impl/oledfont.cpp ****     0x0c0c0c0c0c0c0c0c, // '|'
+  99:src/Impl/oledfont.cpp ****     0x00070c0c380c0c07, // '}'
+ 100:src/Impl/oledfont.cpp ****     0x0000000000003b6e // '~'
+ 101:src/Impl/oledfont.cpp **** 
+ 102:src/Impl/oledfont.cpp **** };
+ 103:src/Impl/oledfont.cpp **** 
+ 104:src/Impl/oledfont.cpp **** uint64_t OledFont::getData(const char symbol)
+ 105:src/Impl/oledfont.cpp **** {
+  27              		.loc 1 105 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+  33              	.LBB2:
+ 106:src/Impl/oledfont.cpp ****     if (symbol >= ' ' && symbol <= '~')
+  34              		.loc 1 106 0
+  35 0000 2038     		subs	r0, r0, #32
+  36              	.LVL1:
+  37 0002 C0B2     		uxtb	r0, r0
+  38 0004 5E28     		cmp	r0, #94
+  39 0006 04D8     		bhi	.L3
+  40              	.LVL2:
+  41              	.LBB3:
+ 107:src/Impl/oledfont.cpp ****     {
+ 108:src/Impl/oledfont.cpp ****         uint8_t index = symbol - 32;
+ 109:src/Impl/oledfont.cpp ****         return data[index];
+  42              		.loc 1 109 0
+  43 0008 034B     		ldr	r3, .L5
+  44 000a 03EBC000 		add	r0, r3, r0, lsl #3
+  45              	.LVL3:
+  46 000e 03C8     		ldmia	r0, {r0-r1}
+  47 0010 7047     		bx	lr
+  48              	.L3:
+  49              	.LBE3:
+  50              	.LBE2:
+ 110:src/Impl/oledfont.cpp ****     }
+ 111:src/Impl/oledfont.cpp ****     return 0;
+  51              		.loc 1 111 0
+  52 0012 0020     		movs	r0, #0
+  53 0014 0021     		movs	r1, #0
+ 112:src/Impl/oledfont.cpp **** }
+  54              		.loc 1 112 0
+  55 0016 7047     		bx	lr
+  56              	.L6:
+  57              		.align	2
+  58              	.L5:
+  59 0018 00000000 		.word	.LANCHOR0
+  60              		.cfi_endproc
+ARM GAS  /tmp/ccFao0Kz.s 			page 4
+
+
+  61              	.LFE1:
+  63              		.global	_ZN8OledFont4dataE
+  64              		.section	.rodata._ZN8OledFont4dataE,"a",%progbits
+  65              		.align	3
+  66              		.set	.LANCHOR0,. + 0
+  69              	_ZN8OledFont4dataE:
+  70 0000 00000000 		.word	0
+  71 0004 00000000 		.word	0
+  72 0008 183C3C18 		.word	406600728
+  73 000c 18001800 		.word	1572888
+  74 0010 00363614 		.word	339097088
+  75 0014 00000000 		.word	0
+  76 0018 36367F36 		.word	914306614
+  77 001c 7F363600 		.word	3552895
+  78 0020 0C3E031E 		.word	503528972
+  79 0024 301F0C00 		.word	794416
+  80 0028 1C361C6E 		.word	1847342620
+  81 002c 3B336E00 		.word	7222075
+  82 0030 00633318 		.word	406020864
+  83 0034 0C666300 		.word	6514188
+  84 0038 06060300 		.word	198150
+  85 003c 00000000 		.word	0
+  86 0040 180C0606 		.word	101059608
+  87 0044 060C1800 		.word	1575942
+  88 0048 060C1818 		.word	404229126
+  89 004c 180C0600 		.word	396312
+  90 0050 00663CFF 		.word	-12818944
+  91 0054 3C660000 		.word	26172
+  92 0058 000C0C3F 		.word	1057754112
+  93 005c 0C0C0000 		.word	3084
+  94 0060 00000000 		.word	0
+  95 0064 000C0C06 		.word	101452800
+  96 0068 0000003F 		.word	1056964608
+  97 006c 00000000 		.word	0
+  98 0070 00000000 		.word	0
+  99 0074 000C0C00 		.word	789504
+ 100 0078 6030180C 		.word	202911840
+ 101 007c 06030100 		.word	66310
+ 102 0080 3E63737B 		.word	2071159614
+ 103 0084 6F673E00 		.word	4089711
+ 104 0088 0C0E0C0C 		.word	202116620
+ 105 008c 0C0C3F00 		.word	4131852
+ 106 0090 1E33301C 		.word	472920862
+ 107 0094 06333F00 		.word	4141830
+ 108 0098 1E33301C 		.word	472920862
+ 109 009c 30331E00 		.word	1979184
+ 110 00a0 383C3633 		.word	859192376
+ 111 00a4 7F307800 		.word	7876735
+ 112 00a8 3F031F30 		.word	807338815
+ 113 00ac 30331E00 		.word	1979184
+ 114 00b0 1C06031F 		.word	520291868
+ 115 00b4 33331E00 		.word	1979187
+ 116 00b8 3F333018 		.word	405812031
+ 117 00bc 0C0C0C00 		.word	789516
+ 118 00c0 1E33331E 		.word	506671902
+ 119 00c4 33331E00 		.word	1979187
+ 120 00c8 1E33333E 		.word	1043542814
+ARM GAS  /tmp/ccFao0Kz.s 			page 5
+
+
+ 121 00cc 30180E00 		.word	923696
+ 122 00d0 000C0C00 		.word	789504
+ 123 00d4 000C0C00 		.word	789504
+ 124 00d8 000C0C00 		.word	789504
+ 125 00dc 000C0C06 		.word	101452800
+ 126 00e0 180C0603 		.word	50727960
+ 127 00e4 060C1800 		.word	1575942
+ 128 00e8 00003F00 		.word	4128768
+ 129 00ec 003F0000 		.word	16128
+ 130 00f0 060C1830 		.word	806882310
+ 131 00f4 180C0600 		.word	396312
+ 132 00f8 1E333018 		.word	405811998
+ 133 00fc 0C000C00 		.word	786444
+ 134 0100 3E637B7B 		.word	2071683902
+ 135 0104 7B031E00 		.word	1966971
+ 136 0108 0C1E3333 		.word	858988044
+ 137 010c 3F333300 		.word	3355455
+ 138 0110 3F66663E 		.word	1046898239
+ 139 0114 66663F00 		.word	4154982
+ 140 0118 3C660303 		.word	50554428
+ 141 011c 03663C00 		.word	3958275
+ 142 0120 1F366666 		.word	1717974559
+ 143 0124 66361F00 		.word	2045542
+ 144 0128 7F46161E 		.word	504776319
+ 145 012c 16467F00 		.word	8341014
+ 146 0130 7F46161E 		.word	504776319
+ 147 0134 16060F00 		.word	984598
+ 148 0138 3C660303 		.word	50554428
+ 149 013c 73667C00 		.word	8152691
+ 150 0140 3333333F 		.word	1060320051
+ 151 0144 33333300 		.word	3355443
+ 152 0148 1E0C0C0C 		.word	202116126
+ 153 014c 0C0C1E00 		.word	1969164
+ 154 0150 78303030 		.word	808464504
+ 155 0154 33331E00 		.word	1979187
+ 156 0158 6766361E 		.word	506881639
+ 157 015c 36666700 		.word	6776374
+ 158 0160 0F060606 		.word	101058063
+ 159 0164 46667F00 		.word	8349254
+ 160 0168 63777F7F 		.word	2139060067
+ 161 016c 6B636300 		.word	6513515
+ 162 0170 63676F7B 		.word	2070898531
+ 163 0174 73636300 		.word	6513523
+ 164 0178 1C366363 		.word	1667446300
+ 165 017c 63361C00 		.word	1848931
+ 166 0180 3F66663E 		.word	1046898239
+ 167 0184 06060F00 		.word	984582
+ 168 0188 1E333333 		.word	858993438
+ 169 018c 3B1E3800 		.word	3677755
+ 170 0190 3F66663E 		.word	1046898239
+ 171 0194 36666700 		.word	6776374
+ 172 0198 1E33070E 		.word	235352862
+ 173 019c 38331E00 		.word	1979192
+ 174 01a0 3F2D0C0C 		.word	202124607
+ 175 01a4 0C0C1E00 		.word	1969164
+ 176 01a8 33333333 		.word	858993459
+ 177 01ac 33333F00 		.word	4141875
+ARM GAS  /tmp/ccFao0Kz.s 			page 6
+
+
+ 178 01b0 33333333 		.word	858993459
+ 179 01b4 331E0C00 		.word	794163
+ 180 01b8 6363636B 		.word	1801675619
+ 181 01bc 7F776300 		.word	6518655
+ 182 01c0 6363361C 		.word	473326435
+ 183 01c4 1C366300 		.word	6501916
+ 184 01c8 3333331E 		.word	506671923
+ 185 01cc 0C0C1E00 		.word	1969164
+ 186 01d0 7F633118 		.word	405889919
+ 187 01d4 4C667F00 		.word	8349260
+ 188 01d8 1E060606 		.word	101058078
+ 189 01dc 06061E00 		.word	1967622
+ 190 01e0 03060C18 		.word	403441155
+ 191 01e4 30604000 		.word	4218928
+ 192 01e8 1E181818 		.word	404232222
+ 193 01ec 18181E00 		.word	1972248
+ 194 01f0 081C3663 		.word	1664490504
+ 195 01f4 00000000 		.word	0
+ 196 01f8 00000000 		.word	0
+ 197 01fc 0000003F 		.word	1056964608
+ 198 0200 0C0C1800 		.word	1575948
+ 199 0204 00000000 		.word	0
+ 200 0208 00001E30 		.word	807272448
+ 201 020c 3E336E00 		.word	7222078
+ 202 0210 0706063E 		.word	1040582151
+ 203 0214 66663B00 		.word	3892838
+ 204 0218 00001E33 		.word	857604096
+ 205 021c 03331E00 		.word	1979139
+ 206 0220 3830303E 		.word	1043345464
+ 207 0224 33336E00 		.word	7222067
+ 208 0228 00001E33 		.word	857604096
+ 209 022c 3F031E00 		.word	1966911
+ 210 0230 1C36060F 		.word	252065308
+ 211 0234 06060F00 		.word	984582
+ 212 0238 00006E33 		.word	862846976
+ 213 023c 333E301F 		.word	523255347
+ 214 0240 0706366E 		.word	1849034247
+ 215 0244 66666700 		.word	6776422
+ 216 0248 0C000E0C 		.word	202244108
+ 217 024c 0C0C1E00 		.word	1969164
+ 218 0250 30003030 		.word	808452144
+ 219 0254 3033331E 		.word	506671920
+ 220 0258 07066636 		.word	912655879
+ 221 025c 1E366700 		.word	6764062
+ 222 0260 0E0C0C0C 		.word	202116110
+ 223 0264 0C0C1E00 		.word	1969164
+ 224 0268 0000337F 		.word	2134048768
+ 225 026c 7F6B6300 		.word	6515583
+ 226 0270 00001F33 		.word	857669632
+ 227 0274 33333300 		.word	3355443
+ 228 0278 00001E33 		.word	857604096
+ 229 027c 33331E00 		.word	1979187
+ 230 0280 00003B66 		.word	1715142656
+ 231 0284 663E060F 		.word	252067430
+ 232 0288 00006E33 		.word	862846976
+ 233 028c 333E3078 		.word	2016427571
+ 234 0290 00003B6E 		.word	1849360384
+ARM GAS  /tmp/ccFao0Kz.s 			page 7
+
+
+ 235 0294 66060F00 		.word	984678
+ 236 0298 00003E03 		.word	54394880
+ 237 029c 1E301F00 		.word	2043934
+ 238 02a0 080C3E0C 		.word	205392904
+ 239 02a4 0C2C1800 		.word	1584140
+ 240 02a8 00003333 		.word	858980352
+ 241 02ac 33336E00 		.word	7222067
+ 242 02b0 00003333 		.word	858980352
+ 243 02b4 331E0C00 		.word	794163
+ 244 02b8 0000636B 		.word	1801650176
+ 245 02bc 7F7F3600 		.word	3571583
+ 246 02c0 00006336 		.word	912457728
+ 247 02c4 1C366300 		.word	6501916
+ 248 02c8 00003333 		.word	858980352
+ 249 02cc 333E301F 		.word	523255347
+ 250 02d0 00003F19 		.word	423559168
+ 251 02d4 0C263F00 		.word	4138508
+ 252 02d8 380C0C07 		.word	118230072
+ 253 02dc 0C0C3800 		.word	3673100
+ 254 02e0 0C0C0C0C 		.word	202116108
+ 255 02e4 0C0C0C0C 		.word	202116108
+ 256 02e8 070C0C38 		.word	940313607
+ 257 02ec 0C0C0700 		.word	461836
+ 258 02f0 6E3B0000 		.word	15214
+ 259 02f4 00000000 		.word	0
+ 260              		.text
+ 261              	.Letext0:
+ 262              		.file 2 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/mach
+ 263              		.file 3 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 264              		.file 4 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 265              		.file 5 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 266              		.file 6 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3.
+ 267              		.file 7 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 268              		.file 8 "src/Impl/oledfont.h"
+ARM GAS  /tmp/ccFao0Kz.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 oledfont.cpp
+     /tmp/ccFao0Kz.s:16     .text._ZN8OledFont7getDataEc:0000000000000000 $t
+     /tmp/ccFao0Kz.s:24     .text._ZN8OledFont7getDataEc:0000000000000000 _ZN8OledFont7getDataEc
+     /tmp/ccFao0Kz.s:59     .text._ZN8OledFont7getDataEc:0000000000000018 $d
+     /tmp/ccFao0Kz.s:69     .rodata._ZN8OledFont4dataE:0000000000000000 _ZN8OledFont4dataE
+     /tmp/ccFao0Kz.s:65     .rodata._ZN8OledFont4dataE:0000000000000000 $d
+                     .debug_frame:0000000000000010 $d
+                           .group:0000000000000000 wm4.0.a61368914fa3edc7c0e5283a5c096c94
+                           .group:0000000000000000 wm4._newlib_version.h.4.3572908597b70d672d181fc7fc501c19
+                           .group:0000000000000000 wm4.features.h.33.d97f2d646536517df901beeb5b9993f5
+                           .group:0000000000000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
+                           .group:0000000000000000 wm4._stdint.h.21.df4bc4bae8edb4c59788b8e3983f9c65
+                           .group:0000000000000000 wm4.newlib.h.8.5f2124c7e712be65f83b91ff86a0b1c1
+                           .group:0000000000000000 wm4.config.h.219.65a553ab5bef5482f0d7880b0d33015e
+                           .group:0000000000000000 wm4._ansi.h.23.1ee1144430bedaab1a14c7b57a6c8384
+                           .group:0000000000000000 wm4.stdio.h.31.7c0e28c411445f3f9c5b11accf882760
+                           .group:0000000000000000 wm4.stddef.h.187.422da5f95ac1285e95faf42258f23242
+                           .group:0000000000000000 wm4.cdefs.h.47.9bc8274c84fddbf05edd550eb0bf48cd
+                           .group:0000000000000000 wm4.stddef.h.39.f3921369feb94d56be5cea128eb7b96e
+                           .group:0000000000000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
+                           .group:0000000000000000 wm4.lock.h.2.1461d1fff82dffe8bfddc23307f6484f
+                           .group:0000000000000000 wm4._types.h.125.5cf8a495f1f7ef36777ad868a1e32068
+                           .group:0000000000000000 wm4.stddef.h.161.7e98c9c86da0ed2d27af2ef92af7d013
+                           .group:0000000000000000 wm4._types.h.183.c226d164ceca1f2ecb9ae9360c54a098
+                           .group:0000000000000000 wm4.reent.h.17.23b059516345f8f5abfa01ddc379570f
+                           .group:0000000000000000 wm4.types.h.40.e8c16e7ec36ba55f133d0616070e25fc
+                           .group:0000000000000000 wm4._endian.h.31.65a10590763c3dde1ac4a7f66d7d4891
+                           .group:0000000000000000 wm4.endian.h.9.49f3a4695c1b61e8a0808de3c4a106cb
+                           .group:0000000000000000 wm4._timeval.h.30.0e8bfd94e85db17dda3286ee81496fe6
+                           .group:0000000000000000 wm4.timespec.h.41.d855182eb0e690443ab8651bcedca6e1
+                           .group:0000000000000000 wm4.select.h.30.bbece7fa40993a78092dcc5805132560
+                           .group:0000000000000000 wm4.types.h.69.ed3eae3cf73030a737515151ebcab7a1
+                           .group:0000000000000000 wm4.stdio.h.2.4aa87247282eca6c8f36f9de33d8df1a
+                           .group:0000000000000000 wm4.stdio.h.81.8188691c2279eac7a223caa50f6694b9
+
+NO UNDEFINED SYMBOLS

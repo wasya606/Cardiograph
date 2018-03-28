@@ -4,6 +4,15 @@
 #include <QObject>
 #include <QIODevice>
 
+struct PeripheralDeviceInfo
+{
+    QString name;
+    QString systemLocation;
+    QString address;
+    QString id;
+    bool isBusy = false;
+};
+
 class PeripheralConnection : public QObject
 {
     Q_OBJECT
@@ -11,41 +20,50 @@ public:
     explicit PeripheralConnection(QObject *parent = nullptr);
     virtual ~PeripheralConnection();
 
-    virtual void init(const QVariant& deviceParameters) = 0;
+    virtual void init() = 0;
     virtual void requestAvailableDevicesInfo() = 0;
 
-    virtual void connectDevice();
+    virtual void connectDevice(const QVariant& deviceParameters);
     virtual void disconnectDevice();
 
-    void setTime(const uint16_t time);
-    void getTime();
+    void setTime(const uint32_t time);
     void setSamplesCount(const uint16_t count);
-    void getSamplesCount();
-    void requestData(const uint8_t blocks, const uint16_t samples);
+    void startConversion();
+    void stopConversion();
+    void getTime();
+    void getSamples();
+    void requestAdcData();
+    QList<PeripheralDeviceInfo>* getAvailableDevicesInfo() const;
+
 
 public:
-    enum UartCommandRequest
+    //High byte - command ID, low byte - command expected data length
+    //Cmd format: CC:[DD:DD:...], CC - command id byte, DD - input data bytes
+    //Response format: [DD:DD:DD:...]:CC:RR, DD - response data bytes, CC - command id byte, RR - result byte
+    enum UARTCommand
     {
-        SET_TIME            = 0xC0,
-        GET_TIME            = 0xC1,
-        SET_SAMPLES         = 0xC2,
-        GET_SAMPLES         = 0xC3,
-        REQUEST_DATA        = 0xC4
+        NONE_CMD                = 0x0000,
+        SET_TIME_CMD            = 'T' << 8 | 0x04,//Expected 4 bytes of input data;
+        SET_SAMPLES_CMD         = 'S' << 8 | 0x02,//Expected 2 bytes of input data;
+        SET_ADC_CONV_STATE_CMD  = 'C' << 8 | 0x01,//Expected 1 bytes of input data;
+        GET_TIME_CMD            = 't' << 8 | 0x00,//No input data expected;
+        GET_SAMPLES_CMD         = 's' << 8 | 0x00,//No input data expected;
+        REQUEST_DATA_CMD        = 'R' << 8 | 0x00 //No input data expected;
     };
 
-    enum UartCommandResponse
+    enum UARTCommandResult
     {
-        CMD_OK      = 0xF0D0,
-        CMD_BUSY    = 0xF0FE,
-        CMD_ERROR   = 0xF0FF
+        CMD_OK      = 'O',
+        CMD_ERROR   = 'E'
     };
+
 
 signals:
     void deviceConnected();
     void deviceConnectionError();
     void deviceDisconnected();
-    void availableDevicesInfoReceived(const QVariant& info);
-    void dataReceived(const uint8_t cmd, const QByteArray* data);
+    void availableDevicesInfoUpdated();
+    void dataReceived(const uint8_t cmdId, const uint8_t cmdResult, const QByteArray* data);
 
 protected:
     struct PendingCmd
@@ -74,18 +92,20 @@ protected slots:
 protected:
     virtual void connectSignals();
     virtual void disconnectSignals();
-    virtual void sendCmd(PendingCmd *cmd);
-    virtual void sendQueuedCmd();
+    virtual void sendCmd(const QByteArray& cmd);
+
+    void writeCmd(const QByteArray& cmd);
 
 protected:
-    bool isCmdConfirmed;
-    uint16_t readedDataBlocks;
+    uint8_t activeCmdID;
+    uint32_t conversionTime;
+    uint16_t samplesCount;
     QIODevice* peripheryDevice;
 
     QByteArray* buffer;
-    QList<PendingCmd*>* cmdQueue;
+    QByteArrayList* cmdQueue;
+    QList<PeripheralDeviceInfo>* availableDevicesInfo;
 
-    PendingCmd* pendingCmd;
 };
 
 #endif // PERIPHERAL_CONNECTION_H

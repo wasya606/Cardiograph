@@ -13,10 +13,10 @@ public:
 
     BluetoothConnection();
 
-    void init(const QVariant&);
+    void init();
     void requestAvailableDevicesInfo();
 
-    void connectDevice();
+    void connectDevice(const QVariant& deviceParameters);
     void disconnectDevice();
 
 protected:

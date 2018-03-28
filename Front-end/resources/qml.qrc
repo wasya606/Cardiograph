@@ -7,5 +7,6 @@
         <file>qml/ControlPanel.qml</file>
         <file>qml/CPannelButton.qml</file>
         <file>qml/CustomGroupBox.qml</file>
+        <file>qml/CPSpinBox.qml</file>
     </qresource>
 </RCC>

@@ -72,10 +72,10 @@ drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi_ex.c
 # C++sources
 CPP_SOURCES =  \
 src/main.cpp \
-src/Impl/timer.cpp \
+src/Impl/oled_driver.cpp \
 src/Impl/cardiograph.cpp \
-src/Impl/adc_buffer.cpp \
-src/Impl/oled_driver.cpp
+src/Impl/oledfont.cpp \
+src/Impl/timer.cpp
 
 # ASM sources
 ASM_SOURCES =  \
@@ -124,7 +124,8 @@ AS_DEFS =
 # C defines
 C_DEFS =  \
 -DUSE_HAL_DRIVER \
--DSTM32F103xB
+-DSTM32F103xB \
+-DUSE_SPI_CRC
 
 
 # AS includes

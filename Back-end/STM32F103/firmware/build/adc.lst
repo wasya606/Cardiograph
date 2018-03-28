@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccQrQauh.s 			page 1
+ARM GAS  /tmp/cc5eZ1kY.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -38,7 +38,7 @@ ARM GAS  /tmp/ccQrQauh.s 			page 1
   10:src/HAL/adc.c ****   * inserted by the user or by software development tools
   11:src/HAL/adc.c ****   * are owned by their respective copyright owners.
   12:src/HAL/adc.c ****   *
-  13:src/HAL/adc.c ****   * COPYRIGHT(c) 2017 STMicroelectronics
+  13:src/HAL/adc.c ****   * COPYRIGHT(c) 2018 STMicroelectronics
   14:src/HAL/adc.c ****   *
   15:src/HAL/adc.c ****   * Redistribution and use in source and binary forms, with or without modification,
   16:src/HAL/adc.c ****   * are permitted provided that the following conditions are met:
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccQrQauh.s 			page 1
   30:src/HAL/adc.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
   31:src/HAL/adc.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
   32:src/HAL/adc.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-ARM GAS  /tmp/ccQrQauh.s 			page 2
+ARM GAS  /tmp/cc5eZ1kY.s 			page 2
 
 
   33:src/HAL/adc.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccQrQauh.s 			page 1
   47              		.cfi_def_cfa_offset 32
   65:src/HAL/adc.c ****   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   66:src/HAL/adc.c ****   hadc1.Init.NbrOfConversion = 1;
-ARM GAS  /tmp/ccQrQauh.s 			page 3
+ARM GAS  /tmp/cc5eZ1kY.s 			page 3
 
 
   67:src/HAL/adc.c ****   if (HAL_ADC_Init(&hadc1) != HAL_OK)
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccQrQauh.s 			page 1
   81 0032 0392     		str	r2, [sp, #12]
   82              		.loc 1 77 0
   83 0034 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
-ARM GAS  /tmp/ccQrQauh.s 			page 4
+ARM GAS  /tmp/cc5eZ1kY.s 			page 4
 
 
   84              	.LVL1:
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccQrQauh.s 			page 1
   86:src/HAL/adc.c **** 
   87:src/HAL/adc.c ****   GPIO_InitTypeDef GPIO_InitStruct;
   88:src/HAL/adc.c ****   if(adcHandle->Instance==ADC1)
-ARM GAS  /tmp/ccQrQauh.s 			page 5
+ARM GAS  /tmp/cc5eZ1kY.s 			page 5
 
 
  131              		.loc 1 88 0
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccQrQauh.s 			page 1
  167              		.loc 1 94 0
  168 0022 03F40073 		and	r3, r3, #512
  169 0026 0193     		str	r3, [sp, #4]
-ARM GAS  /tmp/ccQrQauh.s 			page 6
+ARM GAS  /tmp/cc5eZ1kY.s 			page 6
 
 
  170 0028 0446     		mov	r4, r0
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccQrQauh.s 			page 1
  204 0050 2860     		str	r0, [r5]
  113:src/HAL/adc.c ****     if (HAL_DMA_Init(&hdma_adc1) != HAL_OK)
  205              		.loc 1 113 0
-ARM GAS  /tmp/ccQrQauh.s 			page 7
+ARM GAS  /tmp/cc5eZ1kY.s 			page 7
 
 
  206 0052 2846     		mov	r0, r5
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccQrQauh.s 			page 1
  242              	.L28:
  243 007a 00BF     		.align	2
  244              	.L27:
-ARM GAS  /tmp/ccQrQauh.s 			page 8
+ARM GAS  /tmp/cc5eZ1kY.s 			page 8
 
 
  245 007c 00240140 		.word	1073816576
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccQrQauh.s 			page 1
  284              		.loc 1 140 0
  285 0010 0848     		ldr	r0, .L35+8
  286              	.LVL11:
-ARM GAS  /tmp/ccQrQauh.s 			page 9
+ARM GAS  /tmp/cc5eZ1kY.s 			page 9
 
 
  135:src/HAL/adc.c ****   
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccQrQauh.s 			page 1
  331              	hdma_adc1:
  332 0000 00000000 		.space	68
  332      00000000 
-ARM GAS  /tmp/ccQrQauh.s 			page 10
+ARM GAS  /tmp/cc5eZ1kY.s 			page 10
 
 
  332      00000000 
@@ -568,28 +568,28 @@ ARM GAS  /tmp/ccQrQauh.s 			page 1
  351              		.file 14 "drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
  352              		.file 15 "src/HAL/adc.h"
  353              		.file 16 "src/HAL/dma.h"
-ARM GAS  /tmp/ccQrQauh.s 			page 11
+ARM GAS  /tmp/cc5eZ1kY.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 adc.c
-     /tmp/ccQrQauh.s:16     .text.MX_ADC1_Init:0000000000000000 $t
-     /tmp/ccQrQauh.s:24     .text.MX_ADC1_Init:0000000000000000 MX_ADC1_Init
-     /tmp/ccQrQauh.s:109    .text.MX_ADC1_Init:0000000000000050 $d
-     /tmp/ccQrQauh.s:116    .text.HAL_ADC_MspInit:0000000000000000 $t
-     /tmp/ccQrQauh.s:124    .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
-     /tmp/ccQrQauh.s:245    .text.HAL_ADC_MspInit:000000000000007c $d
-     /tmp/ccQrQauh.s:254    .text.HAL_ADC_MspDeInit:0000000000000000 $t
-     /tmp/ccQrQauh.s:262    .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
-     /tmp/ccQrQauh.s:311    .text.HAL_ADC_MspDeInit:000000000000002c $d
-     /tmp/ccQrQauh.s:331    .bss.hdma_adc1:0000000000000000 hdma_adc1
-     /tmp/ccQrQauh.s:324    .bss.hadc1:0000000000000000 hadc1
-     /tmp/ccQrQauh.s:320    .bss.hadc1:0000000000000000 $d
-     /tmp/ccQrQauh.s:327    .bss.hdma_adc1:0000000000000000 $d
-     /tmp/ccQrQauh.s:334    .rodata.MX_ADC1_Init.str1.4:0000000000000000 $d
+     /tmp/cc5eZ1kY.s:16     .text.MX_ADC1_Init:0000000000000000 $t
+     /tmp/cc5eZ1kY.s:24     .text.MX_ADC1_Init:0000000000000000 MX_ADC1_Init
+     /tmp/cc5eZ1kY.s:109    .text.MX_ADC1_Init:0000000000000050 $d
+     /tmp/cc5eZ1kY.s:116    .text.HAL_ADC_MspInit:0000000000000000 $t
+     /tmp/cc5eZ1kY.s:124    .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
+     /tmp/cc5eZ1kY.s:245    .text.HAL_ADC_MspInit:000000000000007c $d
+     /tmp/cc5eZ1kY.s:254    .text.HAL_ADC_MspDeInit:0000000000000000 $t
+     /tmp/cc5eZ1kY.s:262    .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
+     /tmp/cc5eZ1kY.s:311    .text.HAL_ADC_MspDeInit:000000000000002c $d
+     /tmp/cc5eZ1kY.s:331    .bss.hdma_adc1:0000000000000000 hdma_adc1
+     /tmp/cc5eZ1kY.s:324    .bss.hadc1:0000000000000000 hadc1
+     /tmp/cc5eZ1kY.s:320    .bss.hadc1:0000000000000000 $d
+     /tmp/cc5eZ1kY.s:327    .bss.hdma_adc1:0000000000000000 $d
+     /tmp/cc5eZ1kY.s:334    .rodata.MX_ADC1_Init.str1.4:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
-                           .group:0000000000000000 wm4.0.8ddc6fc9299f63009459649d6a7e7c51
-                           .group:0000000000000000 wm4.main.h.40.54e5213d35853f8debd8cd48178ac5c1
+                           .group:0000000000000000 wm4.0.04924adcfdc7a6cf00118bdef9d1ce8d
+                           .group:0000000000000000 wm4.main.h.40.6fe808b6568aa38f66585b648d7167ef
                            .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.52.96cb61986c8bfeb3a4fa629a7a7441f6
                            .group:0000000000000000 wm4.stm32f1xx.h.57.c2a10934f4c6830aeb7e4997f02806f1
                            .group:0000000000000000 wm4.stm32f103xb.h.56.66305a77cea9d5300aac997a78930076
@@ -628,7 +628,7 @@ DEFINED SYMBOLS
                            .group:0000000000000000 wm4.stm32f1xx_hal_def.h.77.f54bfbbe3e3696aae97b05a3f338caf7
                            .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.112.09261d6ad0eef5abae6b9147d0cf5cbf
                            .group:0000000000000000 wm4.stm32f1xx_hal_rcc_ex.h.40.bb785d717afc4d2d2b63a3608cb5a0c5
-ARM GAS  /tmp/ccQrQauh.s 			page 12
+ARM GAS  /tmp/cc5eZ1kY.s 			page 12
 
 
                            .group:0000000000000000 wm4.stm32f1xx_hal_rcc.h.1219.902328474751456408f7d18f6caace93

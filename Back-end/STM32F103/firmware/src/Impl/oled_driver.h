@@ -53,14 +53,15 @@ public:
     OledDriver();
     ~OledDriver();
 
-    void init(const Callback&& callback = [](){});
+    void init(const uint16_t fillColor = BLACK);
 
-    void spiTxHandler();
-    void timerHandler();
+    bool getInitialized() const;
 
-    bool getInitialized();
+    uint16_t getBackgroundColor() const;
 
     //DRAW
+    void fillScreen(const uint16_t color = BLACK);
+
     void drawPixel(const uint8_t x, const uint8_t y, const uint16_t color);
 
     void drawLine(const uint8_t fromX, const uint8_t fromY, const uint8_t toX, const uint8_t toY, const uint16_t color);
@@ -73,6 +74,12 @@ public:
 
     void drawRectangle(const uint8_t x, const uint8_t y, const uint8_t width,
                        const uint8_t height, const uint16_t color);
+
+    void drawSymbol(const char symbol, const uint8_t x, const uint8_t y, const uint16_t color);
+    void drawSymbol(const char symbol, const uint8_t x, const uint8_t y, const uint16_t color, const uint16_t backColor);
+
+    void printText(const char* text, const uint8_t x, const uint8_t y, const uint16_t color);
+    void printText(const char* text, const uint8_t x, const uint8_t y, const uint16_t color, const uint16_t backColor);
 
 private:
     enum PinState
@@ -125,78 +132,21 @@ private:
         SET_V_VOLTAGE                  = 0xBE
     };
 
-    enum TimerKey
-    {
-        RESET_TIMER = 0x01,
-        DRAW_TIMER = 0x02
-    };
-
-    enum OledRequestType
-    {
-        COMMAND,
-        DATA
-    };
-
-private:
-    struct OledRequest
-    {
-        OledRequest(const uint8_t data, const OledRequestType type = COMMAND) :
-            data(data), type(type) {}
-
-        uint8_t data;
-        OledRequestType type;
-    };
-
-    struct DrawRequest
-    {
-        DrawRequest(std::list<OledRequest*>* oledRequests, const uint16_t delay) :
-            oledRequests(oledRequests), delay(delay) {}
-
-        ~DrawRequest()
-        {
-            if (oledRequests != nullptr)
-            {
-                while (!oledRequests->empty())
-                {
-                    OledRequest* oledRequest = oledRequests->back();
-                    if (oledRequest != nullptr)
-                        delete oledRequest;
-                    oledRequests->pop_back();
-                }
-                delete oledRequests;
-            }
-        }
-
-        std::list<OledRequest*>* oledRequests;
-        uint16_t delay;
-    };
-
 private:
     void sendCommand(const uint8_t cmd);
     void sendData(const uint8_t data);
-    void transmitSpi();
+    void transmitSpi(const uint8_t data);
     void setCS(const PinState state);
     void setDC(const PinState state);
     void setRST(const PinState state);
-    void reset(const Callback&& callback = [](){});
-    void setGlobalTimerDelay(const uint32_t delay_us);
-    void startGlobalTimer();
-    void stopGlobalTimer();
+    void reset();
 
-    void pushColor(std::list<OledRequest *>* requests, const uint16_t color);
-    void performDraw();
+    void pushColor(const uint16_t color);
 
 private:
-    void onDrawComplete();
-
-private:
-    bool isSpiBusy;
-    bool isDrawBusy;
     bool isInitialized;
     uint8_t spiBuffer;
-    std::list<uint8_t>* spiTxQueue;    
-    std::map<uint8_t, Timer*>* timers;
-    std::list<DrawRequest*>* drawQueue;
+    uint16_t backgroundColor;
 };
 
 #endif // OLED_DRIVER_H

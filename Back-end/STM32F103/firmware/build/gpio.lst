@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc6tvkRG.s 			page 1
+ARM GAS  /tmp/cc2e3UB7.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -38,7 +38,7 @@ ARM GAS  /tmp/cc6tvkRG.s 			page 1
   10:src/HAL/gpio.c ****   * inserted by the user or by software development tools
   11:src/HAL/gpio.c ****   * are owned by their respective copyright owners.
   12:src/HAL/gpio.c ****   *
-  13:src/HAL/gpio.c ****   * COPYRIGHT(c) 2017 STMicroelectronics
+  13:src/HAL/gpio.c ****   * COPYRIGHT(c) 2018 STMicroelectronics
   14:src/HAL/gpio.c ****   *
   15:src/HAL/gpio.c ****   * Redistribution and use in source and binary forms, with or without modification,
   16:src/HAL/gpio.c ****   * are permitted provided that the following conditions are met:
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc6tvkRG.s 			page 1
   30:src/HAL/gpio.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
   31:src/HAL/gpio.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
   32:src/HAL/gpio.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-ARM GAS  /tmp/cc6tvkRG.s 			page 2
+ARM GAS  /tmp/cc2e3UB7.s 			page 2
 
 
   33:src/HAL/gpio.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc6tvkRG.s 			page 1
   69:src/HAL/gpio.c ****   __HAL_RCC_GPIOB_CLK_ENABLE();
   70:src/HAL/gpio.c **** 
   71:src/HAL/gpio.c ****   /*Configure GPIO pin Output Level */
-ARM GAS  /tmp/cc6tvkRG.s 			page 3
+ARM GAS  /tmp/cc2e3UB7.s 			page 3
 
 
   72:src/HAL/gpio.c ****   HAL_GPIO_WritePin(InternalLed_GPIO_Port, InternalLed_Pin, GPIO_PIN_RESET);
@@ -137,10 +137,10 @@ ARM GAS  /tmp/cc6tvkRG.s 			page 1
   49              	.LBE3:
   79:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   50              		.loc 1 79 0
-  51 000c 0126     		movs	r6, #1
+  51 000c 0125     		movs	r5, #1
   80:src/HAL/gpio.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   52              		.loc 1 80 0
-  53 000e 0225     		movs	r5, #2
+  53 000e 0226     		movs	r6, #2
   54              	.LBB4:
   66:src/HAL/gpio.c ****   __HAL_RCC_GPIOD_CLK_ENABLE();
   55              		.loc 1 66 0
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc6tvkRG.s 			page 1
   81              		.loc 1 75 0
   82 0030 244C     		ldr	r4, .L3+4
   83              	.LBB8:
-ARM GAS  /tmp/cc6tvkRG.s 			page 4
+ARM GAS  /tmp/cc2e3UB7.s 			page 4
 
 
   67:src/HAL/gpio.c ****   __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc6tvkRG.s 			page 1
  127              		.loc 1 75 0
  128 0068 2046     		mov	r0, r4
  129 006a 0022     		movs	r2, #0
-ARM GAS  /tmp/cc6tvkRG.s 			page 5
+ARM GAS  /tmp/cc2e3UB7.s 			page 5
 
 
  130 006c 42F60441 		movw	r1, #11268
@@ -253,10 +253,10 @@ ARM GAS  /tmp/cc6tvkRG.s 			page 1
  137 0078 0497     		str	r7, [sp, #16]
   79:src/HAL/gpio.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
  138              		.loc 1 79 0
- 139 007a 0596     		str	r6, [sp, #20]
+ 139 007a 0595     		str	r5, [sp, #20]
   80:src/HAL/gpio.c ****   HAL_GPIO_Init(InternalLed_GPIO_Port, &GPIO_InitStruct);
  140              		.loc 1 80 0
- 141 007c 0795     		str	r5, [sp, #28]
+ 141 007c 0796     		str	r6, [sp, #28]
  142              		.loc 1 81 0
  143 007e FFF7FEFF 		bl	HAL_GPIO_Init
  144              	.LVL2:
@@ -281,7 +281,7 @@ ARM GAS  /tmp/cc6tvkRG.s 			page 1
  155 008e 0793     		str	r3, [sp, #28]
   85:src/HAL/gpio.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
  156              		.loc 1 85 0
- 157 0090 0596     		str	r6, [sp, #20]
+ 157 0090 0595     		str	r5, [sp, #20]
  158              		.loc 1 87 0
  159 0092 FFF7FEFF 		bl	HAL_GPIO_Init
  160              	.LVL3:
@@ -298,39 +298,40 @@ ARM GAS  /tmp/cc6tvkRG.s 			page 1
  164              		.loc 1 90 0
  165 009a 0497     		str	r7, [sp, #16]
   91:src/HAL/gpio.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-ARM GAS  /tmp/cc6tvkRG.s 			page 6
+ARM GAS  /tmp/cc2e3UB7.s 			page 6
 
 
  166              		.loc 1 91 0
- 167 009c 0596     		str	r6, [sp, #20]
+ 167 009c 0595     		str	r5, [sp, #20]
   92:src/HAL/gpio.c ****   HAL_GPIO_Init(BT_EN_GPIO_Port, &GPIO_InitStruct);
  168              		.loc 1 92 0
- 169 009e 0795     		str	r5, [sp, #28]
+ 169 009e 0796     		str	r6, [sp, #28]
  170              		.loc 1 93 0
  171 00a0 FFF7FEFF 		bl	HAL_GPIO_Init
  172              	.LVL4:
   94:src/HAL/gpio.c **** 
   95:src/HAL/gpio.c ****   /*Configure GPIO pins : PBPin PBPin */
   96:src/HAL/gpio.c ****   GPIO_InitStruct.Pin = LO_P_Pin|LO_N_Pin;
- 173              		.loc 1 96 0
- 174 00a4 4FF44042 		mov	r2, #49152
   97:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
- 175              		.loc 1 97 0
- 176 00a8 0023     		movs	r3, #0
-  98:src/HAL/gpio.c ****   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+ 173              		.loc 1 97 0
+ 174 00a4 0023     		movs	r3, #0
+  96:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 175              		.loc 1 96 0
+ 176 00a6 4FF44042 		mov	r2, #49152
+  98:src/HAL/gpio.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
   99:src/HAL/gpio.c ****   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
  177              		.loc 1 99 0
  178 00aa 04A9     		add	r1, sp, #16
  179 00ac 2046     		mov	r0, r4
-  98:src/HAL/gpio.c ****   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
- 180              		.loc 1 98 0
- 181 00ae 0695     		str	r5, [sp, #24]
   96:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
- 182              		.loc 1 96 0
- 183 00b0 0492     		str	r2, [sp, #16]
-  97:src/HAL/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
- 184              		.loc 1 97 0
- 185 00b2 0593     		str	r3, [sp, #20]
+ 180              		.loc 1 96 0
+ 181 00ae 0492     		str	r2, [sp, #16]
+  97:src/HAL/gpio.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 182              		.loc 1 97 0
+ 183 00b0 0593     		str	r3, [sp, #20]
+  98:src/HAL/gpio.c ****   GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 184              		.loc 1 98 0
+ 185 00b2 0693     		str	r3, [sp, #24]
  186              		.loc 1 99 0
  187 00b4 FFF7FEFF 		bl	HAL_GPIO_Init
  188              	.LVL5:
@@ -357,23 +358,23 @@ ARM GAS  /tmp/cc6tvkRG.s 			page 1
  208              		.file 5 "drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
  209              		.file 6 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
  210              		.file 7 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ARM GAS  /tmp/cc2e3UB7.s 			page 7
+
+
  211              		.file 8 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3.
-ARM GAS  /tmp/cc6tvkRG.s 			page 7
-
-
  212              		.file 9 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
  213              		.file 10 "drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
-ARM GAS  /tmp/cc6tvkRG.s 			page 8
+ARM GAS  /tmp/cc2e3UB7.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 gpio.c
-     /tmp/cc6tvkRG.s:16     .text.MX_GPIO_Init:0000000000000000 $t
-     /tmp/cc6tvkRG.s:24     .text.MX_GPIO_Init:0000000000000000 MX_GPIO_Init
-     /tmp/cc6tvkRG.s:197    .text.MX_GPIO_Init:00000000000000c0 $d
+     /tmp/cc2e3UB7.s:16     .text.MX_GPIO_Init:0000000000000000 $t
+     /tmp/cc2e3UB7.s:24     .text.MX_GPIO_Init:0000000000000000 MX_GPIO_Init
+     /tmp/cc2e3UB7.s:197    .text.MX_GPIO_Init:00000000000000c0 $d
                      .debug_frame:0000000000000010 $d
-                           .group:0000000000000000 wm4.0.8ddc6fc9299f63009459649d6a7e7c51
-                           .group:0000000000000000 wm4.main.h.40.54e5213d35853f8debd8cd48178ac5c1
+                           .group:0000000000000000 wm4.0.04924adcfdc7a6cf00118bdef9d1ce8d
+                           .group:0000000000000000 wm4.main.h.40.6fe808b6568aa38f66585b648d7167ef
                            .group:0000000000000000 wm4.stm32f1xx_hal_conf.h.52.96cb61986c8bfeb3a4fa629a7a7441f6
                            .group:0000000000000000 wm4.stm32f1xx.h.57.c2a10934f4c6830aeb7e4997f02806f1
                            .group:0000000000000000 wm4.stm32f103xb.h.56.66305a77cea9d5300aac997a78930076
@@ -423,7 +424,7 @@ DEFINED SYMBOLS
                            .group:0000000000000000 wm4.stm32f1xx_hal_adc.h.40.3ad40e622f0cef64228eb182e4bbe00f
                            .group:0000000000000000 wm4.stm32f1xx_hal_adc_ex.h.40.3118796521817cc82626257e9c7ab79c
                            .group:0000000000000000 wm4.stm32f1xx_hal_flash.h.40.12aaef98e1fbb85e3a8f79f98532d04a
-ARM GAS  /tmp/cc6tvkRG.s 			page 9
+ARM GAS  /tmp/cc2e3UB7.s 			page 9
 
 
                            .group:0000000000000000 wm4.stm32f1xx_hal_flash_ex.h.40.ad66c77e153bc5a4a1d60e46727f4ae5

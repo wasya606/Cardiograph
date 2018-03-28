@@ -10,8 +10,10 @@ public:
     SerialConnection();
     //~SerialConnection();
 
-    void init(const QVariant &deviceParameters);
+    void init();
     void requestAvailableDevicesInfo();
+
+    void connectDevice(const QVariant& deviceParameters);
 };
 
 #endif // SERIAL_CONNECTION_H

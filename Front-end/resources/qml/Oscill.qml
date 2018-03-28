@@ -4,29 +4,46 @@ Item
 {
     id: stage
 
-    property int verticalPos: height / 2;
-    property int blockSize: 16;
-    property int blocksCount: width / blockSize;
-    property int currentBlock: 0;
-    property int currentBlockX: currentBlock * blockSize;
-    property real lastValue: 0;
+    property int samplesCount: 256;
 
+    property int step: width / samplesCount;
+
+    property int verticalPosDelta: 0
+
+    property int verticalPos: verticalPosDelta * horizontalLinesInterval + height / 2;
     property string lineColor: "white"
 
     //Background
-    property int verticalLinesInterval: blockSize;
-    property int horizontalLinesInterval: 60;
+    property int verticalLinesInterval: width / 10;
+    property int horizontalLinesInterval: height / 10;
+
     property string backGroundColor: "black";
     property string verticalLinesColor: "blue";
     property string horizontalLinesColor: "green";
 
-    property var values: [];
+    property int time: 0;
+    property int sensitivityPerPixel: 0;
 
-    property bool isAllowDraw: false;
+    property var values: [];
+    property bool isStarted: false;
+    property var avaliableDevices: []
+
+    signal peripheryConnectedSignal(var status);
+    signal conversionStatusSignal(var status);
+    signal requestPeripheryConnectionSignal(var status);
+    signal requestAvaliableDevicesSignal();
+    signal canvasUpdated();
+    signal timeChangedSignal(var newTime);
+    signal samplesCountChangedSignal(var newSamplesCount);
 
     Component.onCompleted: init();
 
-    onBlockSizeChanged:
+    onTimeChanged:
+    {
+        timeChangedSignal(time);
+    }
+
+    onSamplesCountChanged:
     {
         init();
     }
@@ -45,18 +62,19 @@ Item
             onPaint:
             {
                 var drawContext = backgroundCanvas.getContext("2d");
+                drawContext.clearRect(0, 0, stage.width, stage.height);
 
                 //Draw horizontal lines
                 drawContext.strokeStyle = horizontalLinesColor;
                 drawContext.lineWidth = 2;
                 drawContext.globalAlpha = 0.1;
                 drawContext.beginPath();
-                for (var i = 0; verticalPos - i >= 0; i += horizontalLinesInterval)
+                for (var i = 0; height / 2 - i >= 0; i += horizontalLinesInterval)
                 {
-                    drawContext.moveTo(0, verticalPos + i);
-                    drawContext.lineTo(stage.width, verticalPos + i);
-                    drawContext.moveTo(0, verticalPos - i);
-                    drawContext.lineTo(stage.width, verticalPos - i);
+                    drawContext.moveTo(0, height / 2 + i);
+                    drawContext.lineTo(stage.width, height / 2 + i);
+                    drawContext.moveTo(0, height / 2 - i);
+                    drawContext.lineTo(stage.width, height / 2 - i);
                 }
                 drawContext.stroke();
 
@@ -75,7 +93,7 @@ Item
                 //Draw center horizonal line
                 drawContext.strokeStyle = horizontalLinesColor;
                 drawContext.lineWidth = 4;
-                drawContext.globalAlpha = 0.15;
+                drawContext.globalAlpha = 0.25;
                 drawContext.beginPath();
                 drawContext.moveTo(0, verticalPos);
                 drawContext.lineTo(stage.width, verticalPos);
@@ -92,48 +110,74 @@ Item
 
         onPaint:
         {
-            if (!isAllowDraw)
+            if (!isStarted)
                 return;
 
             var drawContext = drawCanvas.getContext("2d");
-            drawContext.clearRect(currentBlockX, 0, blockSize * 2, stage.height);
+            drawContext.clearRect(0, 0, stage.width, stage.height);
             drawContext.strokeStyle = lineColor;
             drawContext.lineWidth = 2;
             drawContext.beginPath();
 
-            drawContext.moveTo(currentBlockX == 0 ? 0 : currentBlockX - 1, lastValue + verticalPos);
-            for (var i = 0; i < blockSize; i++)
+            drawContext.moveTo(0, verticalPos);
+            for (var i = 0; i < samplesCount; i++)
             {
-                drawContext.lineTo(currentBlockX + i, values[i] + verticalPos);
+                var validValue = -values[i] * 3300 / 4095 / sensitivityPerPixel;
+                drawContext.lineTo(i * step, validValue + verticalPos);
             }
             drawContext.stroke();
-
-            if (currentBlock < blocksCount - 1)
-            {
-                lastValue = values[blockSize - 1] ? values[blockSize - 1] : lastValue;
-                currentBlock++;
-            }
-            else
-            {
-                currentBlock = 0;
-                lastValue = 0;
-            }
+            canvasUpdated();
         }
     }
 
-    function update()
+    function update(newValues)
     {
-        isAllowDraw = true;
-        drawCanvas.requestPaint();
+        values = newValues;
+        if (isStarted)
+        {
+            drawCanvas.requestPaint();
+        }
     }
 
     function init()
     {
+        timeChangedSignal(time);
+        samplesCountChangedSignal(samplesCount);
         console.log("Qscill.qml -> init()");
-        for (var i = 0; i < blockSize; i++)
+        for (var i = 0; i < samplesCount; i++)
         {
             values[i] = 0;
         }
     }
 
+    function setConversionStatus(status)
+    {
+        isStarted = status;
+        conversionStatusSignal(status);
+    }
+
+    function requestPeripheryConnection(status)
+    {
+        requestPeripheryConnectionSignal(status);
+    }
+
+    function onPeripheryConnected(status)
+    {
+        peripheryConnectedSignal(status);
+    }
+
+    function requestAvaliableDevices()
+    {
+        avaliableDevices = [];
+        requestAvaliableDevicesSignal();
+    }
+
+    function changeCenter(dir)
+    {
+        if (verticalPosDelta + dir < 5 && verticalPosDelta + dir > -5)
+        {
+            verticalPosDelta += dir;
+            backgroundCanvas.requestPaint();
+        }
+    }
 }

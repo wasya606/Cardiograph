@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cch7CLaJ.s 			page 1
+ARM GAS  /tmp/cc1NdDhQ.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -15,22 +15,21 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
   12              		.text
   13              	.Ltext0:
   14              		.cfi_sections	.debug_frame
-  15              		.section	.text._ZN5TimerC2EtOKSt8functionIFvvEEb,"ax",%progbits
+  15              		.section	.text._ZN5TimerC2EmOKSt8functionIFvvEEb,"ax",%progbits
   16              		.align	1
   17              		.p2align 2,,3
-  18              		.global	_ZN5TimerC2EtOKSt8functionIFvvEEb
+  18              		.global	_ZN5TimerC2EmOKSt8functionIFvvEEb
   19              		.syntax unified
   20              		.thumb
   21              		.thumb_func
   22              		.fpu softvfp
-  24              	_ZN5TimerC2EtOKSt8functionIFvvEEb:
+  24              	_ZN5TimerC2EmOKSt8functionIFvvEEb:
   25              	.LFB1246:
   26              		.file 1 "src/Impl/timer.cpp"
    1:src/Impl/timer.cpp **** #include "timer.h"
    2:src/Impl/timer.cpp **** 
-   3:src/Impl/timer.cpp **** 
-   4:src/Impl/timer.cpp **** Timer::Timer(const uint16_t delay, const Callback &&callback, const bool isOneShot) :
-  27              		.loc 1 4 0
+   3:src/Impl/timer.cpp **** Timer::Timer(const uint32_t delay, const Callback &&callback, const bool isOneShot) :
+  27              		.loc 1 3 0
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -43,7 +42,7 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
   37              		.cfi_offset 6, -12
   38              		.cfi_offset 7, -8
   39              		.cfi_offset 14, -4
-  40              		.loc 1 4 0
+  40              		.loc 1 3 0
   41 0002 0446     		mov	r4, r0
   42              	.LBB74:
   43              	.LBB75:
@@ -58,10 +57,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
    5:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** // This file is part of the GNU ISO C++ Library.  This library is free
    6:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** // software; you can redistribute it and/or modify it under the
    7:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** // terms of the GNU General Public License as published by the
-ARM GAS  /tmp/cch7CLaJ.s 			page 2
-
-
    8:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** // Free Software Foundation; either version 3, or (at your option)
+ARM GAS  /tmp/cc1NdDhQ.s 			page 2
+
+
    9:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** // any later version.
   10:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
   11:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** // This library is distributed in the hope that it will be useful,
@@ -118,10 +117,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
   62:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
   63:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
   64:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _MemberPointer>
-ARM GAS  /tmp/cch7CLaJ.s 			page 3
-
-
   65:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     class _Mem_fn;
+ARM GAS  /tmp/cc1NdDhQ.s 			page 3
+
+
   66:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Tp, typename _Class>
   67:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     _Mem_fn<_Tp _Class::*>
   68:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     mem_fn(_Tp _Class::*) noexcept;
@@ -178,10 +177,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  119:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     struct _Weak_result_type_impl<_Res(_ArgTypes......) const volatile>
  120:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     { typedef _Res result_type; };
  121:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
-ARM GAS  /tmp/cch7CLaJ.s 			page 4
-
-
  122:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   /// Retrieve the result type for a function reference.
+ARM GAS  /tmp/cc1NdDhQ.s 			page 4
+
+
  123:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Res, typename... _ArgTypes>
  124:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     struct _Weak_result_type_impl<_Res(&)(_ArgTypes...)>
  125:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     { typedef _Res result_type; };
@@ -238,10 +237,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  176:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     { typedef _Res result_type; };
  177:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
  178:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   /**
-ARM GAS  /tmp/cch7CLaJ.s 			page 5
-
-
  179:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    *  Strip top-level cv-qualifiers from the function object and let
+ARM GAS  /tmp/cc1NdDhQ.s 			page 5
+
+
  180:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    *  _Weak_result_type_impl perform the real work.
  181:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   */
  182:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Functor>
@@ -298,10 +297,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  233:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     noexcept(noexcept(__invfwd<_Tp>(__t).*__f))
  234:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     { return __invfwd<_Tp>(__t).*__f; }
  235:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
-ARM GAS  /tmp/cch7CLaJ.s 			page 6
-
-
  236:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Res, typename _MemPtr, typename _Tp>
+ARM GAS  /tmp/cc1NdDhQ.s 			page 6
+
+
  237:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     inline _Res
  238:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     __invoke_impl(__invoke_memobj_deref, _MemPtr&& __f, _Tp&& __t)
  239:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     noexcept(noexcept((*std::forward<_Tp>(__t)).*__f))
@@ -358,10 +357,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  290:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Tp>
  291:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     struct _Reference_wrapper_base_impl<false, true, _Tp>
  292:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     : _Weak_result_type<_Tp>
-ARM GAS  /tmp/cch7CLaJ.s 			page 7
-
-
  293:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     {
+ARM GAS  /tmp/cc1NdDhQ.s 			page 7
+
+
  294:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       typedef typename _Tp::first_argument_type first_argument_type;
  295:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       typedef typename _Tp::second_argument_type second_argument_type;
  296:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     };
@@ -418,10 +417,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  347:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
  348:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   // - a function type (binary)
  349:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Res, typename _T1, typename _T2>
-ARM GAS  /tmp/cch7CLaJ.s 			page 8
-
-
  350:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     struct _Reference_wrapper_base<_Res(_T1, _T2)>
+ARM GAS  /tmp/cc1NdDhQ.s 			page 8
+
+
  351:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     : binary_function<_T1, _T2, _Res>
  352:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     { };
  353:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
@@ -478,10 +477,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  404:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
  405:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   // - a pointer to member function type (unary, volatile)
  406:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Res, typename _T1>
-ARM GAS  /tmp/cch7CLaJ.s 			page 9
-
-
  407:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     struct _Reference_wrapper_base<_Res (_T1::*)() volatile>
+ARM GAS  /tmp/cc1NdDhQ.s 			page 9
+
+
  408:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     : unary_function<volatile _T1*, _Res>
  409:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     { };
  410:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
@@ -538,10 +537,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  461:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       template<typename... _Args>
  462:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	typename result_of<_Tp&(_Args&&...)>::type
  463:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	operator()(_Args&&... __args) const
-ARM GAS  /tmp/cch7CLaJ.s 			page 10
-
-
  464:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	{
+ARM GAS  /tmp/cc1NdDhQ.s 			page 10
+
+
  465:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	  return std::__invoke(get(), std::forward<_Args>(__args)...);
  466:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	}
  467:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     };
@@ -598,10 +597,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  518:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
  519:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   /**
  520:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    * Derives from @c unary_function or @c binary_function, or perhaps
-ARM GAS  /tmp/cch7CLaJ.s 			page 11
-
-
  521:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    * nothing, depending on the number of arguments provided. The
+ARM GAS  /tmp/cc1NdDhQ.s 			page 11
+
+
  522:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    * primary template is the basis case, which derives nothing.
  523:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    */
  524:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Res, typename... _ArgTypes>
@@ -658,10 +657,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  575:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
  576:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _MemFunPtr,
  577:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	   bool __is_mem_fn = is_member_function_pointer<_MemFunPtr>::value>
-ARM GAS  /tmp/cch7CLaJ.s 			page 12
-
-
  578:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     class _Mem_fn_base
+ARM GAS  /tmp/cc1NdDhQ.s 			page 12
+
+
  579:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     : public _Mem_fn_traits<_MemFunPtr>::__maybe_type
  580:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     {
  581:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       using _Traits = _Mem_fn_traits<_MemFunPtr>;
@@ -718,10 +717,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  632:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     struct _Mem_fn<_Res _Class::*>
  633:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     : _Mem_fn_base<_Res _Class::*>
  634:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     {
-ARM GAS  /tmp/cch7CLaJ.s 			page 13
-
-
  635:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       using _Mem_fn_base<_Res _Class::*>::_Mem_fn_base;
+ARM GAS  /tmp/cc1NdDhQ.s 			page 13
+
+
  636:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     };
  637:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
  638:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   // _GLIBCXX_RESOLVE_LIB_DEFECTS
@@ -778,10 +777,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  689:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   _GLIBCXX_BEGIN_NAMESPACE_VERSION
  690:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   /* Define a large number of placeholders. There is no way to
  691:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    * simplify this with variadic templates, because we're introducing
-ARM GAS  /tmp/cch7CLaJ.s 			page 14
-
-
  692:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    * unique names for each.
+ARM GAS  /tmp/cc1NdDhQ.s 			page 14
+
+
  693:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    */
  694:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     extern const _Placeholder<1> _1;
  695:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     extern const _Placeholder<2> _2;
@@ -838,10 +837,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  746:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    using _Safe_tuple_element_t
  747:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****      = typename enable_if<(__i < tuple_size<_Tuple>::value),
  748:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 			  tuple_element<__i, _Tuple>>::type::type;
-ARM GAS  /tmp/cch7CLaJ.s 			page 15
-
-
  749:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
+ARM GAS  /tmp/cc1NdDhQ.s 			page 15
+
+
  750:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   /**
  751:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    *  Maps an argument to bind() into an actual argument to the bound
  752:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    *  function object [func.bind.bind]/10. Only the first parameter should
@@ -898,10 +897,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  803:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	    _Indexes;
  804:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	  return this->__call(__arg, __tuple, _Indexes());
  805:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	}
-ARM GAS  /tmp/cch7CLaJ.s 			page 16
-
-
  806:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
+ARM GAS  /tmp/cc1NdDhQ.s 			page 16
+
+
  807:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     private:
  808:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       // Invokes the underlying function object __arg by unpacking all
  809:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       // of the arguments in the tuple.
@@ -958,10 +957,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  860:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Tp>
  861:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     struct _Maybe_wrap_member_pointer
  862:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     {
-ARM GAS  /tmp/cch7CLaJ.s 			page 17
-
-
  863:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       typedef _Tp type;
+ARM GAS  /tmp/cc1NdDhQ.s 			page 17
+
+
  864:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
  865:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       static constexpr const _Tp&
  866:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       __do_wrap(const _Tp& __x)
@@ -1018,10 +1017,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  917:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    template<typename _Functor, typename... _Bound_args>
  918:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     class _Bind<_Functor(_Bound_args...)>
  919:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     : public _Weak_result_type<_Functor>
-ARM GAS  /tmp/cch7CLaJ.s 			page 18
-
-
  920:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     {
+ARM GAS  /tmp/cc1NdDhQ.s 			page 18
+
+
  921:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       typedef _Bind __self_type;
  922:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       typedef typename _Build_index_tuple<sizeof...(_Bound_args)>::__type
  923:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	_Bound_indexes;
@@ -1078,10 +1077,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  974:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	: _M_f(std::move(__f)), _M_bound_args(std::forward<_Args>(__args)...)
  975:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	{ }
  976:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
-ARM GAS  /tmp/cch7CLaJ.s 			page 19
-
-
  977:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       _Bind(const _Bind&) = default;
+ARM GAS  /tmp/cc1NdDhQ.s 			page 19
+
+
  978:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
  979:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       _Bind(_Bind&& __b)
  980:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       : _M_f(std::move(__b._M_f)), _M_bound_args(std::move(__b._M_bound_args))
@@ -1138,10 +1137,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1031:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	operator()(_Args&&... __args) const volatile
 1032:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	{
 1033:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	  return this->__call_c_v<_Result>(
-ARM GAS  /tmp/cch7CLaJ.s 			page 20
-
-
 1034:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	      std::forward_as_tuple(std::forward<_Args>(__args)...),
+ARM GAS  /tmp/cc1NdDhQ.s 			page 20
+
+
 1035:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	      _Bound_indexes());
 1036:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	}
 1037:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     };
@@ -1198,10 +1197,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1088:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
 1089:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       // Call as const, return void
 1090:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       template<typename _Res, typename... _Args, std::size_t... _Indexes>
-ARM GAS  /tmp/cch7CLaJ.s 			page 21
-
-
 1091:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	void
+ARM GAS  /tmp/cc1NdDhQ.s 			page 21
+
+
 1092:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	__call(tuple<_Args...>&& __args, _Index_tuple<_Indexes...>,
 1093:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	    typename __enable_if_void<_Res>::type = 0) const
 1094:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	{
@@ -1258,10 +1257,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1145:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	: _M_f(__f), _M_bound_args(std::forward<_Args>(__args)...)
 1146:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	{ }
 1147:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
-ARM GAS  /tmp/cch7CLaJ.s 			page 22
-
-
 1148:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       template<typename... _Args>
+ARM GAS  /tmp/cc1NdDhQ.s 			page 22
+
+
 1149:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	explicit _Bind_result(_Functor&& __f, _Args&&... __args)
 1150:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	: _M_f(std::move(__f)), _M_bound_args(std::forward<_Args>(__args)...)
 1151:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	{ }
@@ -1318,10 +1317,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1202:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    *  @ingroup binders
 1203:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    */
 1204:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Signature>
-ARM GAS  /tmp/cch7CLaJ.s 			page 23
-
-
 1205:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     struct is_bind_expression<_Bind<_Signature> >
+ARM GAS  /tmp/cc1NdDhQ.s 			page 23
+
+
 1206:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     : public true_type { };
 1207:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
 1208:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   /**
@@ -1378,10 +1377,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1259:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    */
 1260:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Result, typename _Signature>
 1261:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     struct is_bind_expression<const volatile _Bind_result<_Result, _Signature>>
-ARM GAS  /tmp/cch7CLaJ.s 			page 24
-
-
 1262:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     : public true_type { };
+ARM GAS  /tmp/cc1NdDhQ.s 			page 24
+
+
 1263:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
 1264:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Func, typename... _BoundArgs>
 1265:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     struct _Bind_check_arity { };
@@ -1438,10 +1437,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1316:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    *  @brief Function template for std::bind.
 1317:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    *  @ingroup binders
 1318:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    */
-ARM GAS  /tmp/cch7CLaJ.s 			page 25
-
-
 1319:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Func, typename... _BoundArgs>
+ARM GAS  /tmp/cc1NdDhQ.s 			page 25
+
+
 1320:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     inline typename
 1321:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     _Bind_helper<__is_socketlike<_Func>::value, _Func, _BoundArgs...>::type
 1322:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     bind(_Func&& __f, _BoundArgs&&... __args)
@@ -1498,10 +1497,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1373:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       _Bind_simple(const _Bind_simple&) = default;
 1374:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       _Bind_simple(_Bind_simple&&) = default;
 1375:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
-ARM GAS  /tmp/cch7CLaJ.s 			page 26
-
-
 1376:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       result_type
+ARM GAS  /tmp/cc1NdDhQ.s 			page 26
+
+
 1377:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       operator()()
 1378:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       {
 1379:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****         typedef typename _Build_index_tuple<sizeof...(_Args)>::__type _Indices;
@@ -1558,10 +1557,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1430:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     virtual ~bad_function_call() noexcept;
 1431:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
 1432:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     const char* what() const noexcept;
-ARM GAS  /tmp/cch7CLaJ.s 			page 27
-
-
 1433:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   };
+ARM GAS  /tmp/cc1NdDhQ.s 			page 27
+
+
 1434:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
 1435:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   /**
 1436:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****    *  Trait identifying "location-invariant" types, meaning that the
@@ -1618,10 +1617,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1487:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     {
 1488:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       _Simple_type_wrapper(_Tp __value) : __value(__value) { }
 1489:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
-ARM GAS  /tmp/cch7CLaJ.s 			page 28
-
-
 1490:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       _Tp __value;
+ARM GAS  /tmp/cc1NdDhQ.s 			page 28
+
+
 1491:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     };
 1492:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
 1493:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   template<typename _Tp>
@@ -1678,10 +1677,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1544:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
 1545:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	typedef integral_constant<bool, __stored_locally> _Local_storage;
 1546:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
-ARM GAS  /tmp/cch7CLaJ.s 			page 29
-
-
 1547:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	// Retrieve a pointer to the function object
+ARM GAS  /tmp/cc1NdDhQ.s 			page 29
+
+
 1548:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	static _Functor*
 1549:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	_M_get_pointer(const _Any_data& __source)
 1550:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	{
@@ -1738,10 +1737,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1601:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	    case __get_functor_ptr:
 1602:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	      __dest._M_access<_Functor*>() = _M_get_pointer(__source);
 1603:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	      break;
-ARM GAS  /tmp/cch7CLaJ.s 			page 30
-
-
 1604:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
+ARM GAS  /tmp/cc1NdDhQ.s 			page 30
+
+
 1605:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	    case __clone_functor:
 1606:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	      _M_clone(__dest, __source, _Local_storage());
 1607:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	      break;
@@ -1798,10 +1797,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1658:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 		   _Manager_operation __op)
 1659:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	{
 1660:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	  switch (__op)
-ARM GAS  /tmp/cch7CLaJ.s 			page 31
-
-
 1661:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	    {
+ARM GAS  /tmp/cc1NdDhQ.s 			page 31
+
+
 1662:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** #if __cpp_rtti
 1663:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	    case __get_type_info:
 1664:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	      __dest._M_access<const type_info*>() = &typeid(_Functor);
@@ -1836,12 +1835,12 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
   55              	.LBE76:
   56              	.LBE75:
   57              	.LBE74:
-  58              		.loc 1 4 0
+  58              		.loc 1 3 0
   59 000a 1F46     		mov	r7, r3
   60              	.LBB81:
-   5:src/Impl/timer.cpp ****     delay(delay), callback(callback), isOneShot(isOneShot), isActive(false), counter(0)
-  61              		.loc 1 5 0
-  62 000c 2180     		strh	r1, [r4]	@ movhi
+   4:src/Impl/timer.cpp ****     delay(delay), callback(callback), isOneShot(isOneShot), isActive(false), counter(0)
+  61              		.loc 1 4 0
+  62 000c 2160     		str	r1, [r4]
   63              	.LVL2:
   64              	.LBB80:
   65              	.LBB79:
@@ -1858,10 +1857,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1696:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     typedef bool (*_Manager_type)(_Any_data&, const _Any_data&,
 1697:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 				  _Manager_operation);
 1698:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
-ARM GAS  /tmp/cch7CLaJ.s 			page 32
-
-
 1699:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     _Any_data     _M_functor;
+ARM GAS  /tmp/cc1NdDhQ.s 			page 32
+
+
 1700:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     _Manager_type _M_manager;
 1701:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****   };
 1702:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
@@ -1918,10 +1917,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1753:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     : public _Function_base::_Ref_manager<_Functor>
 1754:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     {
 1755:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       typedef _Function_base::_Ref_manager<_Functor> _Base;
-ARM GAS  /tmp/cch7CLaJ.s 			page 33
-
-
 1756:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
+ARM GAS  /tmp/cc1NdDhQ.s 			page 33
+
+
 1757:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****      public:
 1758:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       static void
 1759:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       _M_invoke(const _Any_data& __functor, _ArgTypes&&... __args)
@@ -1978,10 +1977,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1810:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	    _Base::_M_manager(__dest, __source, __op);
 1811:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	  }
 1812:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	return false;
-ARM GAS  /tmp/cch7CLaJ.s 			page 34
-
-
 1813:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       }
+ARM GAS  /tmp/cc1NdDhQ.s 			page 34
+
+
 1814:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
 1815:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       static void
 1816:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       _M_invoke(const _Any_data& __functor, _ArgTypes&&... __args)
@@ -2038,10 +2037,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1867:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        */
 1868:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       function(nullptr_t) noexcept
 1869:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       : _Function_base() { }
-ARM GAS  /tmp/cch7CLaJ.s 			page 35
-
-
 1870:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
+ARM GAS  /tmp/cc1NdDhQ.s 			page 35
+
+
 1871:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       /**
 1872:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *  @brief %Function copy constructor.
 1873:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *  @param __x A %function object with identical call signature.
@@ -2098,10 +2097,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1924:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *
 1925:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *  If @a __x targets a function pointer or a reference to a function
 1926:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *  object, then this operation will not throw an %exception.
-ARM GAS  /tmp/cch7CLaJ.s 			page 36
-
-
 1927:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        */
+ARM GAS  /tmp/cc1NdDhQ.s 			page 36
+
+
 1928:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       function&
 1929:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       operator=(const function& __x)
 1930:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       {
@@ -2158,10 +2157,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 1981:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *  object will contain a reference to the function object @c
 1982:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *  __f.get(). If @a __f is a NULL function pointer or NULL
 1983:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *  pointer-to-member, @c this object will be empty.
-ARM GAS  /tmp/cch7CLaJ.s 			page 37
-
-
 1984:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *
+ARM GAS  /tmp/cc1NdDhQ.s 			page 37
+
+
 1985:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *  If @a __f is a non-NULL function pointer or an object of type @c
 1986:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *  reference_wrapper<F>, this function will not throw.
 1987:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        */
@@ -2218,10 +2217,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 2038:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *  or @c false when it is empty.
 2039:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *
 2040:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        *  This function will not throw an %exception.
-ARM GAS  /tmp/cch7CLaJ.s 			page 38
-
-
 2041:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****        */
+ARM GAS  /tmp/cc1NdDhQ.s 			page 38
+
+
 2042:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       explicit operator bool() const noexcept
 2043:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       { return !_M_empty(); }
 2044:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
@@ -2278,10 +2277,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 2095:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     {
 2096:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       if (static_cast<bool>(__x))
   66              		.loc 2 2096 0
-ARM GAS  /tmp/cch7CLaJ.s 			page 39
-
-
   67 000e 46B1     		cbz	r6, .L2
+ARM GAS  /tmp/cc1NdDhQ.s 			page 39
+
+
   68 0010 1546     		mov	r5, r2
 2097:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	{
 2098:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	  __x._M_manager(_M_functor, __x._M_functor, __clone_functor);
@@ -2309,47 +2308,47 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
   87              	.L2:
   88              	.LBE79:
   89              	.LBE80:
-  90              		.loc 1 5 0
+  90              		.loc 1 4 0
   91 0022 0022     		movs	r2, #0
   92 0024 2775     		strb	r7, [r4, #20]
   93 0026 6275     		strb	r2, [r4, #21]
-  94 0028 E282     		strh	r2, [r4, #22]	@ movhi
+  94 0028 A261     		str	r2, [r4, #24]
   95              	.LBE81:
-   6:src/Impl/timer.cpp **** {
-   7:src/Impl/timer.cpp **** 
-   8:src/Impl/timer.cpp **** }
-  96              		.loc 1 8 0
+   5:src/Impl/timer.cpp **** {
+   6:src/Impl/timer.cpp **** 
+   7:src/Impl/timer.cpp **** }
+  96              		.loc 1 7 0
   97 002a 2046     		mov	r0, r4
   98 002c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
   99              		.cfi_endproc
  100              	.LFE1246:
- 102              		.global	_ZN5TimerC1EtOKSt8functionIFvvEEb
- 103              		.thumb_set _ZN5TimerC1EtOKSt8functionIFvvEEb,_ZN5TimerC2EtOKSt8functionIFvvEEb
- 104 002e 00BF     		.section	.text._ZN5Timer8setDelayEt,"ax",%progbits
+ 102              		.global	_ZN5TimerC1EmOKSt8functionIFvvEEb
+ 103              		.thumb_set _ZN5TimerC1EmOKSt8functionIFvvEEb,_ZN5TimerC2EmOKSt8functionIFvvEEb
+ 104 002e 00BF     		.section	.text._ZN5Timer8setDelayEm,"ax",%progbits
  105              		.align	1
  106              		.p2align 2,,3
- 107              		.global	_ZN5Timer8setDelayEt
+ 107              		.global	_ZN5Timer8setDelayEm
  108              		.syntax unified
  109              		.thumb
  110              		.thumb_func
  111              		.fpu softvfp
- 113              	_ZN5Timer8setDelayEt:
+ 113              	_ZN5Timer8setDelayEm:
  114              	.LFB1248:
-   9:src/Impl/timer.cpp **** 
-  10:src/Impl/timer.cpp **** void Timer::setDelay(const uint16_t delay)
-  11:src/Impl/timer.cpp **** {
-ARM GAS  /tmp/cch7CLaJ.s 			page 40
+   8:src/Impl/timer.cpp **** 
+   9:src/Impl/timer.cpp **** void Timer::setDelay(const uint32_t delay)
+  10:src/Impl/timer.cpp **** {
+ 115              		.loc 1 10 0
+ARM GAS  /tmp/cc1NdDhQ.s 			page 40
 
 
- 115              		.loc 1 11 0
  116              		.cfi_startproc
  117              		@ args = 0, pretend = 0, frame = 0
  118              		@ frame_needed = 0, uses_anonymous_args = 0
  119              		@ link register save eliminated.
  120              	.LVL8:
-  12:src/Impl/timer.cpp ****     this->delay = delay;
- 121              		.loc 1 12 0
- 122 0000 0180     		strh	r1, [r0]	@ movhi
+  11:src/Impl/timer.cpp ****     this->delay = delay;
+ 121              		.loc 1 11 0
+ 122 0000 0160     		str	r1, [r0]
  123 0002 7047     		bx	lr
  124              		.cfi_endproc
  125              	.LFE1248:
@@ -2363,11 +2362,11 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  134              		.fpu softvfp
  136              	_ZN5Timer11setCallbackEOKSt8functionIFvvEE:
  137              	.LFB1249:
-  13:src/Impl/timer.cpp **** }
-  14:src/Impl/timer.cpp **** 
-  15:src/Impl/timer.cpp **** void Timer::setCallback(const Callback &&callback)
-  16:src/Impl/timer.cpp **** {
- 138              		.loc 1 16 0
+  12:src/Impl/timer.cpp **** }
+  13:src/Impl/timer.cpp **** 
+  14:src/Impl/timer.cpp **** void Timer::setCallback(const Callback &&callback)
+  15:src/Impl/timer.cpp **** {
+ 138              		.loc 1 15 0
  139              		.cfi_startproc
  140              		@ args = 0, pretend = 0, frame = 24
  141              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -2391,21 +2390,21 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  158              	.LBE104:
  159              	.LBE103:
  160              	.LBE102:
- 161              		.loc 1 16 0
+ 161              		.loc 1 15 0
  162 0002 F0B5     		push	{r4, r5, r6, r7, lr}
  163              		.cfi_def_cfa_offset 20
  164              		.cfi_offset 4, -20
  165              		.cfi_offset 5, -16
  166              		.cfi_offset 6, -12
  167              		.cfi_offset 7, -8
-ARM GAS  /tmp/cch7CLaJ.s 			page 41
-
-
  168              		.cfi_offset 14, -4
+ARM GAS  /tmp/cc1NdDhQ.s 			page 41
+
+
  169 0004 8E68     		ldr	r6, [r1, #8]
  170 0006 87B0     		sub	sp, sp, #28
  171              		.cfi_def_cfa_offset 48
- 172              		.loc 1 16 0
+ 172              		.loc 1 15 0
  173 0008 0546     		mov	r5, r0
  174              	.LVL10:
  175              	.LBB131:
@@ -2458,10 +2457,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
    6:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** // software; you can redistribute it and/or modify it under the
    7:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** // terms of the GNU General Public License as published by the
    8:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** // Free Software Foundation; either version 3, or (at your option)
-ARM GAS  /tmp/cch7CLaJ.s 			page 42
-
-
    9:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** // any later version.
+ARM GAS  /tmp/cc1NdDhQ.s 			page 42
+
+
   10:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** 
   11:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** // This library is distributed in the hope that it will be useful,
   12:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -2518,10 +2517,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
   63:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****   /**
   64:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****    *  @addtogroup utilities
   65:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****    *  @{
-ARM GAS  /tmp/cch7CLaJ.s 			page 43
-
-
   66:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****    */
+ARM GAS  /tmp/cc1NdDhQ.s 			page 43
+
+
   67:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** 
   68:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****   /**
   69:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****    *  @brief  Forward an lvalue.
@@ -2578,10 +2577,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  120:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****     conditional<__move_if_noexcept_cond<_Tp>::value, const _Tp&, _Tp&&>::type
  121:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****     move_if_noexcept(_Tp& __x) noexcept
  122:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****     { return std::move(__x); }
-ARM GAS  /tmp/cch7CLaJ.s 			page 44
-
-
  123:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** 
+ARM GAS  /tmp/cc1NdDhQ.s 			page 44
+
+
  124:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****   // declval, from type_traits.
  125:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** 
  126:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****   /**
@@ -2638,10 +2637,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  177:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****     typename enable_if<__and_<is_move_constructible<_Tp>,
  178:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** 			      is_move_assignable<_Tp>>::value>::type
  179:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****     swap(_Tp& __a, _Tp& __b)
-ARM GAS  /tmp/cch7CLaJ.s 			page 45
-
-
  180:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****     noexcept(__and_<is_nothrow_move_constructible<_Tp>,
+ARM GAS  /tmp/cc1NdDhQ.s 			page 45
+
+
  181:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** 	            is_nothrow_move_assignable<_Tp>>::value)
  182:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h **** #else
  183:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/bits/move.h ****     void
@@ -2698,10 +2697,10 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  252 0042 C5F810E0 		str	lr, [r5, #16]
  253              	.LVL20:
  254              	.LBE124:
-ARM GAS  /tmp/cch7CLaJ.s 			page 46
-
-
  255              	.LBE126:
+ARM GAS  /tmp/cc1NdDhQ.s 			page 46
+
+
  256              	.LBE116:
  257              	.LBB127:
  258              	.LBB128:
@@ -2722,9 +2721,9 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  271              	.LBE127:
  272              	.LBE130:
  273              	.LBE131:
-  17:src/Impl/timer.cpp ****     this->callback = callback;
-  18:src/Impl/timer.cpp **** }
- 274              		.loc 1 18 0
+  16:src/Impl/timer.cpp ****     this->callback = callback;
+  17:src/Impl/timer.cpp **** }
+ 274              		.loc 1 17 0
  275 0050 07B0     		add	sp, sp, #28
  276              		.cfi_remember_state
  277              		.cfi_def_cfa_offset 20
@@ -2749,20 +2748,20 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  297              		.fpu softvfp
  299              	_ZN5Timer10setOneShotEb:
  300              	.LFB1250:
-  19:src/Impl/timer.cpp **** 
-  20:src/Impl/timer.cpp **** void Timer::setOneShot(const bool isOneshot)
-  21:src/Impl/timer.cpp **** {
- 301              		.loc 1 21 0
+  18:src/Impl/timer.cpp **** 
+  19:src/Impl/timer.cpp **** void Timer::setOneShot(const bool isOneshot)
+  20:src/Impl/timer.cpp **** {
+ 301              		.loc 1 20 0
  302              		.cfi_startproc
  303              		@ args = 0, pretend = 0, frame = 0
  304              		@ frame_needed = 0, uses_anonymous_args = 0
  305              		@ link register save eliminated.
  306              	.LVL24:
-ARM GAS  /tmp/cch7CLaJ.s 			page 47
+  21:src/Impl/timer.cpp ****     this->isOneShot = isOneshot;
+ARM GAS  /tmp/cc1NdDhQ.s 			page 47
 
 
-  22:src/Impl/timer.cpp ****     this->isOneShot = isOneshot;
- 307              		.loc 1 22 0
+ 307              		.loc 1 21 0
  308 0000 0175     		strb	r1, [r0, #20]
  309 0002 7047     		bx	lr
  310              		.cfi_endproc
@@ -2777,20 +2776,20 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  320              		.fpu softvfp
  322              	_ZNK5Timer8getDelayEv:
  323              	.LFB1251:
-  23:src/Impl/timer.cpp **** }
-  24:src/Impl/timer.cpp **** 
-  25:src/Impl/timer.cpp **** uint16_t Timer::getDelay() const
-  26:src/Impl/timer.cpp **** {
- 324              		.loc 1 26 0
+  22:src/Impl/timer.cpp **** }
+  23:src/Impl/timer.cpp **** 
+  24:src/Impl/timer.cpp **** uint32_t Timer::getDelay() const
+  25:src/Impl/timer.cpp **** {
+ 324              		.loc 1 25 0
  325              		.cfi_startproc
  326              		@ args = 0, pretend = 0, frame = 0
  327              		@ frame_needed = 0, uses_anonymous_args = 0
  328              		@ link register save eliminated.
  329              	.LVL25:
-  27:src/Impl/timer.cpp ****     return delay;
-  28:src/Impl/timer.cpp **** }
- 330              		.loc 1 28 0
- 331 0000 0088     		ldrh	r0, [r0]
+  26:src/Impl/timer.cpp ****     return delay;
+  27:src/Impl/timer.cpp **** }
+ 330              		.loc 1 27 0
+ 331 0000 0068     		ldr	r0, [r0]
  332              	.LVL26:
  333 0002 7047     		bx	lr
  334              		.cfi_endproc
@@ -2805,176 +2804,206 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
  344              		.fpu softvfp
  346              	_ZNK5Timer10getOneShotEv:
  347              	.LFB1252:
-  29:src/Impl/timer.cpp **** 
-  30:src/Impl/timer.cpp **** bool Timer::getOneShot() const
-  31:src/Impl/timer.cpp **** {
- 348              		.loc 1 31 0
+  28:src/Impl/timer.cpp **** 
+  29:src/Impl/timer.cpp **** bool Timer::getOneShot() const
+  30:src/Impl/timer.cpp **** {
+ 348              		.loc 1 30 0
  349              		.cfi_startproc
  350              		@ args = 0, pretend = 0, frame = 0
  351              		@ frame_needed = 0, uses_anonymous_args = 0
  352              		@ link register save eliminated.
  353              	.LVL27:
-  32:src/Impl/timer.cpp ****     return isOneShot;
-  33:src/Impl/timer.cpp **** }
- 354              		.loc 1 33 0
+  31:src/Impl/timer.cpp ****     return isOneShot;
+  32:src/Impl/timer.cpp **** }
+ 354              		.loc 1 32 0
  355 0000 007D     		ldrb	r0, [r0, #20]	@ zero_extendqisi2
-ARM GAS  /tmp/cch7CLaJ.s 			page 48
-
-
  356              	.LVL28:
+ARM GAS  /tmp/cc1NdDhQ.s 			page 48
+
+
  357 0002 7047     		bx	lr
  358              		.cfi_endproc
  359              	.LFE1252:
- 361              		.section	.text._ZN5Timer5startEb,"ax",%progbits
+ 361              		.section	.text._ZNK5Timer9isStartedEv,"ax",%progbits
  362              		.align	1
  363              		.p2align 2,,3
- 364              		.global	_ZN5Timer5startEb
+ 364              		.global	_ZNK5Timer9isStartedEv
  365              		.syntax unified
  366              		.thumb
  367              		.thumb_func
  368              		.fpu softvfp
- 370              	_ZN5Timer5startEb:
+ 370              	_ZNK5Timer9isStartedEv:
  371              	.LFB1253:
-  34:src/Impl/timer.cpp **** 
-  35:src/Impl/timer.cpp **** void Timer::start(const bool isPerformreset)
-  36:src/Impl/timer.cpp **** {
- 372              		.loc 1 36 0
+  33:src/Impl/timer.cpp **** 
+  34:src/Impl/timer.cpp **** bool Timer::isStarted() const
+  35:src/Impl/timer.cpp **** {
+ 372              		.loc 1 35 0
  373              		.cfi_startproc
  374              		@ args = 0, pretend = 0, frame = 0
  375              		@ frame_needed = 0, uses_anonymous_args = 0
  376              		@ link register save eliminated.
  377              	.LVL29:
-  37:src/Impl/timer.cpp ****     isActive = true;
+  36:src/Impl/timer.cpp ****     return isActive;
+  37:src/Impl/timer.cpp **** }
  378              		.loc 1 37 0
- 379 0000 0123     		movs	r3, #1
- 380 0002 4375     		strb	r3, [r0, #21]
-  38:src/Impl/timer.cpp ****     counter = isPerformreset ? 0 : counter;
- 381              		.loc 1 38 0
- 382 0004 11B9     		cbnz	r1, .L23
- 383              		.loc 1 38 0 is_stmt 0 discriminator 2
- 384 0006 C38A     		ldrh	r3, [r0, #22]
- 385 0008 C382     		strh	r3, [r0, #22]	@ movhi
- 386 000a 7047     		bx	lr
- 387              	.L23:
- 388              		.loc 1 38 0
- 389 000c 0023     		movs	r3, #0
- 390 000e C382     		strh	r3, [r0, #22]	@ movhi
- 391 0010 7047     		bx	lr
- 392              		.cfi_endproc
- 393              	.LFE1253:
- 395 0012 00BF     		.section	.text._ZN5Timer4stopEv,"ax",%progbits
- 396              		.align	1
- 397              		.p2align 2,,3
- 398              		.global	_ZN5Timer4stopEv
- 399              		.syntax unified
- 400              		.thumb
- 401              		.thumb_func
- 402              		.fpu softvfp
- 404              	_ZN5Timer4stopEv:
- 405              	.LFB1254:
-  39:src/Impl/timer.cpp **** }
-  40:src/Impl/timer.cpp **** 
-  41:src/Impl/timer.cpp **** void Timer::stop()
-  42:src/Impl/timer.cpp **** {
- 406              		.loc 1 42 0 is_stmt 1
- 407              		.cfi_startproc
-ARM GAS  /tmp/cch7CLaJ.s 			page 49
+ 379 0000 407D     		ldrb	r0, [r0, #21]	@ zero_extendqisi2
+ 380              	.LVL30:
+ 381 0002 7047     		bx	lr
+ 382              		.cfi_endproc
+ 383              	.LFE1253:
+ 385              		.section	.text._ZN5Timer5startEb,"ax",%progbits
+ 386              		.align	1
+ 387              		.p2align 2,,3
+ 388              		.global	_ZN5Timer5startEb
+ 389              		.syntax unified
+ 390              		.thumb
+ 391              		.thumb_func
+ 392              		.fpu softvfp
+ 394              	_ZN5Timer5startEb:
+ 395              	.LFB1254:
+  38:src/Impl/timer.cpp **** 
+  39:src/Impl/timer.cpp **** void Timer::start(const bool isPerformreset)
+  40:src/Impl/timer.cpp **** {
+ 396              		.loc 1 40 0
+ 397              		.cfi_startproc
+ 398              		@ args = 0, pretend = 0, frame = 0
+ 399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 400              		@ link register save eliminated.
+ 401              	.LVL31:
+  41:src/Impl/timer.cpp ****     isActive = true;
+ 402              		.loc 1 41 0
+ 403 0000 0123     		movs	r3, #1
+ 404 0002 4375     		strb	r3, [r0, #21]
+  42:src/Impl/timer.cpp ****     counter = isPerformreset ? 0 : counter;
+ 405              		.loc 1 42 0
+ 406 0004 11B9     		cbnz	r1, .L24
+ 407              		.loc 1 42 0 is_stmt 0 discriminator 2
+ARM GAS  /tmp/cc1NdDhQ.s 			page 49
 
 
- 408              		@ args = 0, pretend = 0, frame = 0
- 409              		@ frame_needed = 0, uses_anonymous_args = 0
- 410              		@ link register save eliminated.
- 411              	.LVL30:
-  43:src/Impl/timer.cpp ****     isActive = false;
- 412              		.loc 1 43 0
- 413 0000 0023     		movs	r3, #0
- 414 0002 4375     		strb	r3, [r0, #21]
- 415 0004 7047     		bx	lr
+ 408 0006 8369     		ldr	r3, [r0, #24]
+ 409 0008 8361     		str	r3, [r0, #24]
+ 410 000a 7047     		bx	lr
+ 411              	.L24:
+ 412              		.loc 1 42 0
+ 413 000c 0023     		movs	r3, #0
+ 414 000e 8361     		str	r3, [r0, #24]
+ 415 0010 7047     		bx	lr
  416              		.cfi_endproc
  417              	.LFE1254:
- 419 0006 00BF     		.section	.text._ZN5Timer5resetEv,"ax",%progbits
+ 419 0012 00BF     		.section	.text._ZN5Timer4stopEv,"ax",%progbits
  420              		.align	1
  421              		.p2align 2,,3
- 422              		.global	_ZN5Timer5resetEv
+ 422              		.global	_ZN5Timer4stopEv
  423              		.syntax unified
  424              		.thumb
  425              		.thumb_func
  426              		.fpu softvfp
- 428              	_ZN5Timer5resetEv:
+ 428              	_ZN5Timer4stopEv:
  429              	.LFB1255:
-  44:src/Impl/timer.cpp **** }
-  45:src/Impl/timer.cpp **** 
-  46:src/Impl/timer.cpp **** void Timer::reset()
-  47:src/Impl/timer.cpp **** {
- 430              		.loc 1 47 0
+  43:src/Impl/timer.cpp **** }
+  44:src/Impl/timer.cpp **** 
+  45:src/Impl/timer.cpp **** void Timer::stop()
+  46:src/Impl/timer.cpp **** {
+ 430              		.loc 1 46 0 is_stmt 1
  431              		.cfi_startproc
  432              		@ args = 0, pretend = 0, frame = 0
  433              		@ frame_needed = 0, uses_anonymous_args = 0
  434              		@ link register save eliminated.
- 435              	.LVL31:
-  48:src/Impl/timer.cpp ****     counter = 0;
- 436              		.loc 1 48 0
+ 435              	.LVL32:
+  47:src/Impl/timer.cpp ****     isActive = false;
+ 436              		.loc 1 47 0
  437 0000 0023     		movs	r3, #0
- 438 0002 C382     		strh	r3, [r0, #22]	@ movhi
+ 438 0002 4375     		strb	r3, [r0, #21]
  439 0004 7047     		bx	lr
  440              		.cfi_endproc
  441              	.LFE1255:
- 443 0006 00BF     		.section	.text._ZN5Timer7processEv,"ax",%progbits
+ 443 0006 00BF     		.section	.text._ZN5Timer5resetEv,"ax",%progbits
  444              		.align	1
  445              		.p2align 2,,3
- 446              		.global	_ZN5Timer7processEv
+ 446              		.global	_ZN5Timer5resetEv
  447              		.syntax unified
  448              		.thumb
  449              		.thumb_func
  450              		.fpu softvfp
- 452              	_ZN5Timer7processEv:
+ 452              	_ZN5Timer5resetEv:
  453              	.LFB1256:
-  49:src/Impl/timer.cpp **** }
-  50:src/Impl/timer.cpp **** 
-  51:src/Impl/timer.cpp **** void Timer::process()
-  52:src/Impl/timer.cpp **** {
- 454              		.loc 1 52 0
+  48:src/Impl/timer.cpp **** }
+  49:src/Impl/timer.cpp **** 
+  50:src/Impl/timer.cpp **** void Timer::reset()
+  51:src/Impl/timer.cpp **** {
+ 454              		.loc 1 51 0
  455              		.cfi_startproc
  456              		@ args = 0, pretend = 0, frame = 0
  457              		@ frame_needed = 0, uses_anonymous_args = 0
- 458              	.LVL32:
-ARM GAS  /tmp/cch7CLaJ.s 			page 50
+ 458              		@ link register save eliminated.
+ 459              	.LVL33:
+ARM GAS  /tmp/cc1NdDhQ.s 			page 50
 
 
-  53:src/Impl/timer.cpp ****     if (!isActive)
- 459              		.loc 1 53 0
- 460 0000 437D     		ldrb	r3, [r0, #21]	@ zero_extendqisi2
- 461 0002 2BB1     		cbz	r3, .L26
-  54:src/Impl/timer.cpp ****         return;
-  55:src/Impl/timer.cpp **** 
-  56:src/Impl/timer.cpp ****     if (counter == delay)
- 462              		.loc 1 56 0
- 463 0004 C38A     		ldrh	r3, [r0, #22]
- 464 0006 0288     		ldrh	r2, [r0]
- 465 0008 9A42     		cmp	r2, r3
- 466 000a 02D0     		beq	.L36
-  57:src/Impl/timer.cpp ****     {
-  58:src/Impl/timer.cpp ****         counter = 0;
-  59:src/Impl/timer.cpp ****         isActive = isOneShot ? false : isActive;
-  60:src/Impl/timer.cpp ****         callback();
-  61:src/Impl/timer.cpp ****     }
-  62:src/Impl/timer.cpp ****     else
-  63:src/Impl/timer.cpp ****     {
-  64:src/Impl/timer.cpp ****         counter++;
- 467              		.loc 1 64 0
- 468 000c 0133     		adds	r3, r3, #1
- 469 000e C382     		strh	r3, [r0, #22]	@ movhi
- 470              	.L26:
- 471 0010 7047     		bx	lr
- 472              	.L36:
-  58:src/Impl/timer.cpp ****         isActive = isOneShot ? false : isActive;
- 473              		.loc 1 58 0
- 474 0012 0021     		movs	r1, #0
-  59:src/Impl/timer.cpp ****         callback();
- 475              		.loc 1 59 0
- 476 0014 037D     		ldrb	r3, [r0, #20]	@ zero_extendqisi2
- 477              	.LBB132:
- 478              	.LBB133:
+  52:src/Impl/timer.cpp ****     counter = 0;
+ 460              		.loc 1 52 0
+ 461 0000 0023     		movs	r3, #0
+ 462 0002 8361     		str	r3, [r0, #24]
+ 463 0004 7047     		bx	lr
+ 464              		.cfi_endproc
+ 465              	.LFE1256:
+ 467 0006 00BF     		.section	.text._ZN5Timer7processEv,"ax",%progbits
+ 468              		.align	1
+ 469              		.p2align 2,,3
+ 470              		.global	_ZN5Timer7processEv
+ 471              		.syntax unified
+ 472              		.thumb
+ 473              		.thumb_func
+ 474              		.fpu softvfp
+ 476              	_ZN5Timer7processEv:
+ 477              	.LFB1257:
+  53:src/Impl/timer.cpp **** }
+  54:src/Impl/timer.cpp **** 
+  55:src/Impl/timer.cpp **** void Timer::process()
+  56:src/Impl/timer.cpp **** {
+ 478              		.loc 1 56 0
+ 479              		.cfi_startproc
+ 480              		@ args = 0, pretend = 0, frame = 0
+ 481              		@ frame_needed = 0, uses_anonymous_args = 0
+ 482              	.LVL34:
+  57:src/Impl/timer.cpp ****     if (!isActive)
+ 483              		.loc 1 57 0
+ 484 0000 437D     		ldrb	r3, [r0, #21]	@ zero_extendqisi2
+ 485 0002 2BB1     		cbz	r3, .L27
+  58:src/Impl/timer.cpp ****         return;
+  59:src/Impl/timer.cpp **** 
+  60:src/Impl/timer.cpp ****     if (counter == delay)
+ 486              		.loc 1 60 0
+ 487 0004 8369     		ldr	r3, [r0, #24]
+ 488 0006 0268     		ldr	r2, [r0]
+ 489 0008 9342     		cmp	r3, r2
+ 490 000a 02D0     		beq	.L37
+  61:src/Impl/timer.cpp ****     {
+  62:src/Impl/timer.cpp ****         counter = 0;
+  63:src/Impl/timer.cpp ****         isActive = isOneShot ? false : isActive;
+  64:src/Impl/timer.cpp ****         callback();
+  65:src/Impl/timer.cpp ****     }
+  66:src/Impl/timer.cpp ****     else
+  67:src/Impl/timer.cpp ****     {
+  68:src/Impl/timer.cpp ****         counter++;
+ 491              		.loc 1 68 0
+ 492 000c 0133     		adds	r3, r3, #1
+ 493 000e 8361     		str	r3, [r0, #24]
+ 494              	.L27:
+ 495 0010 7047     		bx	lr
+ 496              	.L37:
+  62:src/Impl/timer.cpp ****         isActive = isOneShot ? false : isActive;
+ 497              		.loc 1 62 0
+ 498 0012 0021     		movs	r1, #0
+  63:src/Impl/timer.cpp ****         callback();
+ 499              		.loc 1 63 0
+ARM GAS  /tmp/cc1NdDhQ.s 			page 51
+
+
+ 500 0014 037D     		ldrb	r3, [r0, #20]	@ zero_extendqisi2
+ 501              	.LBB132:
+ 502              	.LBB133:
 2101:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	}
 2102:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     }
 2103:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 
@@ -2998,122 +3027,121 @@ ARM GAS  /tmp/cch7CLaJ.s 			page 1
 2121:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     _Res
 2122:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     function<_Res(_ArgTypes...)>::
 2123:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     operator()(_ArgTypes... __args) const
-ARM GAS  /tmp/cch7CLaJ.s 			page 51
-
-
 2124:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****     {
 2125:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       if (_M_empty())
- 479              		.loc 2 2125 0
- 480 0016 C268     		ldr	r2, [r0, #12]
- 481              	.LBE133:
- 482              	.LBE132:
-  59:src/Impl/timer.cpp ****         callback();
- 483              		.loc 1 59 0
- 484 0018 83F00103 		eor	r3, r3, #1
- 485 001c 4375     		strb	r3, [r0, #21]
- 486              	.LVL33:
-  58:src/Impl/timer.cpp ****         isActive = isOneShot ? false : isActive;
- 487              		.loc 1 58 0
- 488 001e C182     		strh	r1, [r0, #22]	@ movhi
- 489              	.LBB136:
- 490              	.LBB134:
- 491              		.loc 2 2125 0
- 492 0020 12B1     		cbz	r2, .L37
+ 503              		.loc 2 2125 0
+ 504 0016 C268     		ldr	r2, [r0, #12]
+ 505              	.LBE133:
+ 506              	.LBE132:
+  63:src/Impl/timer.cpp ****         callback();
+ 507              		.loc 1 63 0
+ 508 0018 83F00103 		eor	r3, r3, #1
+ 509 001c 4375     		strb	r3, [r0, #21]
+ 510              	.LVL35:
+  62:src/Impl/timer.cpp ****         isActive = isOneShot ? false : isActive;
+ 511              		.loc 1 62 0
+ 512 001e 8161     		str	r1, [r0, #24]
+ 513              	.LBB136:
+ 514              	.LBB134:
+ 515              		.loc 2 2125 0
+ 516 0020 12B1     		cbz	r2, .L38
 2126:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	__throw_bad_function_call();
 2127:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional ****       return _M_invoker(_M_functor, std::forward<_ArgTypes>(__args)...);
- 493              		.loc 2 2127 0
- 494 0022 0369     		ldr	r3, [r0, #16]
- 495 0024 0430     		adds	r0, r0, #4
- 496              	.LVL34:
- 497 0026 1847     		bx	r3	@ indirect register sibling call
- 498              	.LVL35:
- 499              	.L37:
- 500              	.LBE134:
- 501              	.LBE136:
-  52:src/Impl/timer.cpp ****     if (!isActive)
- 502              		.loc 1 52 0
- 503 0028 10B5     		push	{r4, lr}
- 504              		.cfi_def_cfa_offset 8
- 505              		.cfi_offset 4, -8
- 506              		.cfi_offset 14, -4
- 507              	.LBB137:
- 508              	.LBB135:
+ 517              		.loc 2 2127 0
+ 518 0022 0369     		ldr	r3, [r0, #16]
+ 519 0024 0430     		adds	r0, r0, #4
+ 520              	.LVL36:
+ 521 0026 1847     		bx	r3	@ indirect register sibling call
+ 522              	.LVL37:
+ 523              	.L38:
+ 524              	.LBE134:
+ 525              	.LBE136:
+  56:src/Impl/timer.cpp ****     if (!isActive)
+ 526              		.loc 1 56 0
+ARM GAS  /tmp/cc1NdDhQ.s 			page 52
+
+
+ 527 0028 10B5     		push	{r4, lr}
+ 528              		.cfi_def_cfa_offset 8
+ 529              		.cfi_offset 4, -8
+ 530              		.cfi_offset 14, -4
+ 531              	.LBB137:
+ 532              	.LBB135:
 2126:/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/6.3.1/functional **** 	__throw_bad_function_call();
- 509              		.loc 2 2126 0
- 510 002a FFF7FEFF 		bl	_ZSt25__throw_bad_function_callv
- 511              	.LVL36:
- 512              	.LBE135:
- 513              	.LBE137:
- 514              		.cfi_endproc
- 515              	.LFE1256:
- 517 002e 00BF     		.text
- 518              	.Letext0:
- 519              		.file 4 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/mach
- 520              		.file 5 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
- 521              		.file 6 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/
- 522              		.file 7 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/
- 523              		.file 8 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/
- 524              		.file 9 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/
- 525              		.file 10 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 526              		.file 11 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 527              		.file 12 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 528              		.file 13 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
-ARM GAS  /tmp/cch7CLaJ.s 			page 52
-
-
- 529              		.file 14 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 530              		.file 15 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 531              		.file 16 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 532              		.file 17 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 533              		.file 18 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 534              		.file 19 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 535              		.file 20 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 536              		.file 21 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 537              		.file 22 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
- 538              		.file 23 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3
- 539              		.file 24 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys
- 540              		.file 25 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys
- 541              		.file 26 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys
- 542              		.file 27 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3
- 543              		.file 28 "<built-in>"
- 544              		.file 29 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/wch
- 545              		.file 30 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3
- 546              		.file 31 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/loc
- 547              		.file 32 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/cty
- 548              		.file 33 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/std
- 549              		.file 34 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/std
- 550              		.file 35 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys
- 551              		.file 36 "src/Impl/internal_types.h"
- 552              		.file 37 "src/Impl/timer.h"
- 553              		.file 38 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
-ARM GAS  /tmp/cch7CLaJ.s 			page 53
+ 533              		.loc 2 2126 0
+ 534 002a FFF7FEFF 		bl	_ZSt25__throw_bad_function_callv
+ 535              	.LVL38:
+ 536              	.LBE135:
+ 537              	.LBE137:
+ 538              		.cfi_endproc
+ 539              	.LFE1257:
+ 541 002e 00BF     		.text
+ 542              	.Letext0:
+ 543              		.file 4 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/mach
+ 544              		.file 5 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys/
+ 545              		.file 6 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/
+ 546              		.file 7 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/
+ 547              		.file 8 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/
+ 548              		.file 9 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++/
+ 549              		.file 10 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 550              		.file 11 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 551              		.file 12 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 552              		.file 13 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 553              		.file 14 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 554              		.file 15 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 555              		.file 16 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 556              		.file 17 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 557              		.file 18 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 558              		.file 19 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 559              		.file 20 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 560              		.file 21 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 561              		.file 22 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ 562              		.file 23 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3
+ 563              		.file 24 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys
+ 564              		.file 25 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys
+ 565              		.file 26 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys
+ 566              		.file 27 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3
+ 567              		.file 28 "<built-in>"
+ 568              		.file 29 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/wch
+ 569              		.file 30 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/lib/gcc/arm-none-eabi/6.3
+ 570              		.file 31 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/loc
+ 571              		.file 32 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/cty
+ 572              		.file 33 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/std
+ 573              		.file 34 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/std
+ 574              		.file 35 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/sys
+ 575              		.file 36 "src/Impl/internal_types.h"
+ 576              		.file 37 "src/Impl/timer.h"
+ 577              		.file 38 "/home/vdykyy/Install/STM-32/gcc-arm-none-eabi-6-2017-q2-update/arm-none-eabi/include/c++
+ARM GAS  /tmp/cc1NdDhQ.s 			page 53
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 timer.cpp
-     /tmp/cch7CLaJ.s:16     .text._ZN5TimerC2EtOKSt8functionIFvvEEb:0000000000000000 $t
-     /tmp/cch7CLaJ.s:24     .text._ZN5TimerC2EtOKSt8functionIFvvEEb:0000000000000000 _ZN5TimerC2EtOKSt8functionIFvvEEb
-     /tmp/cch7CLaJ.s:24     .text._ZN5TimerC2EtOKSt8functionIFvvEEb:0000000000000000 _ZN5TimerC1EtOKSt8functionIFvvEEb
-     /tmp/cch7CLaJ.s:105    .text._ZN5Timer8setDelayEt:0000000000000000 $t
-     /tmp/cch7CLaJ.s:113    .text._ZN5Timer8setDelayEt:0000000000000000 _ZN5Timer8setDelayEt
-     /tmp/cch7CLaJ.s:128    .text._ZN5Timer11setCallbackEOKSt8functionIFvvEE:0000000000000000 $t
-     /tmp/cch7CLaJ.s:136    .text._ZN5Timer11setCallbackEOKSt8functionIFvvEE:0000000000000000 _ZN5Timer11setCallbackEOKSt8functionIFvvEE
-     /tmp/cch7CLaJ.s:291    .text._ZN5Timer10setOneShotEb:0000000000000000 $t
-     /tmp/cch7CLaJ.s:299    .text._ZN5Timer10setOneShotEb:0000000000000000 _ZN5Timer10setOneShotEb
-     /tmp/cch7CLaJ.s:314    .text._ZNK5Timer8getDelayEv:0000000000000000 $t
-     /tmp/cch7CLaJ.s:322    .text._ZNK5Timer8getDelayEv:0000000000000000 _ZNK5Timer8getDelayEv
-     /tmp/cch7CLaJ.s:338    .text._ZNK5Timer10getOneShotEv:0000000000000000 $t
-     /tmp/cch7CLaJ.s:346    .text._ZNK5Timer10getOneShotEv:0000000000000000 _ZNK5Timer10getOneShotEv
-     /tmp/cch7CLaJ.s:362    .text._ZN5Timer5startEb:0000000000000000 $t
-     /tmp/cch7CLaJ.s:370    .text._ZN5Timer5startEb:0000000000000000 _ZN5Timer5startEb
-     /tmp/cch7CLaJ.s:396    .text._ZN5Timer4stopEv:0000000000000000 $t
-     /tmp/cch7CLaJ.s:404    .text._ZN5Timer4stopEv:0000000000000000 _ZN5Timer4stopEv
-     /tmp/cch7CLaJ.s:420    .text._ZN5Timer5resetEv:0000000000000000 $t
-     /tmp/cch7CLaJ.s:428    .text._ZN5Timer5resetEv:0000000000000000 _ZN5Timer5resetEv
-     /tmp/cch7CLaJ.s:444    .text._ZN5Timer7processEv:0000000000000000 $t
-     /tmp/cch7CLaJ.s:452    .text._ZN5Timer7processEv:0000000000000000 _ZN5Timer7processEv
+     /tmp/cc1NdDhQ.s:16     .text._ZN5TimerC2EmOKSt8functionIFvvEEb:0000000000000000 $t
+     /tmp/cc1NdDhQ.s:24     .text._ZN5TimerC2EmOKSt8functionIFvvEEb:0000000000000000 _ZN5TimerC2EmOKSt8functionIFvvEEb
+     /tmp/cc1NdDhQ.s:24     .text._ZN5TimerC2EmOKSt8functionIFvvEEb:0000000000000000 _ZN5TimerC1EmOKSt8functionIFvvEEb
+     /tmp/cc1NdDhQ.s:105    .text._ZN5Timer8setDelayEm:0000000000000000 $t
+     /tmp/cc1NdDhQ.s:113    .text._ZN5Timer8setDelayEm:0000000000000000 _ZN5Timer8setDelayEm
+     /tmp/cc1NdDhQ.s:128    .text._ZN5Timer11setCallbackEOKSt8functionIFvvEE:0000000000000000 $t
+     /tmp/cc1NdDhQ.s:136    .text._ZN5Timer11setCallbackEOKSt8functionIFvvEE:0000000000000000 _ZN5Timer11setCallbackEOKSt8functionIFvvEE
+     /tmp/cc1NdDhQ.s:291    .text._ZN5Timer10setOneShotEb:0000000000000000 $t
+     /tmp/cc1NdDhQ.s:299    .text._ZN5Timer10setOneShotEb:0000000000000000 _ZN5Timer10setOneShotEb
+     /tmp/cc1NdDhQ.s:314    .text._ZNK5Timer8getDelayEv:0000000000000000 $t
+     /tmp/cc1NdDhQ.s:322    .text._ZNK5Timer8getDelayEv:0000000000000000 _ZNK5Timer8getDelayEv
+     /tmp/cc1NdDhQ.s:338    .text._ZNK5Timer10getOneShotEv:0000000000000000 $t
+     /tmp/cc1NdDhQ.s:346    .text._ZNK5Timer10getOneShotEv:0000000000000000 _ZNK5Timer10getOneShotEv
+     /tmp/cc1NdDhQ.s:362    .text._ZNK5Timer9isStartedEv:0000000000000000 $t
+     /tmp/cc1NdDhQ.s:370    .text._ZNK5Timer9isStartedEv:0000000000000000 _ZNK5Timer9isStartedEv
+     /tmp/cc1NdDhQ.s:386    .text._ZN5Timer5startEb:0000000000000000 $t
+     /tmp/cc1NdDhQ.s:394    .text._ZN5Timer5startEb:0000000000000000 _ZN5Timer5startEb
+     /tmp/cc1NdDhQ.s:420    .text._ZN5Timer4stopEv:0000000000000000 $t
+     /tmp/cc1NdDhQ.s:428    .text._ZN5Timer4stopEv:0000000000000000 _ZN5Timer4stopEv
+     /tmp/cc1NdDhQ.s:444    .text._ZN5Timer5resetEv:0000000000000000 $t
+     /tmp/cc1NdDhQ.s:452    .text._ZN5Timer5resetEv:0000000000000000 _ZN5Timer5resetEv
+     /tmp/cc1NdDhQ.s:468    .text._ZN5Timer7processEv:0000000000000000 $t
+     /tmp/cc1NdDhQ.s:476    .text._ZN5Timer7processEv:0000000000000000 _ZN5Timer7processEv
                      .debug_frame:0000000000000010 $d
-                           .group:0000000000000000 wm4.0.7a2d4e569ed69ed0ad0fbad7af6198b1
+                           .group:0000000000000000 wm4.0.a61368914fa3edc7c0e5283a5c096c94
                            .group:0000000000000000 wm4._newlib_version.h.4.3572908597b70d672d181fc7fc501c19
                            .group:0000000000000000 wm4.features.h.33.d97f2d646536517df901beeb5b9993f5
                            .group:0000000000000000 wm4._default_types.h.15.247e5cd201eca3442cbf5404108c4935
@@ -3144,11 +3172,11 @@ DEFINED SYMBOLS
                            .group:0000000000000000 wm4.wchar.h.8.acdef4366e64def8c588421024712d23
                            .group:0000000000000000 wm4.stddef.h.161.9f48187563b2a85291a91832aa425498
                            .group:0000000000000000 wm4.cdefs.h.47.9bc8274c84fddbf05edd550eb0bf48cd
+ARM GAS  /tmp/cc1NdDhQ.s 			page 54
+
+
                            .group:0000000000000000 wm4.stdarg.h.34.3a23a216c0c293b3d2ea2e89281481e6
                            .group:0000000000000000 wm4.wchar.h.29.7ec19a1c094c7903732828676a0a91b2
-ARM GAS  /tmp/cch7CLaJ.s 			page 54
-
-
                            .group:0000000000000000 wm4.wchar.h.76.90478bd2c784f576b769c4535c98839d
                            .group:0000000000000000 wm4.cwchar.48.c4e882638bf84f6da89479dda6fe8e17
                            .group:0000000000000000 wm4.stdintgcc.h.29.6d480f4ba0f60596e88234283d42444f
