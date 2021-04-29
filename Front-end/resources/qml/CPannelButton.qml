@@ -9,7 +9,7 @@ Button
 
     id: btn;
     highlighted: true;
-    width: width > label.width + 5 ? width : label.width + 5;
+    //width: width > label.width + 5 ? width : label.width + 5;
     flat: true;
 
     background: Rectangle
